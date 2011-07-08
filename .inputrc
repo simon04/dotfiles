@@ -1,0 +1,18 @@
+set bell-style none
+
+C-n: history-search-forward
+C-p: history-search-backward
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+
+# completion settings
+set page-completions off
+set completion-query-items 2000
+set completion-ignore-case off
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set completion-prefix-display-length 10
+set print-completions-horizontally off
