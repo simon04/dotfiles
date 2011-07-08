@@ -40,10 +40,13 @@ PS1='\n[\t][\u@\h \W]\n\$ '
 #export GIT_PS1_SHOWUNTRACKEDFILES=1
 #export PS1='\[\033[1;37m\][\[\033[1;32m\]\u\[\033[0m\]@\h\[\033[0m\] $? \[\033[1;34m\]\w\[\033[0;35m\]$(__git_ps1 " %s")\[\033[1;37m\]]\[\033[0m\] '
 
-shopt -s cmdhist
-shopt -s histappend
-shopt -s hostcomplete
-shopt -s globstar       # http://www.bash-hackers.org/wiki/doku.php/syntax/expansion/globs
+_shopt () {
+  shopt -s $1 2> /dev/null
+}
+_shopt cmdhist
+_shopt histappend
+_shopt hostcomplete
+_shopt globstar # http://www.bash-hackers.org/wiki/doku.php/syntax/expansion/globs
 set -o notify # notify of bg job completion immediately
 
 # Allow wget download from http://trailers.apple.com/
