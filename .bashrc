@@ -173,3 +173,19 @@ virtualenvname () {
   fi
 }
 
+cdd () {
+  case $(/bin/ls|grep $@|wc -l) in
+    1)
+      d=$(/bin/ls|grep $@)
+      echo "cd \"$d\""
+      cd "$d"
+      ;;
+    0)
+      echo "No match for $@"
+      ;;
+    *)
+      echo "Too many matches for $@"
+      echo "$d"
+      ;;
+  esac
+}
