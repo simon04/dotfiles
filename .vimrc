@@ -3,12 +3,10 @@ set hlsearch
 set incsearch
 set mouse=a
 set diffopt+=iwhite
-set nofoldenable
 
 set expandtab tabstop=2 shiftwidth=2
 
 syntax on
-filetype plugin on
 filetype plugin indent on
 set autoindent
 set smartindent
