@@ -145,7 +145,7 @@ PS1='\n\[\e[40m\]\[\e[1;37m\] \t \[\e[4`color_from_hostname`m\]\[\e[1;37m\] \h \
 # VCS functions
 parse_git_branch () {
   if [ -d ".git" ]; then
-    git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)#git:\1 #'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/git::\1 /'
   fi
 }
 parse_svn_branch () {
@@ -154,10 +154,10 @@ parse_svn_branch () {
   fi
 }
 parse_svn_url () {
-  svn info 2>/dev/null | sed -ne 's#^URL: ##p'
+  svn info 2>/dev/null | grep -e '^URL*' | sed -e 's#^URL: *\(.*\)#\1#g '
 }
 parse_svn_repository_root () {
-  svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
+  svn info 2>/dev/null | grep -e '^Repository Root:*' | sed -e 's#^Repository Root: *\(.*\)#\1\/#g '
 }
 parse_hg_branch () {
   if [ -d ".hg" ]; then
