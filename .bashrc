@@ -145,7 +145,9 @@ PS1='\n\[\e[40m\]\[\e[1;37m\] \t \[\e[4`color_from_hostname`m\]\[\e[1;37m\] \h \
 # VCS functions
 parse_git_branch () {
   if [ -d ".git" ]; then
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/git:\1 /'
+    branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    url=$(basename $(git config --get remote.origin.url))
+    echo "$url:$branch "
   fi
 }
 parse_svn_branch () {
