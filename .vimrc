@@ -130,3 +130,8 @@ set modelines=0
 let g:buftabs_only_basename=1
 let g:buftabs_separator = ":"
 
+" Automatically reload if file mode was changed
+autocmd FileChangedShell * if v:fcs_reason == "mode" | let v:fcs_choice = "reload" | endif
+
+" Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
+autocmd BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | if !executable(expand("<afile>")) | silent !chmod a+x <afile> | endif | endif | endif
