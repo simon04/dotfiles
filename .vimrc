@@ -103,9 +103,7 @@ map <up> <c-w>W
 
 " Customize statusline
 set laststatus=2
-"set statusline=%<\ %n:%F\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
-"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-set statusline=%<\ %n:%F\ %h%m%r%y%=%c,%l/%L\ %P
+set statusline=%<#%n\ %F\ %h%m%r%y%=0x%B\ %c,%l/%L\ %P
 
 " Display tabs and trailing spaces
 set list
