@@ -126,3 +126,7 @@ au BufNewFile,BufRead *.tpl call RagtagInit()
 set modelines=0
 "let g:secure_modelines_verbose=1
 
+" [buftabs]
+let g:buftabs_only_basename=1
+let g:buftabs_separator = ":"
+
