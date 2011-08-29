@@ -146,7 +146,12 @@ PS1='\n\[\e[40m\]\[\e[1;37m\] \t \[\e[4`color_from_hostname`m\]\[\e[1;37m\] \h \
 parse_git_branch () {
   if [ -d ".git" ]; then
     branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-    url=$(basename $(git config --get remote.origin.url))
+    url=$(git config --get remote.origin.url)
+    if [ -n "$url" ]; then
+      url=$(basename $url)
+    else
+      url='git'
+    fi
     echo "$url:$branch "
   fi
 }
