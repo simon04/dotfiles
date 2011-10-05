@@ -137,3 +137,5 @@ autocmd FileChangedShell * if v:fcs_reason == "mode" | let v:fcs_choice = "reloa
 autocmd BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | if !executable(expand("<afile>")) | silent !chmod a+x <afile> | endif | endif | endif
 
 au BufNewFile,BufRead *.json setl syntax=javascript
+
+command! BuffDiff :w !diff -u % -
