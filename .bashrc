@@ -27,6 +27,7 @@ alias grep='grep --color'
 alias ls='ls --color=auto -1 -F'
 alias sps="ps -ef | grep -v grep | grep"
 alias svndiff='svn diff -x -w | vim -R -'
+alias cvsdiff='cvs diff -w | vim -R -'
 alias updategit='packer -S `pacman -Qsq|grep '\-git$'` --noconfirm'
 alias vless='vim - -R'
 alias wgeto='wget -qO -'

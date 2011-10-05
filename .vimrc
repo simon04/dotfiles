@@ -81,6 +81,7 @@ noremap <Right> <NOP>
 " Spell check for tex and commit messages
 au BufNewFile,BufRead *.tex setl spell
 au BufNewFile,BufRead COMMIT_EDITMSG setl spell
+au BufNewFile,BufRead svn-commit.tmp setl spell
 
 function! StripWhitespace ()
   exec ':%s/ \+$//gc'
