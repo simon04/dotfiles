@@ -55,7 +55,7 @@ alias wget_apple='wget -U "QuickTime/7.6.2"'
 #export _JAVA_OPTIONS=-Dswing.defaultlaf=javax.swing.plaf.metal.MetalLookAndFeel
 
 mkcd () {
-  mkdir "$1" && cd "$1"
+  mkdir -p "$@" && cd "$_"
 }
 
 # Disable the touchpad while typing
@@ -96,7 +96,7 @@ x () {
       *.tar.bz2) tar xjf "$1"    ;;
       *.tar.gz)  tar xzf "$1"    ;;
       *.bz2)     bunzip2 "$1"    ;;
-      *.rar)     rar x "$1"      ;;
+      *.rar)     unrar x "$1"      ;;
       *.gz)      gunzip "$1"     ;;
       *.tar)     tar xf "$1"     ;;
       *.tbz2)    tar xjf "$1"    ;;
@@ -193,3 +193,9 @@ cdd () {
       ;;
   esac
 }
+
+# `d 1` rembers current directory for quick returning with `1`
+d() {
+  alias $1="cd $PWD"
+}
+
