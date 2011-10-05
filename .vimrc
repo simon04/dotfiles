@@ -131,6 +131,10 @@ set modelines=0
 let g:buftabs_only_basename=1
 let g:buftabs_separator = ":"
 
+" Load template associated with file extension on file creation if template is available
+" http://vim.runpaint.org/typing/using-templates
+autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e | silent! 0r ~/.vim/skel/%:t
+
 " Automatically reload if file mode was changed
 autocmd FileChangedShell * if v:fcs_reason == "mode" | let v:fcs_choice = "reload" | endif
 
