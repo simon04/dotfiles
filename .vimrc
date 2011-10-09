@@ -83,6 +83,9 @@ au BufNewFile,BufRead *.tex setl spell
 au BufNewFile,BufRead COMMIT_EDITMSG setl spell
 au BufNewFile,BufRead svn-commit.tmp setl spell
 
+" [Ctrl]+[x] [Ctrl]+[e] opens the current command in editor
+au BufNewFile,BufRead /tmp/bash-* setl syntax=sh
+
 function! StripWhitespace ()
   exec ':%s/ \+$//gc'
 endfunction
