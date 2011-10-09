@@ -200,3 +200,8 @@ d() {
   alias $1="cd $PWD"
 }
 
+# shortcut for launching zathura, a PDF viewer
+z() {
+  zathura "$@" > /dev/null 2>&1 & disown
+}
+complete -f -X '!*.[pf]df' z
