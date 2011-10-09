@@ -138,6 +138,9 @@ let g:buftabs_separator = ":"
 " http://vim.runpaint.org/typing/using-templates
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e | silent! 0r ~/.vim/skel/%:t
 
+" Auto closing an HTML tag
+:iabbrev </ </<C-X><C-O>
+
 " Automatically reload if file mode was changed
 autocmd FileChangedShell * if v:fcs_reason == "mode" | let v:fcs_choice = "reload" | endif
 
