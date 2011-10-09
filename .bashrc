@@ -188,6 +188,11 @@ cdd () {
   esac
 }
 
+focallengthplot () {
+  exiftool -T -filename -focallength "$@" | sort -u | awk -F "\t" '{print ($2-$2%5)"-"($2+4-$2%5)}' | sort -n | uniq -c | awk 's=""; {while (length(s)<$1) s=s"*"; printf "%8s "mm"  [%4d]  %s\n", $2, $1, s}'
+  exiftool -T -filename -focallength "$@" | sort -u | awk -F "\t" '{print $2}' | sort -n | uniq -c | awk 's=""; {while (length(s)<$1) s=s"*"; printf "%8s "mm"  [%4d]  %s\n", $2, $1, s}'
+}
+
 # `d 1` rembers current directory for quick returning with `1`
 d() {
   alias $1="cd $PWD"
