@@ -1,8 +1,14 @@
+" http://www.vim.org/scripts/script.php?script_id=2332
+call pathogen#infect()
+
 set nocompatible
 set hlsearch
 set incsearch
 set mouse=a
 set diffopt+=iwhite
+
+set background=dark
+colorscheme solarized
 
 set expandtab tabstop=2 shiftwidth=2
 
@@ -111,9 +117,8 @@ set laststatus=2
 set statusline=%<#%n\ %F\ %h%m%r%y%=0x%B\ %c,%l/%L\ %P
 
 " Display tabs and trailing spaces
-set list
-"set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
-set listchars=tab:  ,trail:⋅,nbsp:⋅
+"set list
+"set listchars=tab:  ,trail:⋅,nbsp:⋅
 
 " vertical/horizontal scroll off settings
 set scrolloff=4
