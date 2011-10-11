@@ -1,6 +1,6 @@
 [submodule ".bin/autojump"]
 	path = .bin/autojump
-	url = https://github.com/joelthelion/autojump.git
+	url = git://github.com/joelthelion/autojump.git
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
+	url = git://github.com/altercation/vim-colors-solarized.git
