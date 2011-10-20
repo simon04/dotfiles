@@ -23,7 +23,8 @@ let g:Tex_UseMakefile = 0
 let g:Imap_UsePlaceHolders = 0
 let g:Tex_HotKeyMappings = 'align*,itemize,figure,example'
 let g:Tex_ViewRule_pdf = 'zathura'
-let g:Tex_FoldedEnvironments = "figure,table"
+"let g:Tex_FoldedEnvironments = "figure,table"
+let g:Tex_Folding=0
 map <f2> <esc>:w<cr><leader>ll
 imap <f2> <esc>:w<cr><leader>ll
 
