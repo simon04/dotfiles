@@ -7,8 +7,8 @@ set incsearch
 set mouse=a
 set diffopt+=iwhite
 
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
 
 set expandtab tabstop=2 shiftwidth=2
 
