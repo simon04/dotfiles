@@ -1,5 +1,4 @@
 . /etc/profile
-[[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -205,3 +204,6 @@ z() {
   zathura "$@" > /dev/null 2>&1 & disown
 }
 complete -f -X '!*.[pf]df' z
+
+# load local settings
+[[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
