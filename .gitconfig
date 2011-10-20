@@ -3,3 +3,13 @@
 	email = Simon.Legner@gmail.com
 [color]
 	ui = true
+[alias]
+	a = add
+	a = apply
+	ci = commit
+	cl = clone
+	co = checkout
+	d = diff
+	ds = diff --staged
+	pl = pull
+	st = status
