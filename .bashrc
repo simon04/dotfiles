@@ -23,7 +23,7 @@ alias df='df -h'
 alias diff='diff -u'
 alias f='find | grep'
 alias grep='grep --color'
-alias ls='ls --color=auto -1 -F'
+alias ls='ls --color=auto -F'
 alias l='ls -l'
 alias sps="ps -ef | grep -v grep | grep"
 alias svndiff='svn diff -x -w | vim -R -'
@@ -34,6 +34,7 @@ alias youtube-dl='youtube-dl -t'
 alias ocaml='rlwrap ocaml'
 alias sudo='sudo -E'
 alias rubber='rubber --pdf'
+alias pl='pdflatex -interaction=nonstopmode'
 
 #PS1='\n[\t][\u@\h \W]\n\$ '
 
@@ -73,6 +74,7 @@ helpme () {
   scanimage -L
   scanimage -d genesys:libusb:001:009 -p --resolution 150
   chromium --incognito --proxy-pac-url=~/.config/proxy.pac
+  date -d @1319009864
 EOF
 }
 
