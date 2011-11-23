@@ -34,6 +34,7 @@ alias ocaml='rlwrap ocaml'
 alias sudo='sudo -E'
 alias rubber='rubber --pdf'
 alias pl='pdflatex -interaction=nonstopmode'
+alias q!='unset HISTFILE && exit'
 
 #PS1='\n[\t][\u@\h \W]\n\$ '
 
