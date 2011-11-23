@@ -5,11 +5,11 @@
 	ui = true
 [alias]
 	a = add
-	a = apply
+	b = branch
 	ci = commit
 	cl = clone
 	co = checkout
 	d = diff
 	ds = diff --staged
-	pl = pull
+	m = merge
 	st = status
