@@ -159,3 +159,6 @@ command! BuffDiff :w !diff -u % -
 
 " Toggle spell checking on and off with `,s`
 nmap <silent> <leader>s :set spell!<CR>
+
+" Create File if not exist
+nnoremap gF :e <cfile><cr> 
