@@ -75,6 +75,7 @@ helpme () {
   scanimage -d genesys:libusb:001:009 -p --resolution 150
   chromium --incognito --proxy-pac-url=~/.config/proxy.pac
   date -d @1319009864
+  cat src | while read line; do ...; done
 EOF
 }
 
