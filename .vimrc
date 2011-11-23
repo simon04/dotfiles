@@ -156,3 +156,6 @@ autocmd BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | if !e
 au BufNewFile,BufRead *.json setl syntax=javascript
 
 command! BuffDiff :w !diff -u % -
+
+" Toggle spell checking on and off with `,s`
+nmap <silent> <leader>s :set spell!<CR>
