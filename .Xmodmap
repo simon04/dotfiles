@@ -3,6 +3,7 @@ keycode  20 = minus underscore minus underscore endash
 keycode  49 = grave asciitilde grave asciitilde U2248 U2249
 keycode  59 = comma less comma less ccedilla U2A7D
 keycode  60 = period greater period greater ellipsis U2A7E
+keycode  61 = slash question slash question U203D U2E2E
 keycode  66 = NoSymbol
 !keycode  65 = space NoSymbol NoSymbol NoSymbol nobreakspace NoSymbol
 !keycode  65 = space space nobreakspace thinspace
