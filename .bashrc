@@ -205,7 +205,7 @@ d() {
 z() {
   zathura "$@" > /dev/null 2>&1 & disown
 }
-complete -f -X '!*.[pf]df' z
+complete -f -o plusdirs -X '!*.[pf]df' z
 
 # load local settings
 [[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
