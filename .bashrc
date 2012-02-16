@@ -35,6 +35,7 @@ alias sudo='sudo -E'
 alias rubber='rubber --pdf'
 alias pl='pdflatex -interaction=nonstopmode'
 alias q!='unset HISTFILE && exit'
+alias p='patch -p1'
 
 #PS1='\n[\t][\u@\h \W]\n\$ '
 
