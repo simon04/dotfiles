@@ -96,7 +96,7 @@ au BufNewFile,BufRead /tmp/bash-* setl syntax=sh
 function! StripWhitespace ()
   exec ':%s/ \+$//gc'
 endfunction
-map ,s :call StripWhitespace ()<CR>
+map ,w :call StripWhitespace ()<CR>
 
 " Remove any trailing whitespace that is in the file
 "autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
