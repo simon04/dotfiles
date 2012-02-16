@@ -204,7 +204,8 @@ d() {
 
 # shortcut for launching zathura, a PDF viewer
 z() {
-  zathura "$@" > /dev/null 2>&1 & disown
+  [ -f "$1" ] && (zathura "$@" > /dev/null 2>&1 & disown)
+  [ -f "$1" ] || (echo "File '$1' does not exist")
 }
 complete -f -o plusdirs -X '!*.[pf]df' z
 
