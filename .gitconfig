@@ -1,5 +1,5 @@
 [user]
-	name = simon04
+	name = Simon Legner
 	email = Simon.Legner@gmail.com
 [color]
 	ui = true
@@ -13,3 +13,5 @@
 	ds = diff --staged
 	m = merge
 	st = status
+[github]
+	user = simon04
