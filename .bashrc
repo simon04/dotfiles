@@ -76,9 +76,9 @@ mkcd () {
 # Print command that I always forget
 helpme () {
   cat <<EOF
-  exiftool -AllDates-=1:08 ./path/to/directory
-  exiftool '-DateTimeOriginal>FileModifyDate' ./path/to/directory
-  exiftool -Author='Simon Legner, 2011' '-DateTimeOriginal>FileModifyDate' ./path/to/directory
+  exiftool -AllDates-=1:08 -overwrite_original .
+  exiftool '-DateTimeOriginal>FileModifyDate' -overwrite_original .
+  exiftool -Author='Simon Legner, 2012' '-DateTimeOriginal>FileModifyDate' -overwrite_original .
   scanimage -L
   scanimage -d genesys:libusb:001:009 -p --resolution 150
   chromium --incognito --proxy-pac-url=~/.config/proxy.pac
