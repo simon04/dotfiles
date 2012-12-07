@@ -160,5 +160,9 @@ command! BuffDiff :w !diff -u % -
 " Toggle spell checking on and off with `,s`
 nmap <silent> <leader>s :set spell!<CR>
 
+" "Very magic" regexes in searches
+"nnoremap / /\v
+"nnoremap ? ?\v
+
 " Create File if not exist
 nnoremap gF :e <cfile><cr> 
