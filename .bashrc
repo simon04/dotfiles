@@ -191,11 +191,11 @@ cdd () {
       cd "$d"
       ;;
     0)
-      echo "No match for $@"
+      echo "No match for $@."
       ;;
     *)
-      echo "Too many matches for $@"
-      echo "$d"
+      echo "Too many matches for $@:"
+      /bin/ls|grep $@
       ;;
   esac
 }
