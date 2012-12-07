@@ -187,3 +187,11 @@ if has("iconv")
   command! -bar -nargs=? -range -complete=customlist,EncList DecodeURL
         \ <line1>,<line2>s/%\(\x\x\)/\=DecodeHex(<q-args>)/eg
 endif
+
+" [LaTeX-Box]
+imap <buffer> [[ 		\begin{
+imap <buffer> ]]		<Plug>LatexCloseCurEnv
+nmap <buffer> <F5>		<Plug>LatexChangeEnv
+vmap <buffer> <F7>		<Plug>LatexWrapSelection
+vmap <buffer> <S-F7>		<Plug>LatexEnvWrapSelection
+imap <buffer> (( 		\eqref{
