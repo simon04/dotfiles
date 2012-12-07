@@ -221,7 +221,7 @@ complete -f -o plusdirs -X '!*.[pf]df' z
 # load local settings
 [[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
 
-alias cleanlatex='rm -f *.{aux,log,nav,out,snm,toc,vrb}'
+alias cleanlatex='rm -f *.{aux,log,nav,out,snm,toc,vrb,dvi,*latexmk}'
 
 # Battery charge as a percentage.
 bchrg() {
