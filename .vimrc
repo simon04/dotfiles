@@ -164,5 +164,7 @@ nmap <silent> <leader>s :set spell!<CR>
 "nnoremap / /\v
 "nnoremap ? ?\v
 
+"set viminfo='10,\"100,:20,%,n~/.viminfo
+
 " Create File if not exist
 nnoremap gF :e <cfile><cr> 
