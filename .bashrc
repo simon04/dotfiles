@@ -39,6 +39,11 @@ alias q!='unset HISTFILE && exit'
 alias p0='patch -p0'
 alias p1='patch -p1'
 
+#params: [in] [out.ext]
+extract_audio () {
+  ffmpeg -i "$1" -vn -acodec copy $2
+}
+
 #PS1='\n[\t][\u@\h \W]\n\$ '
 
 # http://stick.gk2.sk/blog/2011/06/ps1-tricks/
