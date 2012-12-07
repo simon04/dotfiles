@@ -138,6 +138,7 @@ color_from_hostname () {
 
 # Customised prompt; shows svn/git/hg status too
 PS1='\n\[\e[47m\]\[\e[1;30m\] $? \[\e[0m\]\[\e[40m\]\[\e[1;37m\] \t \[\e[4`color_from_hostname`m\]\[\e[1;37m\] \h \[\e[40m\]\[\e[1;37m\] \u \[\e[47m\]\[\e[1;30m\] \w \[\e[0m\]\[\e[1;37m\]\[\e[42m\] `parse_cvs``parse_svn_branch``parse_hg_branch``parse_git_branch``virtualenvname`\[\e[0m\]\n\[\e[1;37m\]\[\e[42m\] > \[\e[0m\] '
+PS1='\n\[\e[47m\]\[\e[1;30m\] $? \[\e[0m\]\[\e[40m\]\[\e[1;37m\] \t \[\e[4`color_from_hostname`m\]\[\e[1;37m\] \h \[\e[40m\]\[\e[1;37m\] \u \[\e[47m\]\[\e[1;30m\] \w \[\e[0m\]\n\[\e[1;37m\]\[\e[42m\] > \[\e[0m\] '
 
 # VCS functions
 parse_git_branch () {
