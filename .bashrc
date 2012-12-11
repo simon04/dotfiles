@@ -46,12 +46,6 @@ extract_audio () {
 
 #PS1='\n[\t][\u@\h \W]\n\$ '
 
-# http://stick.gk2.sk/blog/2011/06/ps1-tricks/
-#export GIT_PS1_SHOWDIRTYSTATE=1
-#export GIT_PS1_SHOWSTASHSTATE=1
-#export GIT_PS1_SHOWUNTRACKEDFILES=1
-#export PS1='\[\033[1;37m\][\[\033[1;32m\]\u\[\033[0m\]@\h\[\033[0m\] $? \[\033[1;34m\]\w\[\033[0;35m\]$(__git_ps1 " %s")\[\033[1;37m\]]\[\033[0m\] '
-
 _shopt () {
   shopt -s $1 2> /dev/null
 }
@@ -142,14 +136,32 @@ color_from_hostname () {
   echo $c
 }
 
-# Customised prompt; shows svn/git/hg status too
-PS1='\n\[\e[47m\]\[\e[1;30m\] $? \[\e[0m\]\[\e[40m\]\[\e[1;37m\] \t \[\e[4`color_from_hostname`m\]\[\e[1;37m\] \h \[\e[40m\]\[\e[1;37m\] \u \[\e[47m\]\[\e[1;30m\] \w \[\e[0m\]\[\e[1;37m\]\[\e[42m\] `parse_cvs``parse_svn_branch``parse_hg_branch``parse_git_branch``virtualenvname`\[\e[0m\]\n\[\e[1;37m\]\[\e[42m\] > \[\e[0m\] '
-PS1='\n\[\e[47m\]\[\e[1;30m\] $? \[\e[0m\]\[\e[40m\]\[\e[1;37m\] \t \[\e[4`color_from_hostname`m\]\[\e[1;37m\] \h \[\e[40m\]\[\e[1;37m\] \u \[\e[47m\]\[\e[1;30m\] \w \[\e[0m\]\n\[\e[1;37m\]\[\e[42m\] > \[\e[0m\] '
+# Construct PS1 prompt
+function _ps1 () {
+  std="\[\e[0m\]"
+  EXIT="\[\e[47m\]\[\e[1;30m\] $? $std"
+  TIME="\[\e[40m\]\[\e[1;37m\] \t $std"
+  HOST="\[\e[4`color_from_hostname`m\]\[\e[1;37m\] \h $std"
+  USER="\[\e[40m\]\[\e[1;37m\] \u $std"
+  WD="\[\e[47m\]\[\e[1;30m\] \w $std"
+  SCM='\[\e[1;37m\]\[\e[42m\] `_show_scm_repo`'$std
+  #SCM='\[\e[1;37m\]\[\e[42m\] `_parse_cvs``_parse_svn_branch``_parse_hg_branch``_parse_git_branch``_virtualenvname`'$std
+  PROMT="\[\e[1;37m\]\[\e[42m\] > $std"
+  export PS1="\n$EXIT$TIME$HOST$USER$WD$SCM\n$PROMT "
+}
+PROMPT_COMMAND=_ps1
+
+_show_scm_repo () {
+  [ -d .git ] && echo -n 'git '
+  [ -d .hg ] && echo -n 'hg '
+  [ -d .svn ] && echo -n 'svn '
+  [ -d CVS ] && echo -n 'cvs '
+}
 
 # VCS functions
-parse_git_branch () {
+_parse_git_branch () {
   if [ -d ".git" ]; then
-    branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
     url=$(git config --get remote.origin.url)
     if [ -n "$url" ]; then
       url=$(basename $url)
@@ -159,26 +171,20 @@ parse_git_branch () {
     echo "$url:$branch "
   fi
 }
-parse_svn_branch () {
+_parse_svn_branch () {
   if [ -d ".svn" ]; then
-    parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk -F / '{print "svn:"$1 "" $2 " "}'
+    svn info 2> /dev/null | grep -e '^URL*' | sed -e 's#.*/\(.*\)#svn:\1 #g'
   fi
 }
-parse_svn_url () {
-  svn info 2>/dev/null | grep -e '^URL*' | sed -e 's#^URL: *\(.*\)#\1#g '
-}
-parse_svn_repository_root () {
-  svn info 2>/dev/null | grep -e '^Repository Root:*' | sed -e 's#^Repository Root: *\(.*\)#\1\/#g '
-}
-parse_hg_branch () {
+_parse_hg_branch () {
   if [ -d ".hg" ]; then
     hg branch 2> /dev/null | sed 's#\(.*\)#hg:\1 #'
   fi
 }
-parse_cvs () {
+_parse_cvs () {
   [ -d 'CVS' ] && echo 'cvs: '
 }
-virtualenvname () {
+_virtualenvname () {
   if [ `echo $VIRTUAL_ENV` ]; then
     echo -n "ve:`basename $VIRTUAL_ENV` "
   fi
