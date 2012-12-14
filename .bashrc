@@ -142,13 +142,16 @@ color_from_hostname () {
 
 # Construct PS1 prompt
 function _ps1 () {
+  EXIT=$? # must be first command
   std="\[\e[0m\]"
-  EXIT="\[\e[47m\]\[\e[1;30m\] $? $std"
+  EXIT="\[\e[47m\]\[\e[1;30m\] $EXIT $std"
   TIME="\[\e[40m\]\[\e[1;37m\] \t $std"
   HOST="\[\e[4`color_from_hostname`m\]\[\e[1;37m\] \h $std"
   USER="\[\e[40m\]\[\e[1;37m\] \u $std"
   WD="\[\e[47m\]\[\e[1;30m\] \w $std"
-  SCM='\[\e[1;37m\]\[\e[42m\] `_show_scm_repo`'$std
+  JOBS=$(jobs | wc -l)
+  [ $JOBS -gt 0 ] && JOBS="jobs:$JOBS " || JOBS=''
+  SCM='\[\e[1;37m\]\[\e[42m\] '$JOBS'`_show_scm_repo`'$std
   #SCM='\[\e[1;37m\]\[\e[42m\] `_parse_cvs``_parse_svn_branch``_parse_hg_branch``_parse_git_branch``_virtualenvname`'$std
   PROMT="\[\e[1;37m\]\[\e[42m\] > $std"
   export PS1="\n$EXIT$TIME$HOST$USER$WD$SCM\n$PROMT "
