@@ -112,6 +112,9 @@ x () {
   fi
 }
 
+# If available, use dtrx: Intelligent archive extraction http://brettcsmith.org/2007/dtrx/
+which dtrx 2>&1 > /dev/null && alias x=dtrx
+
 # from: https://bitbucket.org/andrewgodwin/tildebin/src/336b897c07d0/bashrc
 # Picks a random colour based on the hostname.
 color_from_hostname () {
