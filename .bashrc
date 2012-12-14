@@ -41,7 +41,7 @@ alias p1='patch -p1'
 
 #params: [in] [out.ext]
 extract_audio () {
-  ffmpeg -i "$1" -vn -acodec copy $2
+  ffmpeg -i "$1" -vn -acodec copy "$2"
 }
 
 #PS1='\n[\t][\u@\h \W]\n\$ '
