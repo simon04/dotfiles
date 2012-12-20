@@ -1,6 +1,3 @@
-[submodule ".bin/autojump"]
-	path = .bin/autojump
-	url = git://github.com/joelthelion/autojump.git
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
@@ -16,3 +13,6 @@
 [submodule ".vim/bundle/vim-vcscommand"]
 	path = .vim/bundle/vim-vcscommand
 	url = git://repo.or.cz/vcscommand
+[submodule ".bin/autojump.git"]
+	path = .bin/autojump.git
+	url = git://github.com/joelthelion/autojump.git
