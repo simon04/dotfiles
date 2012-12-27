@@ -236,6 +236,7 @@ complete -f -o plusdirs -X '!*.[pf]df' z
 [[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
 
 alias cleanlatex='rm -f *.{aux,log,nav,out,snm,toc,vrb,dvi,*latexmk}'
+alias cleanshp='rm -f *.{cpg,dbf,prj,shp,shx}'
 
 # Battery charge as a percentage.
 bchrg() {
