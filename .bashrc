@@ -268,3 +268,10 @@ mpd_pause_after_current_track() {
   sleep $(mpc | awk -F"[ /:]" '/playing/ {print 60*($8-$6)+$9-$7}');mpc pause
 }
 
+httpd_py () {
+  python2 -m SimpleHTTPServer ${1:-8000}
+}
+
+httpd_php () {
+  php -S localhost:${1:-8000}
+}
