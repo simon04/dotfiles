@@ -145,14 +145,14 @@ color_from_hostname () {
 function _ps1 () {
   _EXIT=$? # must be first command
   std="\[\e[0m\]"
-  _EXIT="\[\e[47m\]\[\e[1;30m\] $EXIT $std"
+  _EXIT="\[\e[47m\]\[\e[1;30m\] $_EXIT $std"
   _TIME="\[\e[40m\]\[\e[1;37m\] \t $std"
   _HOST="\[\e[4`color_from_hostname`m\]\[\e[1;37m\] \h $std"
   _USER="\[\e[40m\]\[\e[1;37m\] \u $std"
   _WD="\[\e[47m\]\[\e[1;30m\] \w $std"
   _JOBS=$(jobs | wc -l)
   [ $_JOBS -gt 0 ] && JOBS="jobs:$_JOBS " || _JOBS=''
-  _SCM='\[\e[1;37m\]\[\e[42m\] '$JOBS'`_show_scm_repo`'$std
+  _SCM='\[\e[1;37m\]\[\e[42m\] '$_JOBS'`_show_scm_repo`'$std
   #SCM='\[\e[1;37m\]\[\e[42m\] `_parse_cvs``_parse_svn_branch``_parse_hg_branch``_parse_git_branch``_virtualenvname`'$std
   _PROMT="\[\e[1;37m\]\[\e[42m\] > $std"
   export PS1="\n$_EXIT$_TIME$_HOST$_USER$_WD$_SCM\n$_PROMT "
