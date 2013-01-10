@@ -151,7 +151,7 @@ function _ps1 () {
   _USER="\[\e[40m\]\[\e[1;37m\] \u $std"
   _WD="\[\e[47m\]\[\e[1;30m\] \w $std"
   _JOBS=$(jobs | wc -l)
-  [ $_JOBS -gt 0 ] && JOBS="jobs:$_JOBS " || _JOBS=''
+  [ $_JOBS -gt 0 ] && _JOBS="jobs:$_JOBS " || _JOBS=''
   _SCM='\[\e[1;37m\]\[\e[42m\] '$_JOBS'`_show_scm_repo`'$std
   #SCM='\[\e[1;37m\]\[\e[42m\] `_parse_cvs``_parse_svn_branch``_parse_hg_branch``_parse_git_branch``_virtualenvname`'$std
   _PROMT="\[\e[1;37m\]\[\e[42m\] > $std"
