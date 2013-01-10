@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function _sps() {
+    ps -ef | grep -v grep | grep $1
+}
+
+setxkbmap -layout us -variant altgr-intl
+xmodmap ~/.Xmodmap
+xmodmap -e "pointer = 1 11 3 4 5 6 7 8 9 10 2 12"
+urxvtd -f
+clipit &
+export _JAVA_AWT_WM_NONREPARENTING=1
+#exec ck-launch-session awesome
+(sleep 10 && dropboxd) &
+_sps mpd$ || mpd &
+_sps mpdscribble || mpdscribble &
+exec awesome
+#xsetroot -cursor_name left_ptr
