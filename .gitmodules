@@ -28,3 +28,6 @@
 [submodule ".vim/bundle/vim-minibufexplorer"]
 	path = .vim/bundle/vim-minibufexplorer
 	url = git://github.com/techlivezheng/vim-plugin-minibufexpl.git
+[submodule ".vim/bundle/vim-LaTeX-Box"]
+	path = .vim/bundle/vim-LaTeX-Box
+	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
