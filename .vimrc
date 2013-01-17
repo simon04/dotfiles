@@ -1,6 +1,9 @@
 " http://www.vim.org/scripts/script.php?script_id=2332
 call pathogen#infect()
 
+" Source viminit files
+runtime! config/**/*.vim
+
 set nocompatible
 set hlsearch
 set incsearch
@@ -17,20 +20,8 @@ filetype plugin indent on
 set autoindent
 set smartindent
 
-let g:tex_flavor = 'latex'
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_UseMakefile = 0
-let g:Imap_UsePlaceHolders = 0
-let g:Tex_HotKeyMappings = 'align*,itemize,figure,example'
-let g:Tex_ViewRule_pdf = 'zathura'
-"let g:Tex_FoldedEnvironments = "figure,table"
-let g:Tex_Folding=0
-map <f2> <esc>:w<cr><leader>ll
-imap <f2> <esc>:w<cr><leader>ll
-
 " Automatically set current directory to file's location
 set autochdir
-:command! CD cd `dirname %`
 
 " Save swap files centrally
 "silent !mkdir -m 700 -p /tmp/.vim-$USER
@@ -48,70 +39,21 @@ set wrap linebreak textwidth=0
 " Autowrap text
 "set formatoptions+=ta textwidth=80
 
-" http://jlebl.wordpress.com/2011/01/13/vim-evince-and-forward-and-backward-latex-synctex-search/
-"let g:Tex_ViewRule_pdf = 'evince_vim_dbus.py EVINCE'
-"let g:Tex_DefaultTargetFormat = 'pdf'
-"let g:Tex_CompileRule_pdf = 'pdflatex --synctex=1 -interaction=nonstopmode $*'
-
-" Replacing latex code by unicode symbols (conceal)
-"set cole=2
-"let g:text_conceal="adgms"
-"hi Conceal guibg=gray20 guifg=white
-"syn match texMathSymbol '\\geqslant\>' contained conceal cchar=≥
-"syn match texMathSymbol '\\leqslant\>' contained conceal cchar=≤
-
 " [DetectIndent]
 " https://github.com/ciaranm/detectindent/blob/master/doc/detectindent.txt
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 2
 autocmd BufRead,BufWrite * DetectIndent
 
-map 0 ^
-nore ; :
-nore , ;
-"inoremap jj <Esc>
-
-" make Y consistent with C and D
-nnoremap Y y$
-
-" Force to learn hjkl
-" http://stackoverflow.com/questions/5367760/vim-disabling-the-cursor-arrow-keys-but-only-for-navigation
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
-" Spell check for tex and commit messages
-au BufNewFile,BufRead *.tex setl spell
+" Spell check for commit messages
 au BufNewFile,BufRead COMMIT_EDITMSG setl spell
 au BufNewFile,BufRead svn-commit.tmp setl spell
 
 " [Ctrl]+[x] [Ctrl]+[e] opens the current command in editor
 au BufNewFile,BufRead /tmp/bash-* setl syntax=sh
 
-function! StripWhitespace ()
-  exec ':%s/ \+$//gc'
-endfunction
-map ,w :call StripWhitespace ()<CR>
-
 " Remove any trailing whitespace that is in the file
 "autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-
-" Buffer navigation
-":nmap <C-left> :bprev<CR>
-":nmap <C-right> :bnext<CR>
-map <right> :bn<cr>
-map <left> :bp<cr>
-
-" Split window navigation
-"nmap <c-down> <c-w>w
-"nmap <c-up> <c-w>W
-map <down> <c-w>w
-map <up> <c-w>W
 
 " Customize statusline
 set laststatus=2
@@ -125,9 +67,6 @@ set statusline=%<#%n\ %F\ %h%m%r%y%=0x%B\ %c,%l/%L\ %P
 set scrolloff=4
 set sidescrolloff=8
 set sidescroll=1
-
-" Will allow you to use :w!! to write to a file using sudo if you forgot to sudo vim file (it will prompt for sudo password when writing)
-cmap w!! %!sudo tee > /dev/null %
 
 " [Ragtag] enable for smarty templates
 au BufNewFile,BufRead *.tpl call RagtagInit()
@@ -155,43 +94,7 @@ autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e | silent! 0r ~/.vim/skel/%
 
 au BufNewFile,BufRead *.json setl syntax=javascript
 
-command! BuffDiff :w !diff -u % -
 
-" Toggle spell checking on and off with `,s`
-nmap <silent> <leader>s :set spell!<CR>
 
-" "Very magic" regexes in searches
-"nnoremap / /\v
-"nnoremap ? ?\v
 
-"set viminfo='10,\"100,:20,%,n~/.viminfo
 
-" Create File if not exist
-nnoremap gF :e <cfile><cr> 
-
-" from http://phdru.name/Software/dotfiles/vimrc.html
-if has("iconv")
-  " Helper function for :DecodeQP and :DecodeURL commands
-  function! DecodeHex(arg)
-    return iconv(printf("%c", str2nr(submatch(1), 16)), a:arg, &encoding)
-  endfunction
-  " Custom completion for encoding names
-  function! EncList(ArgLead, CmdLine, CursorPos)
-    return filter(split(&fileencodings, ','),
-          \ "strpart(v:val, 0, strlen(a:ArgLead)) == a:ArgLead")
-  endfunction
-  " Command for decoding qp-encoded text
-  command! -bar -nargs=? -range -complete=customlist,EncList DecodeQP
-        \ <line1>,<line2>s/=\(\x\x\|\n\)/\=DecodeHex(<q-args>)/eg
-  " Command for decoding url-encoded text
-  command! -bar -nargs=? -range -complete=customlist,EncList DecodeURL
-        \ <line1>,<line2>s/%\(\x\x\)/\=DecodeHex(<q-args>)/eg
-endif
-
-" [LaTeX-Box]
-au BufNewFile,BufRead *.tex imap <buffer> [[ \begin{
-au BufNewFile,BufRead *.tex imap <buffer> ]] <Plug>LatexCloseCurEnv
-au BufNewFile,BufRead *.tex nmap <buffer> <F5> <Plug>LatexChangeEnv
-au BufNewFile,BufRead *.tex vmap <buffer> <F7> <Plug>LatexWrapSelection
-au BufNewFile,BufRead *.tex vmap <buffer> <S-F7> <Plug>LatexEnvWrapSelection
-au BufNewFile,BufRead *.tex imap <buffer> (( \eqref{
