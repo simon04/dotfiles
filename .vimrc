@@ -1,4 +1,5 @@
-" http://www.vim.org/scripts/script.php?script_id=2332
+" https://github.com/tpope/vim-pathogen
+source ~/.vim/bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 " Source viminit files

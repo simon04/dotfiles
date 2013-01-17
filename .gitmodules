@@ -16,3 +16,6 @@
 [submodule ".bin/autojump.git"]
 	path = .bin/autojump.git
 	url = git://github.com/joelthelion/autojump.git
+[submodule ".vim/bundle/pathogen"]
+	path = .vim/bundle/pathogen
+	url = https://github.com/tpope/vim-pathogen.git
