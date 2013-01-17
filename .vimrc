@@ -68,9 +68,6 @@ set scrolloff=4
 set sidescrolloff=8
 set sidescroll=1
 
-" [Ragtag] enable for smarty templates
-au BufNewFile,BufRead *.tpl call RagtagInit()
-
 " http://www.jukie.net/bart/blog/vim-modelines-insecure
 set modelines=0
 "let g:secure_modelines_verbose=1
