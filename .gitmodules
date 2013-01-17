@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/vim-indentwizard"]
 	path = .vim/bundle/vim-indentwizard
 	url = git://github.com/wikitopian/indentwizard.git
+[submodule ".vim/bundle/vim-securemodelines"]
+	path = .vim/bundle/vim-securemodelines
+	url = git://github.com/ciaranm/securemodelines.git
