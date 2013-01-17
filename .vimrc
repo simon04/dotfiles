@@ -44,20 +44,6 @@ set wrap linebreak textwidth=0
 let g:indentwizard_preferred_expandtab = 1
 let g:indentwizard_preferred_indent = 2
 autocmd BufRead,BufWrite * IndentWizard
-
-" Spell check for commit messages
-au BufNewFile,BufRead COMMIT_EDITMSG setl spell
-au BufNewFile,BufRead svn-commit.tmp setl spell
-
-" Spell check for tex
-au BufNewFile,BufRead *.tex setl spell
-
-" [Ctrl]+[x] [Ctrl]+[e] opens the current command in editor
-au BufNewFile,BufRead /tmp/bash-* setl syntax=sh
-
-" Remove any trailing whitespace that is in the file
-"autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-
 " Customize statusline
 set laststatus=2
 set statusline=%<#%n\ %F\ %h%m%r%y%=0x%B\ %c,%l/%L\ %P
@@ -81,15 +67,6 @@ autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e | silent! 0r ~/.vim/skel/%
 
 " Auto closing an HTML tag
 :iabbrev </ </<C-X><C-O>
-
-" Automatically reload if file mode was changed
-"autocmd FileChangedShell * if v:fcs_reason == "mode" | let v:fcs_choice = "reload" | endif
-
-" Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
-"autocmd BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | if !executable(expand("<afile>")) | silent !chmod a+x <afile> | endif | endif | endif
-
-au BufNewFile,BufRead *.json setl syntax=javascript
-
 
 
 
