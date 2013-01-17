@@ -20,17 +20,3 @@ imap <f2> <esc>:w<cr><leader>ll
 "hi Conceal guibg=gray20 guifg=white
 "syn match texMathSymbol '\\geqslant\>' contained conceal cchar=≥
 "syn match texMathSymbol '\\leqslant\>' contained conceal cchar=≤
-
-" Spell check for tex and commit messages
-au BufNewFile,BufRead *.tex setl spell
-au BufNewFile,BufRead COMMIT_EDITMSG setl spell
-au BufNewFile,BufRead svn-commit.tmp setl spell
-
-" [LaTeX-Box]
-au BufNewFile,BufRead *.tex imap <buffer> [[ \begin{
-au BufNewFile,BufRead *.tex imap <buffer> ]] <Plug>LatexCloseCurEnv
-au BufNewFile,BufRead *.tex nmap <buffer> <F5> <Plug>LatexChangeEnv
-au BufNewFile,BufRead *.tex vmap <buffer> <F7> <Plug>LatexWrapSelection
-au BufNewFile,BufRead *.tex vmap <buffer> <S-F7> <Plug>LatexEnvWrapSelection
-au BufNewFile,BufRead *.tex imap <buffer> (( \eqref{
-

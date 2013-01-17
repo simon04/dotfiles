@@ -49,6 +49,9 @@ autocmd BufRead,BufWrite * IndentWizard
 au BufNewFile,BufRead COMMIT_EDITMSG setl spell
 au BufNewFile,BufRead svn-commit.tmp setl spell
 
+" Spell check for tex
+au BufNewFile,BufRead *.tex setl spell
+
 " [Ctrl]+[x] [Ctrl]+[e] opens the current command in editor
 au BufNewFile,BufRead /tmp/bash-* setl syntax=sh
 
