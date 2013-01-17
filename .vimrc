@@ -40,10 +40,6 @@ set wrap linebreak textwidth=0
 " Autowrap text
 "set formatoptions+=ta textwidth=80
 
-" [IndentWizard]
-let g:indentwizard_preferred_expandtab = 1
-let g:indentwizard_preferred_indent = 2
-autocmd BufRead,BufWrite * IndentWizard
 " Customize statusline
 set laststatus=2
 set statusline=%<#%n\ %F\ %h%m%r%y%=0x%B\ %c,%l/%L\ %P
