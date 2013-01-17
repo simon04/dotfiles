@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/pathogen"]
 	path = .vim/bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
+[submodule ".vim/bundle/vim-indentwizard"]
+	path = .vim/bundle/vim-indentwizard
+	url = git://github.com/wikitopian/indentwizard.git

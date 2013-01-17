@@ -40,11 +40,10 @@ set wrap linebreak textwidth=0
 " Autowrap text
 "set formatoptions+=ta textwidth=80
 
-" [DetectIndent]
-" https://github.com/ciaranm/detectindent/blob/master/doc/detectindent.txt
-let g:detectindent_preferred_expandtab = 1
-let g:detectindent_preferred_indent = 2
-autocmd BufRead,BufWrite * DetectIndent
+" [IndentWizard]
+let g:indentwizard_preferred_expandtab = 1
+let g:indentwizard_preferred_indent = 2
+autocmd BufRead,BufWrite * IndentWizard
 
 " Spell check for commit messages
 au BufNewFile,BufRead COMMIT_EDITMSG setl spell
