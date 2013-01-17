@@ -75,10 +75,6 @@ set sidescroll=1
 set modelines=0
 "let g:secure_modelines_verbose=1
 
-" [buftabs]
-let g:buftabs_only_basename=1
-let g:buftabs_separator = ":"
-
 " Load template associated with file extension on file creation if template is available
 " http://vim.runpaint.org/typing/using-templates
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e | silent! 0r ~/.vim/skel/%:t

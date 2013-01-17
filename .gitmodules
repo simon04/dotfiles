@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/vim-securemodelines"]
 	path = .vim/bundle/vim-securemodelines
 	url = git://github.com/ciaranm/securemodelines.git
+[submodule ".vim/bundle/vim-minibufexplorer"]
+	path = .vim/bundle/vim-minibufexplorer
+	url = git://github.com/techlivezheng/vim-plugin-minibufexpl.git
