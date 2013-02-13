@@ -47,6 +47,7 @@ set statusline=%<#%n\ %F\ %h%m%r%y%=0x%B\ %c,%l/%L\ %P
 " Display tabs and trailing spaces
 "set list
 "set listchars=tab:  ,trail:⋅,nbsp:⋅
+set nolist
 
 " vertical/horizontal scroll off settings
 set scrolloff=4
