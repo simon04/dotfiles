@@ -15,3 +15,5 @@
 	st = status
 [github]
 	user = simon04
+[push]
+	default = simple
