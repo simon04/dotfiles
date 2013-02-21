@@ -1,0 +1,38 @@
+general {
+  colors = true
+  interval = 1
+}
+
+order += "disk /"
+order += "disk /home"
+order += "ethernet eth0"
+order += "load"
+order += "cpu_usage"
+order += "time"
+
+ethernet eth0 {
+# if you use %speed, i3status requires root privileges
+  format_up = "E: %ip"
+  format_down = "E: down"
+}
+
+time {
+  format = "%Y-%m-%d %H:%M:%S"
+}
+
+load {
+  format = "L: %1min %5min"
+}
+
+disk "/" {
+  #format = "%free (or: %percentage_used used, %percentage_used_of_avail used of avail, %percentage_free free, %percentage_avail avail)"
+  format = "/%free"
+}
+
+disk "/home" {
+  format = "/home/%free"
+}
+
+cpu_usage {
+  format = "CPU: %usage"
+}
