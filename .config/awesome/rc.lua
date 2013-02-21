@@ -43,7 +43,8 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 --terminal = "urxvt -geometry 120x60"
-terminal = "urxvtc -geometry 120x60"
+--terminal = "urxvtc -geometry 120x60"
+terminal = "termite --geometry=600x800"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
