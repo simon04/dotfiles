@@ -250,6 +250,7 @@ globalkeys = awful.util.table.join(
     --awful.key({ modkey,           }, "e", function () awful.util.spawn(terminal .. ' -e vifm') end),
     awful.key({ modkey,           }, "h", function () awful.util.spawn(terminal .. ' -e htop') end),
     awful.key({ modkey,           }, "n", function () awful.util.spawn(terminal .. ' -e ncmpcpp') end),
+    awful.key({ modkey, "Shift"   }, "n", function () awful.util.spawn('mpc toggle') end),
     awful.key({ modkey,           }, "g", function () awful.util.spawn('gvim') end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
