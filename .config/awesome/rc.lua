@@ -44,9 +44,9 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 -- This is used later as the default terminal and editor to run.
 --terminal = "urxvt -geometry 120x60"
 --terminal = "urxvtc -geometry 120x60"
-terminal = "termite --geometry=600x800"
+terminal = "termite"
 editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " -e " .. editor
+editor_cmd = "gvim"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
