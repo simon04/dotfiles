@@ -1,0 +1,17 @@
+#!/bin/bash
+
+setxkbmap -layout us -variant altgr-intl
+xmodmap ~/.Xmodmap
+clipit &
+#export _JAVA_AWT_WM_NONREPARENTING=1
+wmname LG3D &
+(sleep 10 && dropboxd) &
+pidof mpd || mpd &
+pidof mpdscribble || mpdscribble &
+xsetroot -cursor_name left_ptr
+xset b off
+
+# load local settings
+~/.xinitrc.local
+
+exec dbus-launch --exit-with-session --sh-syntax ${1:-i3}
