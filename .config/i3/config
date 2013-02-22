@@ -37,6 +37,7 @@ bindsym $mod+r exec dmenu_run
 
 # border style for new windows: new_window <normal|1pixel|none|pixel>
 new_window 1pixel
+new_float 1pixel
 
 # change focus
 bindsym $mod+h focus left
