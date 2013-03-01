@@ -28,3 +28,6 @@
 [submodule ".vim/bundle/vim-molokai"]
 	path = .vim/bundle/vim-molokai
 	url = git://github.com/tomasr/molokai.git
+[submodule ".vim/bundle/vim-detectindent"]
+	path = .vim/bundle/vim-detectindent
+	url = git://github.com/aclindsa/detectindent.git
