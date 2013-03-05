@@ -15,9 +15,6 @@ set incsearch
 set mouse=a
 set diffopt+=iwhite
 
-"set background=dark
-"colorscheme solarized
-
 set expandtab tabstop=2 shiftwidth=2
 
 syntax on
@@ -49,9 +46,7 @@ set laststatus=2
 set statusline=%<#%n\ %F\ %h%m%r%y%=0x%B\ %c,%l/%L\ %P
 
 " Display tabs and trailing spaces
-"set list
-"set listchars=tab:  ,trail:⋅,nbsp:⋅
-set nolist
+"set list listchars=tab:  ,trail:⋅,nbsp:⋅
 
 " vertical/horizontal scroll off settings
 set scrolloff=4
@@ -59,16 +54,8 @@ set sidescrolloff=8
 set sidescroll=1
 
 " http://www.jukie.net/bart/blog/vim-modelines-insecure
+" use secure_modelines instead
 set modelines=0
-"let g:secure_modelines_verbose=1
-
-" Load template associated with file extension on file creation if template is available
-" http://vim.runpaint.org/typing/using-templates
-autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e | silent! 0r ~/.vim/skel/%:t
 
 " Auto closing an HTML tag
 :iabbrev </ </<C-X><C-O>
-
-
-
-
