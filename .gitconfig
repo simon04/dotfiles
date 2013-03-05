@@ -11,6 +11,7 @@
 	co = checkout
 	d = diff
 	ds = diff --staged
+	l = log --graph --decorate --oneline --color --all
 	m = merge
 	st = status
 [github]
