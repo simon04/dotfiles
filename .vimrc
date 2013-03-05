@@ -5,6 +5,10 @@ call pathogen#infect()
 " Source viminit files
 runtime! config/**/*.vim
 
+if filereadable(".vimrc.local")
+  so .vimrc.local
+endif
+
 set nocompatible
 set hlsearch
 set incsearch
