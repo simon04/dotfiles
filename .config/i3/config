@@ -21,6 +21,7 @@ floating_modifier $mod
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term -e tmux
 bindsym $mod+g exec gvim
+bindsym $mod+Shift+g exec gnumeric
 bindsym $mod+n exec $term -e ncmpcpp
 bindsym $mod+Shift+n exec mpc toggle
 bindsym $mod+t exec $term -e htop
