@@ -5,16 +5,23 @@ update_interval 1
 if_up_strictness address
 
 TEXT
-[ {"full_text": "CPU ${cpu cpu0}% ${freq_g} GHz ${hwmon temp 1}°"},
+[
+
+{"full_text": "CPU ${cpu cpu0}% ${freq_g} GHz ${hwmon temp 1}°"},
+
 {"full_text": "L ${loadavg 1} ${loadavg 2}"},
+
 ${if_up eth0}
 {"full_text": "↗${upspeedf eth0} ↘${downspeedf eth0}"},
 $endif
+
 ${if_up wlan0}
 {"full_text": "↗${upspeedf wlan0} ↘${downspeedf wlan0}"},
 $endif
+
 $if_mpd_playing
 {"full_text": "${if_match "$mpd_status"=="Paused"}∥${else}▶$endif ${mpd_artist 50} - ${mpd_title 50} [$mpd_elapsed/$mpd_length]"},
 $endif
+
 {"full_text": "${time %Y-%m-%d %R:%S}"}
 ],
