@@ -11,7 +11,11 @@ $template0 \
 L ${loadavg 1} ${loadavg 2} \
 $template0 \
 ${if_up eth0}\
-${upspeedf eth0}↗ ↘${downspeedf eth0} \
+↗${upspeedf eth0} ↘${downspeedf eth0} \
+$template0 \
+$endif\
+${if_up wlan0}\
+↗${upspeedf wlan0} ↘${downspeedf wlan0} \
 $template0 \
 $endif\
 $if_mpd_playing \
@@ -20,4 +24,3 @@ ${mpd_artist 50} - ${mpd_title 50} [$mpd_elapsed/$mpd_length] \
 $template0 \
 $endif\
 ${time %Y-%m-%d %R:%S}\
-
