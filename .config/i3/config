@@ -150,5 +150,5 @@ mode "resize" {
 
 bar {
   #position top
-  status_command conky -c ~/.config/conkyrc
+  status_command $HOME/.bin/conky-i3bar
 }
