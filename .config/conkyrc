@@ -12,11 +12,15 @@ TEXT
 {"full_text": "L ${loadavg 1} ${loadavg 2}"},
 
 ${if_up eth0}
-{"full_text": "↗${upspeedf eth0} ↘${downspeedf eth0}"},
+{"full_text": "eth0 ↗${upspeedf eth0} ↘${downspeedf eth0}"},
 $endif
 
 ${if_up wlan0}
-{"full_text": "↗${upspeedf wlan0} ↘${downspeedf wlan0}"},
+{"full_text": "wlan0 ↗${upspeedf wlan0} ↘${downspeedf wlan0}"},
+$endif
+
+${if_up usb0}
+{"full_text": "usb0 ↗${upspeedf usb0} ↘${downspeedf usb0}"},
 $endif
 
 $if_mpd_playing
