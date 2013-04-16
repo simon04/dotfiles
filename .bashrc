@@ -275,3 +275,7 @@ httpd_py () {
 httpd_php () {
   php -S localhost:${1:-8000}
 }
+
+prepend_date () {
+  for i in "$@"; do mv -v "$i" "$(date -I) $i"; done
+}
