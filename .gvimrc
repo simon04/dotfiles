@@ -14,3 +14,9 @@ set cursorline
 
 source ~/.vimrc
 
+"colorscheme Mustang_Vim_Colorscheme_by_hcalves
+"set guifont=Monaco\ 9
+
+colorscheme molokai
+set guifont=Inconsolata\ 12
+set linespace=1
