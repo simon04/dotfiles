@@ -9,11 +9,12 @@
 	ci = commit
 	cl = clone
 	co = checkout
-	d = diff
-	ds = diff --staged
+	d = diff --patience
+	ds = diff --staged --patience
 	l = log --graph --decorate --oneline --color --all
 	m = merge
 	st = status
+	wd = diff --color-words
 [github]
 	user = simon04
 [push]
