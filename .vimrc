@@ -1,6 +1,21 @@
-" https://github.com/tpope/vim-pathogen
-"source ~/.vim/bundle/pathogen/autoload/pathogen.vim
-"call pathogen#infect()
+" https://github.com/gmarik/vundle
+set rtp+=~/.vim/vundle/
+call vundle#rc()
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+Bundle 'joelthelion/autojump'
+Bundle 'tpope/vim-pathogen'
+Bundle 'ciaranm/securemodelines'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'tomasr/molokai'
+Bundle 'aclindsa/detectindent'
+Bundle 'kien/ctrlp.vim'
+Bundle 'PotatoesMaster/i3-vim-syntax'
+Bundle 'vim-scripts/nginx.vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'git://repo.or.cz/vcscommand'
 
 " Source viminit files
 runtime! config/**/*.vim
