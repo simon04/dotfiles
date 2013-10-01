@@ -1,6 +1,6 @@
 " https://github.com/tpope/vim-pathogen
-source ~/.vim/bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
+"source ~/.vim/bundle/pathogen/autoload/pathogen.vim
+"call pathogen#infect()
 
 " Source viminit files
 runtime! config/**/*.vim

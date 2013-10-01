@@ -1,33 +1,3 @@
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/bundle/vim-ack"]
-	path = .vim/bundle/vim-ack
-	url = git://github.com/mileszs/ack.vim.git
-[submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-vcscommand"]
-	path = .vim/bundle/vim-vcscommand
-	url = git://repo.or.cz/vcscommand
 [submodule ".bin/autojump.git"]
 	path = .bin/autojump.git
 	url = git://github.com/joelthelion/autojump.git
-[submodule ".vim/bundle/pathogen"]
-	path = .vim/bundle/pathogen
-	url = https://github.com/tpope/vim-pathogen.git
-[submodule ".vim/bundle/vim-securemodelines"]
-	path = .vim/bundle/vim-securemodelines
-	url = git://github.com/ciaranm/securemodelines.git
-[submodule ".vim/bundle/vim-LaTeX-Box"]
-	path = .vim/bundle/vim-LaTeX-Box
-	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
-[submodule ".vim/bundle/vim-molokai"]
-	path = .vim/bundle/vim-molokai
-	url = git://github.com/tomasr/molokai.git
-[submodule ".vim/bundle/vim-detectindent"]
-	path = .vim/bundle/vim-detectindent
-	url = git://github.com/aclindsa/detectindent.git
