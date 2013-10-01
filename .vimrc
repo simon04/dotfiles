@@ -12,6 +12,7 @@ Bundle 'aclindsa/detectindent'
 Bundle 'kien/ctrlp.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'git://repo.or.cz/vcscommand'
+Bundle 'bling/vim-airline'
 
 " Source viminit files
 runtime! config/**/*.vim
