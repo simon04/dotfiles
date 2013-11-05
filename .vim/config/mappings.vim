@@ -43,5 +43,5 @@ nmap <silent> <leader>s :set spell!<CR>
 "nnoremap ? ?\v
 
 " Create File if not exist
-nnoremap gF :e <cfile><cr> 
+nnoremap gc :e <cfile><cr>
 
