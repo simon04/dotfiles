@@ -1,6 +1,3 @@
-[submodule ".bin/autojump.git"]
-	path = .bin/autojump.git
-	url = git://github.com/joelthelion/autojump.git
 [submodule "/home/simon/.vim/vundle"]
 	path = .vim/vundle
 	url = https://github.com/gmarik/vundle.git
