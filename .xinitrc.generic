@@ -2,12 +2,6 @@
 
 setxkbmap -layout us -variant altgr-intl
 xmodmap ~/.Xmodmap
-clipit &
-#export _JAVA_AWT_WM_NONREPARENTING=1
-wmname LG3D &
-(sleep 10 && dropboxd) &
-pidof mpd || mpd &
-pidof mpdscribble || mpdscribble &
 xsetroot -cursor_name left_ptr
 xset b off
 
