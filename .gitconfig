@@ -12,10 +12,17 @@
 	d = diff --patience
 	ds = diff --staged --patience
 	l = log --graph --decorate --oneline --color --all
+	ll = log --pretty=format:"%C(yellow)%h\\ %C(green)%ai%C(red)%d\\ %C(reset)%s%C(blue)\\ [%cn]" --decorate --numstat
 	m = merge
+	s = status --branch --short
 	st = status
+	svnd = svn dcommit
+	svnl = svn log --oneline --show-commit
+	svnr = svn rebase
 	wd = diff --color-words
 [github]
 	user = simon04
 [push]
 	default = simple
+[core]
+	autocrlf = input
