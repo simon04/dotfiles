@@ -281,3 +281,13 @@ httpd_php () {
 prepend_date () {
   for i in "$@"; do mv -v "$i" "$(date -I) $i"; done
 }
+
+http_png_comment () {
+  wget -qO - "$1" | identify -verbose - | grep Comment
+}
+
+join_sep () {
+  sep=${1:-,}
+  # 036   30    1E    RS  (record separator)
+  tr "\\n" "\\036" | sed 's/\(.*\)\x1E/\1/' | sed "s/\\x1E/$sep/"
+}
