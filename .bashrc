@@ -74,12 +74,14 @@ helpme () {
   exiftool '-DateTimeOriginal>FileModifyDate' -overwrite_original .
   exiftool -Author='Simon Legner, 2012' '-DateTimeOriginal>FileModifyDate' -overwrite_original .
   exiftool -r '-FileName<DateTimeOriginal' -d IMG_%Y%m%d_%H%M%S.%%e .
+  exiftool -d '%Y-%m-%d_%H:%M:%S_%%f.%%e' '-FileName<DateTimeOriginal' .
   scanimage -L
   scanimage -d genesys:libusb:001:009 -p --resolution 150
   chromium --incognito --proxy-pac-url=~/.config/proxy.pac
   date -d @1319009864
   cat src | while read line; do ...; done
   2>&1
+  readlink -f
 EOF
 }
 
