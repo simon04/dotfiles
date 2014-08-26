@@ -4,3 +4,7 @@ au BufNewFile,BufRead *.tex nmap <buffer> <F5> <Plug>LatexChangeEnv
 au BufNewFile,BufRead *.tex vmap <buffer> <F7> <Plug>LatexWrapSelection
 au BufNewFile,BufRead *.tex vmap <buffer> <S-F7> <Plug>LatexEnvWrapSelection
 au BufNewFile,BufRead *.tex imap <buffer> (( \eqref{
+
+let g:LatexBox_latexmk_options = '-pvc -pdf'
+
+let g:tex_comment_nospell=1

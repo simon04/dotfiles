@@ -71,3 +71,5 @@ set modelines=0
 
 " Auto closing an HTML tag
 :iabbrev </ </<C-X><C-O>
+
+let isfname="@,48-57,/,.,-,_,+,,,#,$,%,~"

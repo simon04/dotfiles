@@ -1,5 +1,6 @@
 command! BuffDiff :w !diff -u % -
 command! CD cd `dirname %`
+command! Reverse :g/^/m0
 
 function! StripWhitespace ()
   exec ':%s/ \+$//gc'
