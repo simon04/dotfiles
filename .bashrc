@@ -44,6 +44,10 @@ extract_audio () {
   ffmpeg -i "$1" -vn -acodec copy "$2"
 }
 
+extract_audio_mp3() {
+  ffmpeg -i "$1" -ar 44100 -ab 160k -ac 2 "$2"
+}
+
 #PS1='\n[\t][\u@\h \W]\n\$ '
 
 _shopt () {
@@ -158,11 +162,13 @@ function _ps1 () {
   #SCM='\[\e[1;37m\]\[\e[42m\] `_parse_cvs``_parse_svn_branch``_parse_hg_branch``_parse_git_branch``_virtualenvname`'$std
   _PROMT="\[\e[1;37m\]\[\e[42m\] > $std"
   export PS1="\n$_EXIT$_TIME$_HOST$_USER$_WD$_SCM\n$_PROMT "
+  unset _EXIT _TIME _HOST _USER _WD _JOBS _SCM _PROMT
 }
 PROMPT_COMMAND=_ps1
 
 _show_scm_repo () {
-  [ -d .git ] && echo -n 'git '
+  #[ -d .git ] && echo -n 'git '
+  _parse_git_branch
   [ -d .hg ] && echo -n 'hg '
   [ -d .svn ] && echo -n 'svn '
   [ -d CVS ] && echo -n 'cvs '
@@ -291,3 +297,5 @@ join_sep () {
   # 036   30    1E    RS  (record separator)
   tr "\\n" "\\036" | sed 's/\(.*\)\x1E/\1/' | sed "s/\\x1E/$sep/"
 }
+
+alias zipgrep='for i in **/*jar; do unzip -l "$i"; done | grep'
