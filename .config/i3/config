@@ -177,5 +177,5 @@ mode "resize" {
 
 bar {
   #position top
-  status_command $HOME/.bin/conky-i3bar
+  status_command python $HOME/.bin/i3pyconfig.py
 }
