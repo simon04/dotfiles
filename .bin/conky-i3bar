@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# taken from http://i3wm.org/docs/user-contributed/conky-i3bar.html
-
-echo '{"version":1}'
-echo '['
-echo '[],'
-exec conky -c $HOME/.config/conkyrc
-
