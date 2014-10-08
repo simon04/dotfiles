@@ -177,5 +177,5 @@ mode "resize" {
 
 bar {
   #position top
-  status_command python $HOME/.bin/i3pyconfig.py
+  status_command python $HOME/.bin/i3pystatus.py
 }
