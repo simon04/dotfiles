@@ -8,6 +8,7 @@ status.register("clock",
 
 status.register("weather",
     location_code="AUXX0010",
+    interval=600,
     format="INN {current_temp}",)
 
 status.register("battery",
@@ -19,6 +20,10 @@ status.register("battery",
         "CHR": "↑",
         "FULL": "",
     },)
+
+status.register("network_traffic",
+    format="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
+    interface="wlan0",)
 
 status.register("network_traffic",
     format="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
