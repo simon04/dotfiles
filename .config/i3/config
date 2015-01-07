@@ -179,3 +179,10 @@ bar {
   #position top
   status_command python $HOME/.bin/i3pystatus_.py
 }
+
+#Use xprop to obtain X11 window class
+assign [class="Firefox"] 1
+assign [class="Chromium"] 1
+assign [class="Thunderbird"] 2
+assign [class="jetbrains-idea-ce"] 3
+assign [class="org-openstreetmap-josm-Main"] F4
