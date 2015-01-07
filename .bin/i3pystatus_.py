@@ -23,11 +23,18 @@ status.register("battery",
 
 status.register("network_traffic",
     format="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
+    hide_down=True,
     interface="wlan0",)
 
 status.register("network_traffic",
     format="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
+    hide_down=True,
     interface="eth0",)
+
+status.register("network_traffic",
+    format="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
+    hide_down=True,
+    interface="usb0",)
 
 status.register("load",
     format="L {avg1} {avg5}",)
