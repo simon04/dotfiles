@@ -40,6 +40,7 @@ helpme () {
   exiftool -Author='Simon Legner, 2012' '-DateTimeOriginal>FileModifyDate' -overwrite_original .
   exiftool -r '-FileName<DateTimeOriginal' -d IMG_%Y%m%d_%H%M%S.%%e .
   exiftool -d '%Y-%m-%d_%H:%M:%S_%%f.%%e' '-FileName<DateTimeOriginal' .
+  exiftool -d '%Y-%m-%d_%H%M%S_%%f.%%e' '-FileName<FileModifyDate' .
   scanimage -L
   scanimage -d genesys:libusb:001:009 -p --resolution 150
   chromium --incognito --proxy-pac-url=~/.config/proxy.pac
