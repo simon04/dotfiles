@@ -26,4 +26,4 @@ if has("iconv")
         \ <line1>,<line2>s/%\(\x\x\)/\=DecodeHex(<q-args>)/eg
 endif
 
-command! FormatXML :% !xmllint % --format
+command! FormatXML :% !xmllint "%" --format
