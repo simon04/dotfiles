@@ -1,4 +1,5 @@
-. /etc/profile
+source /etc/profile
+source ~/.shrc
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -9,44 +10,12 @@ _expand () {
 }
 
 export PATH="$PATH:/sbin:$HOME/bin"
-export EDITOR='vim'
 export HISTSIZE=10000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=erasedups
 export CVS_RSH=ssh
 
 #export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.flac=01;35:*.mp3=01;35:*.mpc=01;35:*.ogg=01;35:*.wav=01;35:'
-
-alias autorotate='jhead -autorot'
-alias df='df -h'
-alias diff='diff -u'
-alias f='find | grep'
-alias grep='grep --color'
-alias ls='ls --color=auto'
-alias l='ls -l'
-alias lt='ls -trl'
-alias sps="ps -ef | grep -v grep | grep"
-alias svndiff='svn diff -x -w | vim -R -'
-alias cvsdiff='cvs diff -w -U 2 | grep --invert-match ^? | vim -R -'
-alias vless='vim - -R'
-alias wgeto='wget -qO -'
-alias youtube-dl='youtube-dl -t'
-alias ocaml='rlwrap ocaml'
-alias sudo='sudo -E'
-alias rubber='rubber --pdf'
-alias pl='pdflatex -interaction=nonstopmode'
-alias q!='unset HISTFILE && exit'
-alias p0='patch -p0'
-alias p1='patch -p1'
-
-#params: [in] [out.ext]
-extract_audio () {
-  ffmpeg -i "$1" -vn -acodec copy "$2"
-}
-
-extract_audio_mp3() {
-  ffmpeg -i "$1" -ar 44100 -ab 160k -ac 2 "$2"
-}
 
 #PS1='\n[\t][\u@\h \W]\n\$ '
 
@@ -59,41 +28,10 @@ _shopt hostcomplete
 _shopt globstar # http://www.bash-hackers.org/wiki/doku.php/syntax/expansion/globs
 set -o notify # notify of bg job completion immediately
 
-# Allow wget download from http://trailers.apple.com/
-alias wget_apple='wget -U "QuickTime/7.6.2"'
-
 #export _JAVA_OPTIONS=-Dswing.defaultlaf=javax.swing.plaf.metal.MetalLookAndFeel
-
-mkcd () {
-  mkdir -p "$@" && cd "$_"
-}
 
 # Disable the touchpad while typing
 #syndaemon -k -i 2 -d &
-
-# Print command that I always forget
-helpme () {
-  cat <<EOF
-  exiftool -AllDates-=1:08 -overwrite_original .
-  exiftool '-DateTimeOriginal>FileModifyDate' -overwrite_original .
-  exiftool -Author='Simon Legner, 2012' '-DateTimeOriginal>FileModifyDate' -overwrite_original .
-  exiftool -r '-FileName<DateTimeOriginal' -d IMG_%Y%m%d_%H%M%S.%%e .
-  exiftool -d '%Y-%m-%d_%H:%M:%S_%%f.%%e' '-FileName<DateTimeOriginal' .
-  scanimage -L
-  scanimage -d genesys:libusb:001:009 -p --resolution 150
-  chromium --incognito --proxy-pac-url=~/.config/proxy.pac
-  date -d @1319009864
-  cat src | while read line; do ...; done
-  2>&1
-  readlink -f
-EOF
-}
-
-# remindme - a simple reminder
-# usage: remindme 10m "omg, the pizza"
-remindme () {
-  sleep $1 && zenity --info --text "$2" &
-}
 
 # x - archive extractor
 # usage: x <file>
@@ -206,33 +144,6 @@ _virtualenvname () {
   fi
 }
 
-cdd () {
-  case $(/bin/ls|grep $@|wc -l) in
-    1)
-      d=$(/bin/ls|grep $@)
-      echo "cd \"$d\""
-      cd "$d"
-      ;;
-    0)
-      echo "No match for $@."
-      ;;
-    *)
-      echo "Too many matches for $@:"
-      /bin/ls|grep $@
-      ;;
-  esac
-}
-
-focallengthplot () {
-  exiftool -T -filename -focallength "$@" | sort -u | awk -F "\t" '{print ($2-$2%5)"-"($2+4-$2%5)}' | sort -n | uniq -c | awk 's=""; {while (length(s)<$1) s=s"*"; printf "%8s "mm"  [%4d]  %s\n", $2, $1, s}'
-  exiftool -T -filename -focallength "$@" | sort -u | awk -F "\t" '{print $2}' | sort -n | uniq -c | awk 's=""; {while (length(s)<$1) s=s"*"; printf "%8s "mm"  [%4d]  %s\n", $2, $1, s}'
-}
-
-# `d 1` rembers current directory for quick returning with `1`
-d() {
-  alias $1="cd $PWD"
-}
-
 # shortcut for launching zathura, a PDF viewer
 z() {
   [ -f "$1" ] && (zathura "$@" > /dev/null 2>&1 & disown)
@@ -242,9 +153,6 @@ complete -f -o plusdirs -X '!*.[pf]df' z
 
 # load local settings
 [[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
-
-alias cleanlatex='rm -f *.{aux,log,nav,out,snm,toc,vrb,dvi,*latexmk}'
-alias cleanshp='rm -f *.{cpg,dbf,prj,shp,shx}'
 
 # Battery charge as a percentage.
 bchrg() {
@@ -262,40 +170,3 @@ bcap() {
   echo "Capacity: "$out"%"
 }
 
-dataurl() {
-  # src: http://nick.zoic.org/art/etc/make-data-url.html
-  for filename; do
-    mimetype=`file -b --mime-type $filename`
-    encoded=`base64 -w 0 $filename`
-    echo "data:$mimetype;base64,$encoded"
-  done
-}
-
-mpd_pause_after_current_track() {
-  # src: https://bbs.archlinux.org/viewtopic.php?id=55884
-  sleep $(mpc | awk -F"[ /:]" '/playing/ {print 60*($8-$6)+$9-$7}');mpc pause
-}
-
-httpd_py () {
-  python2 -m SimpleHTTPServer ${1:-8000}
-}
-
-httpd_php () {
-  php -S localhost:${1:-8000}
-}
-
-prepend_date () {
-  for i in "$@"; do mv -v "$i" "$(date -I) $i"; done
-}
-
-http_png_comment () {
-  wget -qO - "$1" | identify -verbose - | grep Comment
-}
-
-join_sep () {
-  sep=${1:-,}
-  # 036   30    1E    RS  (record separator)
-  tr "\\n" "\\036" | sed 's/\(.*\)\x1E/\1/' | sed "s/\\x1E/$sep/"
-}
-
-alias zipgrep='for i in **/*jar; do unzip -l "$i"; done | grep'
