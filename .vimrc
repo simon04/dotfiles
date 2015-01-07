@@ -73,3 +73,6 @@ set modelines=0
 :iabbrev </ </<C-X><C-O>
 
 let isfname="@,48-57,/,.,-,_,+,,,#,$,%,~"
+
+" Do not increment 07 to 10 (octal, or hexadecimal respectively)
+set nrformats=
