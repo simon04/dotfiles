@@ -26,6 +26,7 @@ bindsym $mod+n exec $term -e ncmpcpp
 bindsym $mod+Shift+n exec mpc toggle
 bindsym $mod+t exec $term -e htop
 bindsym $mod+i exec gimp
+bindsym $mod+o exec nemo
 
 # kill focused window
 bindsym $mod+Shift+q kill
