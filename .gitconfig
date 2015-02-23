@@ -11,7 +11,8 @@
 	co = checkout
 	d = diff --patience
 	ds = diff --staged --patience
-	l = log --graph --decorate --oneline --color --all
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	li = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
 	ll = log --pretty=format:"%C(yellow)%h\\ %C(green)%ai%C(red)%d\\ %C(reset)%s%C(blue)\\ [%cn]" --decorate --numstat
 	m = merge
 	s = status --branch --short
