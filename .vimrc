@@ -1,6 +1,7 @@
 " https://github.com/gmarik/vundle
 set rtp+=~/.vim/vundle/
 call vundle#rc()
+Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-surround'
