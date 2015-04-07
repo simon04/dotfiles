@@ -6,7 +6,6 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-Bundle 'ciaranm/securemodelines'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'tomasr/molokai'
 Bundle 'ciaranm/detectindent'
@@ -65,10 +64,6 @@ set statusline=%<#%n\ %F\ %h%m%r%y%=0x%B\ %c,%l/%L\ %P
 set scrolloff=4
 set sidescrolloff=8
 set sidescroll=1
-
-" http://www.jukie.net/bart/blog/vim-modelines-insecure
-" use secure_modelines instead
-set modelines=0
 
 " Auto closing an HTML tag
 :iabbrev </ </<C-X><C-O>
