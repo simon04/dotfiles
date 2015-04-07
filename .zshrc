@@ -11,7 +11,7 @@ ZSH_THEME="ys"
 DISABLE_UPDATE_PROMPT=true
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
