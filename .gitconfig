@@ -17,9 +17,11 @@
 	m = merge
 	s = status --branch --short
 	st = status
-	svnd = svn dcommit
-	svnl = svn log --oneline --show-commit
-	svnr = svn rebase
+	dry-svn-ci = !git svn dcommit --dry-run | grep -Eo '[0-9a-f]+$' | xargs -n1 git show --stat
+	svn-ci = svn dcommit
+	svn-log = svn log --oneline --show-commit
+	svn-r = svn rebase
+	svn-l = svn log --show-commit --oneline
 	wd = diff --color-words
 [github]
 	user = simon04
