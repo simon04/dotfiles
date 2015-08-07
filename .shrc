@@ -152,3 +152,11 @@ remindme () {
 u () {
   python ~/.bin/unicode.py "$@"
 }
+
+external_ip () {
+  curl ifconfig.pro
+}
+
+qr () {
+  qrencode -s7 -o - "$@" | display
+}
