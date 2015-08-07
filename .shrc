@@ -149,3 +149,6 @@ remindme () {
   sleep $1 && zenity --info --text "$2" &
 }
 
+u () {
+  python ~/.bin/unicode.py "$@"
+}
