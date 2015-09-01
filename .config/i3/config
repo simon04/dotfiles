@@ -188,5 +188,5 @@ bar {
 assign [class="Firefox" instance="Browser"] 1
 assign [class="Chromium" instance="Browser"] 1
 assign [class="Thunderbird"] 2
-assign [class="jetbrains-idea-ce"] 3
+assign [class="jetbrains-idea-ce" instance="sun-awt-X11-XFramePeer"] 3
 assign [class="org-openstreetmap-josm-Main"] F4
