@@ -17,6 +17,9 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Do not center mouse cursor when moving to other output
+mouse_warping none
+
 # execute commands
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term -e tmux
