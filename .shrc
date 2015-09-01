@@ -26,11 +26,14 @@ alias q!='unset HISTFILE && exit'
 alias p0='patch -p0'
 alias p1='patch -p1'
 alias vimdiff-i="vimdiff -c 'set diffopt+=iwhite'"
-alias cleanlatex='rm -f *.{aux,log,nav,out,snm,toc,vrb,dvi,*latexmk}'
 alias cleanshp='rm -f *.{cpg,dbf,prj,shp,shx}'
 alias zipgrep='for i in **/*jar; do unzip -l "$i"; done | grep'
 #alias -g &de='& disown; exit'
 
+cleanlatex () {
+  setopt null_glob
+  rm -f *.{aux,log,nav,out,snm,toc,vrb,dvi,*latexmk}
+}
 
 # Prints commands that I always forget
 helpme () {
