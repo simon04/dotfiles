@@ -43,9 +43,9 @@ cleanlatex () {
 # Prints commands that I always forget
 helpme () {
   cat <<EOF
-  exiftool -AllDates-=1:08 -overwrite_original .
+  exiftool -AllDates-=h[:m[:s]] -overwrite_original .
   exiftool '-DateTimeOriginal>FileModifyDate' -overwrite_original .
-  exiftool -Author='Simon Legner, 2012' '-DateTimeOriginal>FileModifyDate' -overwrite_original .
+  exiftool -Author='Simon Legner' '-DateTimeOriginal>FileModifyDate' -overwrite_original .
   exiftool -r '-FileName<DateTimeOriginal' -d IMG_%Y%m%d_%H%M%S.%%e .
   exiftool -d '%Y-%m-%d_%H:%M:%S_%%f.%%e' '-FileName<DateTimeOriginal' .
   exiftool -d '%Y-%m-%d_%H%M%S_%%f.%%e' '-FileName<FileModifyDate' .
@@ -167,4 +167,9 @@ external_ip () {
 
 qr () {
   qrencode -s7 -o - "$@" | display
+}
+
+publish_photo () {
+  gm mogrify -quality 70 -resize 1920x1920 "$1"
+  exiftool -Author='Simon Legner' '-DateTimeOriginal>FileModifyDate' -overwrite_original "$1"
 }
