@@ -3,6 +3,11 @@
 
 export EDITOR='vim'
 
+alias josm-svn='cd ~/src/josm.svn'
+alias josm-git='cd ~/src/josm.svngit'
+alias josm-svngit='cd ~/src/josm.svngit'
+alias josm-plugins='cd ~/src/josm.all.svngit/plugins'
+alias josm-all='cd ~/src/josm.all.svngit'
 
 alias autorotate='jhead -autorot'
 alias df='df -h'
