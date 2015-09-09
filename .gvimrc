@@ -1,5 +1,5 @@
 set lines=40
-set columns=100
+set columns=120
 
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
@@ -14,9 +14,14 @@ set cursorline
 
 source ~/.vimrc
 
-"colorscheme Mustang_Vim_Colorscheme_by_hcalves
-"set guifont=Monaco\ 9
+if has('unix')
+  colorscheme molokai
+  set guifont=Inconsolata\ 12
+  set linespace=1
+endif
 
-colorscheme molokai
-set guifont=Inconsolata\ 12
-set linespace=1
+if has('win32')
+  colorscheme desert
+  set guifont=Consolas:h11
+  set linespace=1
+endif
