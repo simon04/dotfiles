@@ -111,14 +111,19 @@ mpd_pause_after_current_track() {
   sleep $(mpc | awk -F"[ /:]" '/playing/ {print 60*($8-$6)+$9-$7}');mpc pause
 }
 
-# Launches Python's SimpleHTTPServer
+# Launches Python's http server
 httpd_py () {
-  python2 -m SimpleHTTPServer ${1:-8000}
+  python3 -m http.server ${1:-8000}
 }
 
 # Launches PHP's built-in web server
 httpd_php () {
   php -S localhost:${1:-8000}
+}
+
+# Launches Python's pyftpdlib server
+ftpd_py () {
+  python3 -m pyftpdlib "$@"
 }
 
 # Prepends ISO 8601 date to files
