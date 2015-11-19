@@ -36,7 +36,8 @@ map <up> <c-w>W
 cmap W!! %!sudo tee > /dev/null %
 
 " Toggle spell checking on and off with `,s`
-nmap <silent> <leader>s :set spell!<CR>
+nmap <silent> <leader>s :set spell! spelllang=en<CR>
+nmap <silent> <leader>d :set spell! spelllang=de<CR>
 
 " "Very magic" regexes in searches
 "nnoremap / /\v
