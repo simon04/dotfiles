@@ -10,8 +10,9 @@ status.register(
 status.register(
     "weather",
     location_code="AUXX0010",
+    colorize=True,
     interval=600,
-    format="INN {current_temp}",)
+    format="INN {current_temp} ({min_temp}/{max_temp})",)
 
 status.register(
     "battery",
@@ -25,21 +26,27 @@ status.register(
     },)
 
 status.register(
-    "network_traffic",
-    format="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
-    hide_down=True,
+    "network",
+    format_up="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
+    format_down='',
+    dynamic_color=False,
+    start_color="#ffffff",
     interface="wlan0",)
 
 status.register(
-    "network_traffic",
-    format="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
-    hide_down=True,
+    "network",
+    format_up="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
+    format_down='',
+    dynamic_color=False,
+    start_color="#ffffff",
     interface="eth0",)
 
 status.register(
-    "network_traffic",
-    format="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
-    hide_down=True,
+    "network",
+    format_up="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
+    format_down='',
+    dynamic_color=False,
+    start_color="#ffffff",
     interface="usb0",)
 
 status.register(
