@@ -11,6 +11,7 @@ alias josm-all='cd ~/src/josm.all.svngit'
 
 alias autorotate='jhead -autorot'
 alias df='df -h'
+alias free='free -h'
 alias diff='diff -u'
 alias f='find | grep'
 alias grep='grep --color'
