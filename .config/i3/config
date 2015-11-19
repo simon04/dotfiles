@@ -30,6 +30,8 @@ bindsym $mod+Shift+n exec mpc toggle
 bindsym $mod+t exec $term -e htop
 bindsym $mod+i exec gimp
 bindsym $mod+o exec nemo
+bindsym $mod+Print exec shutter
+bindsym $mod+c exec gnome-calculator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -68,6 +70,10 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# move workspace to leaft/right monitor
+bindsym $mod+ctrl+Shift+Left move workspace to output left
+bindsym $mod+ctrl+Shift+Right move workspace to output right
 
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
