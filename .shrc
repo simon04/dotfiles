@@ -177,6 +177,7 @@ qr () {
 }
 
 publish_photo () {
+  jhead -autorot "$@"
   gm mogrify -verbose -quality 70 -resize 1920x1920 "$@"
   exiftool -Author='Simon Legner' '-DateTimeOriginal>FileModifyDate' -overwrite_original "$@"
 }
