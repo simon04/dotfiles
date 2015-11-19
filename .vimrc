@@ -39,7 +39,9 @@ set incsearch
 set mouse=a
 set diffopt+=iwhite
 
-set expandtab tabstop=2 shiftwidth=2
+if !exists("DetectIndent")
+  set expandtab tabstop=2 shiftwidth=2
+endif
 
 syntax on
 filetype plugin indent on
@@ -59,7 +61,8 @@ set noswapfile
 " Permit changing buffers without saving
 set hidden
 
-set wrap linebreak textwidth=0
+set wrap showbreak=::::
+set linebreak textwidth=0
 "set formatoptions=tcqaw
 
 " Autowrap text
@@ -73,9 +76,9 @@ set statusline=%<#%n\ %F\ %h%m%r%y%=0x%B\ %c,%l/%L\ %P
 "set list listchars=tab:  ,trail:⋅,nbsp:⋅
 
 " vertical/horizontal scroll off settings
-set scrolloff=4
-set sidescrolloff=8
-set sidescroll=1
+"set scrolloff=4
+"set sidescrolloff=8
+"set sidescroll=1
 
 " Auto closing an HTML tag
 :iabbrev </ </<C-X><C-O>
