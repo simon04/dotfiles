@@ -23,8 +23,6 @@ Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'bling/vim-airline'
 " list of buffers in the status line
 Bundle 'bling/vim-bufferline'
-" allows to `vim file:line`
-Bundle 'bogado/file-line'
 
 " Source viminit files
 runtime! config/**/*.vim
