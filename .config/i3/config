@@ -32,6 +32,7 @@ bindsym $mod+i exec gimp
 bindsym $mod+o exec nemo
 bindsym $mod+Print exec shutter
 bindsym $mod+c exec gnome-calculator
+bindsym $mod+x exec i3lock --dpms --color=F9F9F9
 
 # kill focused window
 bindsym $mod+Shift+q kill
