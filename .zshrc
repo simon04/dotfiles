@@ -54,9 +54,6 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.shrc
 
-
-export PATH="$PATH:$HOME/bin"
-export PATH=$PATH:~/global_npm/bin
 export TIME_STYLE=long-iso
 export OMP_NUM_THREADS=2
 

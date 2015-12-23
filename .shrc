@@ -1,6 +1,9 @@
 #!/bin/sh
 # settings, aliases and functions for all shells
 
+export NPM_PACKAGES=$HOME/.npm-packages
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export PATH="$HOME/bin:$NPM_PACKAGES/bin:$PATH"
 export EDITOR='vim'
 
 alias josm-svn='cd ~/src/josm.svn'

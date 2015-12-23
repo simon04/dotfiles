@@ -9,7 +9,6 @@ _expand () {
     return 0
 }
 
-export PATH="$PATH:/sbin:$HOME/bin"
 export HISTSIZE=10000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=erasedups
