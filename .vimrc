@@ -23,6 +23,8 @@ Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'bling/vim-airline'
 " list of buffers in the status line
 Bundle 'bling/vim-bufferline'
+"  HTML5 omnicomplete and syntax
+Bundle 'othree/html5.vim'
 
 " Source viminit files
 runtime! config/**/*.vim
@@ -77,9 +79,6 @@ set statusline=%<#%n\ %F\ %h%m%r%y%=0x%B\ %c,%l/%L\ %P
 "set scrolloff=4
 "set sidescrolloff=8
 "set sidescroll=1
-
-" Auto closing an HTML tag
-:iabbrev </ </<C-X><C-O>
 
 let isfname="@,48-57,/,.,-,_,+,,,#,$,%,~"
 
