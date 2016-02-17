@@ -33,3 +33,12 @@ command! FormatXML :% !xmllint "%" --format
 command! FormatJS :% !js-beautify "%"
 command! FormatHTML :% !html-beautify "%"
 command! FormatCSS :% !css-beautify "%"
+
+" http://vim.wikia.com/wiki/Copy_search_matches
+function! CopyMatches(reg)
+  let hits = []
+  %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/ge
+  let reg = empty(a:reg) ? '+' : a:reg
+  execute 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunction
+command! -register CopyMatches call CopyMatches(<q-reg>)
