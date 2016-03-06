@@ -10,6 +10,7 @@ export EDITOR='vim'
 
 export QT_LOGGING_RULES='*.debug=false'
 export XDG_CURRENT_DESKTOP=KDE # to show icons in kmail when running in i3wm
+export KDE_SESSION_VERSION=5 # to make xdg-open work
 
 alias josm-svn='cd ~/src/josm.svn'
 alias josm-git='cd ~/src/josm.svngit'
