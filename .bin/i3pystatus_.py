@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import i3pystatus
+from i3pystatus.weather import weathercom
 
 status = i3pystatus.Status(standalone=True)
 
@@ -9,10 +10,12 @@ status.register(
 
 status.register(
     "weather",
-    location_code="AUXX0010",
+    backend=weathercom.Weathercom(
+        location_code="AUXX0010",
+        ),
     colorize=True,
     interval=600,
-    format="INN {current_temp} ({min_temp}/{max_temp})",)
+    format="{icon} INN {current_temp} ({low_temp}/{high_temp})",)
 
 status.register(
     "battery",
@@ -38,7 +41,7 @@ status.register(
     format_up="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
     format_down='',
     dynamic_color=False,
-    start_color="#ffffff",
+    color_up="#ffffff",
     interface="eth0",)
 
 status.register(
@@ -46,7 +49,7 @@ status.register(
     format_up="{interface} ↗{bytes_sent}kB/s ↘{bytes_recv}kB/s",
     format_down='',
     dynamic_color=False,
-    start_color="#ffffff",
+    color_up="#ffffff",
     interface="usb0",)
 
 status.register(
