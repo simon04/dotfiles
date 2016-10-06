@@ -45,6 +45,8 @@ alias cleanshp='rm -f *.{cpg,dbf,prj,shp,shx}'
 alias zipgrep='for i in **/*jar; do unzip -l "$i"; done | grep'
 #alias -g &de='& disown; exit'
 
+alias reverse-dns='dig +noall +answer -x'
+
 cleanlatex () {
   setopt null_glob
   rm -f *.{aux,log,nav,out,snm,toc,vrb,dvi,*latexmk}
