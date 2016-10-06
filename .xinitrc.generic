@@ -11,4 +11,4 @@ xset b off
 # load local settings
 ~/.xinitrc.local
 
-exec dbus-launch --exit-with-session --sh-syntax ${1:-i3}
+exec ${1:-i3}
