@@ -12,11 +12,18 @@ export QT_LOGGING_RULES='*.debug=false'
 export XDG_CURRENT_DESKTOP=KDE # to show icons in kmail when running in i3wm
 export KDE_SESSION_VERSION=5 # to make xdg-open work
 
-alias josm-svn='cd ~/src/josm.svn'
-alias josm-git='cd ~/src/josm.svngit'
-alias josm-svngit='cd ~/src/josm.svngit'
-alias josm-plugins='cd ~/src/josm.all.svngit/plugins'
-alias josm-all='cd ~/src/josm.all.svngit'
+export josm_svn="$HOME/src/josm.svn/"
+alias josm-svn='cd $josm_svn'
+export josm_git="$HOME/src/josm.svngit/"
+alias josm-git='cd $josm_git'
+export josm_plugins="$HOME/src/josm.all.svngit/plugins/"
+alias josm-plugins='cd $josm_plugins'
+export josm_i18n="$HOME/src/josm.all.svngit/i18n/"
+alias josm-i18n='cd $josm_i18n'
+export josm_all="$HOME/src/josm.all.svngit/"
+alias josm-all='cd $josm_all'
+export osm_web="$HOME/src/openstreetmap-website/"
+alias osm-web='cd $osm_web'
 
 alias autorotate='jhead -autorot'
 alias df='df -h'
