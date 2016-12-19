@@ -69,6 +69,7 @@ helpme () {
   exiftool -r '-FileName<DateTimeOriginal' -d IMG_%Y%m%d_%H%M%S.%%e .
   exiftool -d '%Y-%m-%d_%H:%M:%S_%%f.%%e' '-FileName<DateTimeOriginal' .
   exiftool -d '%Y-%m-%d_%H%M%S_%%f.%%e' '-FileName<FileModifyDate' .
+  exiftool '-Directory<FileModifyDate' -d %Y-%m t*
   scanimage -L
   scanimage -d genesys:libusb:001:009 -p --resolution 150
   chromium --incognito --proxy-pac-url=~/.config/proxy.pac
@@ -78,6 +79,7 @@ helpme () {
   readlink -f
   mutt: Shift+d, ~s .*
   svn propedit -r N --revprop svn:log
+  adb shell ls '.../Camera/IMG_201603*' | tr '\r' ' ' | xargs -n1 adb pull -a
 EOF
 }
 
