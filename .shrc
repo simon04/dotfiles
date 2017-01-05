@@ -207,3 +207,14 @@ publish_photo () {
   gm mogrify -verbose -quality 70 -resize 1920x1920 "$@"
   exiftool -Author='Simon Legner' '-DateTimeOriginal>FileModifyDate' -overwrite_original "$@"
 }
+
+adb-ls () {
+  [ $# -eq 0 ] && { echo "Usage: $0 /path/on/android"; return; }
+  adb shell ls "$@" | tr '\r' ' '
+}
+
+adb-mv () {
+  [ $# -lt 2 ] && { echo "Usage: $0 /path/on/android/*JPG /target/on/android/"; return; }
+  adb shell mkdir -p "$2"
+  adb-ls "$1" | xargs -i -n1 adb shell mv -i {} "$2"
+}
