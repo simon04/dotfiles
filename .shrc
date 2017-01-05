@@ -208,6 +208,10 @@ publish_photo () {
   exiftool -Author='Simon Legner' '-DateTimeOriginal>FileModifyDate' -overwrite_original "$@"
 }
 
+without_cover () {
+  find . -mindepth 2 -maxdepth 2 -type d '!' -exec test -e "{}/cover.jpg" ';' -print
+}
+
 adb-ls () {
   [ $# -eq 0 ] && { echo "Usage: $0 /path/on/android"; return; }
   adb shell ls "$@" | tr '\r' ' '
