@@ -238,3 +238,7 @@ adb-mv () {
   adb shell mkdir -p "$2"
   adb-ls "$1" | xargs -i -n1 adb shell mv -i {} "$2"
 }
+
+difference () {
+  comm -3 <(sort $1) <(sort $2)
+}
