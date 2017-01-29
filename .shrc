@@ -54,6 +54,7 @@ alias zipgrep='for i in **/*jar; do unzip -l "$i"; done | grep'
 #alias -g &de='& disown; exit'
 
 alias reverse-dns='dig +noall +answer -x'
+alias agnf='ag --nofilename'
 
 cleanlatex () {
   setopt null_glob
