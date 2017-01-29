@@ -52,6 +52,21 @@ alias vimdiff-i="vimdiff -c 'set diffopt+=iwhite'"
 alias cleanshp='rm -f *.{cpg,dbf,prj,shp,shx}'
 alias zipgrep='for i in **/*jar; do unzip -l "$i"; done | grep'
 #alias -g &de='& disown; exit'
+alias scour-max='scour --remove-descriptive-elements --enable-viewboxing --enable-id-stripping --enable-comment-stripping --shorten-ids --indent=none'
+
+scour-max-i() {
+  in=$1
+  tmp=$(mktemp)
+  scour \
+    --remove-descriptive-elements \
+    --enable-viewboxing \
+    --enable-id-stripping \
+    --enable-comment-stripping \
+    --shorten-ids \
+    --no-line-breaks --strip-xml-space \
+    -i "$in" \
+    -o "$tmp" && mv "$tmp" "$in"
+}
 
 alias reverse-dns='dig +noall +answer -x'
 alias agnf='ag --nofilename'
