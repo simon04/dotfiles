@@ -1,0 +1,17 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "files.exclude": {
+        ".*": true,
+        "dist": true,
+        "node_modules": true,
+        "bower_components": true
+    },
+    "files.associations": {
+        "*.geojson": "json"
+    },
+    "editor.wordWrap": true,
+    "editor.tabSize": 2,
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "editor.fontFamily": "Noto Mono",
+    "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?"
+}
