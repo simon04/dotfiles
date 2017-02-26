@@ -1,0 +1,11 @@
+// Place your key bindings in this file to overwrite the defaults
+[{
+    "key": "ctrl+w",
+    "command": "editor.action.smartSelect.grow"
+}, {
+    "key": "ctrl+shift+w",
+    "command": "editor.action.smartSelect.shrink"
+}, {
+    "key": "ctrl+shift+q",
+    "command": "workbench.action.closeActiveEditor"
+}]
