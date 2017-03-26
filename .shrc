@@ -245,4 +245,7 @@ difference () {
 
 web.archive.org/save () {
   http HEAD "https://web.archive.org/save/$1"
+
+aur-clone () {
+  git clone ssh+git://aur@aur.archlinux.org/$1.git && cd $1
 }
