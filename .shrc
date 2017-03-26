@@ -242,3 +242,7 @@ adb-mv () {
 difference () {
   comm -3 <(sort $1) <(sort $2)
 }
+
+web.archive.org/save () {
+  http HEAD "https://web.archive.org/save/$1"
+}
