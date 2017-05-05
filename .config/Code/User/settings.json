@@ -8,4 +8,7 @@
     "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     "editor.fontFamily": "Noto Mono",
     "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?"
+    "prettier.printWidth": 100,
+    "prettier.singleQuote": true,
+    "prettier.bracketSpacing": false
 }
