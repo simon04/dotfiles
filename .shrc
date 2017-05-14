@@ -250,3 +250,12 @@ web.archive.org/save () {
 aur-clone () {
   git clone ssh+git://aur@aur.archlinux.org/$1.git && cd $1
 }
+
+import-DCIM () {
+  for file in /run/media/simon/disk/DCIM/100MSDCF/*.JPG; do
+    date=$(jhead $file | grep 'Date/Time' | grep -Eo '[0-9]{4}:[0-9]{2}:[0-9]{2}' | tr : -)
+    year=${date:0:4}
+    target=$HOME/Fotos/$year/$date
+    mkdir --parents $target && mv --interactive --verbose $file $target
+  done
+}
