@@ -195,3 +195,4 @@ bar {
 assign [class="Firefox" instance="Browser"] 1
 assign [class="Chromium" instance="Browser"] 1
 assign [class="org-openstreetmap-josm-Main"] F4
+assign [class="org-openstreetmap-josm-gui-MainApplication"] F4
