@@ -135,6 +135,22 @@ cdd () {
   esac
 }
 
+# Battery charge as a percentage.
+bchrg() {
+  now=`cat /sys/class/power_supply/BAT0/energy_now`
+  full=`cat /sys/class/power_supply/BAT0/energy_full`
+  out=`echo $now/$full*100 | bc -l | cut -c 1-5`
+  echo "Charge: "$out"%"
+}
+
+# Battery capacity as a percentage.
+bcap() {
+  design=`cat /sys/class/power_supply/BAT0/energy_full_design`
+  current=`cat /sys/class/power_supply/BAT0/energy_full`
+  out=`echo $current/$design*100 | bc -l | cut -c 1-5`
+  echo "Capacity: "$out"%"
+}
+
 focallengthplot () {
   exiftool -T -filename -focallength "$@" | sort -u | awk -F "\t" '{print ($2-$2%5)"-"($2+4-$2%5)}' | sort -n | uniq -c | awk 's=""; {while (length(s)<$1) s=s"*"; printf "%8s "mm"  [%4d]  %s\n", $2, $1, s}'
   exiftool -T -filename -focallength "$@" | sort -u | awk -F "\t" '{print $2}' | sort -n | uniq -c | awk 's=""; {while (length(s)<$1) s=s"*"; printf "%8s "mm"  [%4d]  %s\n", $2, $1, s}'
