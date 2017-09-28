@@ -1,0 +1,1 @@
+alias lt='ls -trl'

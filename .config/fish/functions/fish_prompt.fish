@@ -1,5 +1,5 @@
 function fish_prompt --description 'Write out the prompt'
-	#Save the return status of the previous command
+    #Save the return status of the previous command
     set stat $status
 
     if not set -q __fish_prompt_normal
