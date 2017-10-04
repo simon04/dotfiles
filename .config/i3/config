@@ -186,10 +186,7 @@ mode "resize" {
 
 #bindsym $mod+r mode "resize"
 
-bar {
-  #position top
-  status_command python $HOME/.bin/i3pystatus_.py
-}
+exec_always --no-startup-id sh -c 'pkill polybar; polybar example'
 
 #Use xprop to obtain X11 window class
 assign [class="Firefox" instance="Browser"] 1
