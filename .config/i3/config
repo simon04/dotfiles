@@ -187,9 +187,3 @@ mode "resize" {
 #bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id sh -c 'pkill polybar; polybar example'
-
-#Use xprop to obtain X11 window class
-assign [class="Firefox" instance="Browser"] 1
-assign [class="Chromium" instance="Browser"] 1
-assign [class="org-openstreetmap-josm-Main"] F4
-assign [class="org-openstreetmap-josm-gui-MainApplication"] F4
