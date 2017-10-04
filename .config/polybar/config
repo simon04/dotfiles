@@ -19,6 +19,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/example]
+bottom = true
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
@@ -42,9 +43,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = "Noto Sans:size=11;1"
 
 modules-left = bspwm i3
 modules-center = 
@@ -203,11 +202,11 @@ label = %percentage_used%%
 [module/wlan]
 type = internal/network
 interface = wlp58s0
-interval = 3.0
+interval = 1.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = %essid% %downspeed:9% %upspeed:9%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -225,12 +224,12 @@ ramp-signal-foreground = ${colors.foreground-alt}
 [module/eth]
 type = internal/network
 interface = enp0s31f6
-interval = 3.0
+interval = 1.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+label-connected = %local_ip% %downspeed:9% %upspeed:9%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -240,13 +239,13 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
-date =
-date-alt = " %Y-%m-%d"
+date = %Y-%m-%d
+date-alt =
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = %H:%M:%S
+time-alt =
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
