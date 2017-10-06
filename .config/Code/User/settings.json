@@ -6,8 +6,10 @@
     "editor.wordWrap": true,
     "editor.tabSize": 2,
     "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-    "editor.fontFamily": "Noto Mono",
-    "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?"
+    "workbench.colorTheme": "Default Light+",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?",
     "prettier.printWidth": 100,
     "prettier.singleQuote": true,
     "prettier.bracketSpacing": false
