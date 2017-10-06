@@ -1,6 +1,6 @@
 URxvt.cursorBlink: true
-URxvt.font:     xft:Inconsolata:size=12:antialias=true
-URxvt.boldFont: xft:Inconsolata:bold:size=12:antialias=true
+URxvt.font:     xft:Noto Mono:size=12:antialias=true
+URxvt.boldFont: xft:Noto Mono:bold:size=12:antialias=true
 
 URxvt.saveLines: 10000
 URxvt.scrollBar: false
