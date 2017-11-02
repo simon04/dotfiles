@@ -5,27 +5,37 @@ general {
 
 order += "disk /"
 order += "disk /home"
-order += "load"
-order += "cpu_usage"
+order += "sysdata cpu"
+order += "sysdata mem"
+order += "sysdata load"
+order += "netdata"
 order += "time"
+
+disk "/" {
+  format = "/ %free"
+}
+
+disk "/home" {
+  format = "/home/ %free"
+}
+
+sysdata "cpu" {
+  format = "[\?color=cpu CPU {cpu_usage}%]"
+}
+
+sysdata "mem" {
+  format = "[\?color=mem Mem {mem_used}/{mem_total} GB ({mem_used_percent}%)]"
+}
+
+sysdata "load" {
+  format = "[\?color=load L {load1} {load5}]"
+}
+
+netdata {
+  format = "{nic} {down}kB/s↓ {up}kB/s↑"
+}
 
 time {
   format = "%Y-%m-%d %H:%M:%S"
 }
 
-load {
-  format = "L: %1min %5min"
-}
-
-disk "/" {
-  #format = "%free (or: %percentage_used used, %percentage_used_of_avail used of avail, %percentage_free free, %percentage_avail avail)"
-  format = "/%free"
-}
-
-disk "/home" {
-  format = "/home/%free"
-}
-
-cpu_usage {
-  format = "CPU: %usage"
-}

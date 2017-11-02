@@ -186,4 +186,6 @@ mode "resize" {
 
 #bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id sh -c 'pkill polybar; polybar example'
+bar {
+  status_command py3status
+}
