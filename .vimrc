@@ -1,18 +1,19 @@
-" https://github.com/gmarik/vundle
-set rtp+=~/.vim/vundle/
-call vundle#rc()
+" https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/bundle/')
 " a frontend for ack/ag (grep alternatives)
-Bundle 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 " Molokai color scheme for Vim
-Bundle 'tomasr/molokai'
+Plug 'tomasr/molokai'
 " full path fuzzy file, buffer, mru, tag finder, :CtrlP, <c-p>
-Bundle 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Git diff in the gutter (sign column)
-Bundle 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " a Git wrapper
-Bundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " light and configurable statusline/tabline plugin for Vim
-Bundle 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
+" Initialize plugin system
+call plug#end()
 
 " Source viminit files
 runtime! config/**/*.vim
