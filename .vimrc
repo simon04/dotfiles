@@ -1,30 +1,18 @@
 " https://github.com/gmarik/vundle
 set rtp+=~/.vim/vundle/
 call vundle#rc()
-" a syntax checking plugin using external syntax checkers
-Bundle 'scrooloose/syntastic'
 " a frontend for ack/ag (grep alternatives)
 Bundle 'mileszs/ack.vim'
-" quoting/parenthesizing made simple, ys[motion][surrounding], ds[surrounding], cs[old][new]
-Bundle 'tpope/vim-surround'
-" lightweight Toolbox for LaTeX
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
 " Molokai color scheme for Vim
 Bundle 'tomasr/molokai'
-" automatically detecting indent settings
-Bundle 'ciaranm/detectindent'
 " full path fuzzy file, buffer, mru, tag finder, :CtrlP, <c-p>
-Bundle 'kien/ctrlp.vim'
-" git diff in the gutter (sign column)
+Bundle 'ctrlpvim/ctrlp.vim'
+" Git diff in the gutter (sign column)
 Bundle 'airblade/vim-gitgutter'
-" svn/git/hg integration for committing, diff, ...
-Bundle 'git://repo.or.cz/vcscommand'
-" fancy and lightweight status line
-Bundle 'bling/vim-airline'
-" list of buffers in the status line
-Bundle 'bling/vim-bufferline'
-"  HTML5 omnicomplete and syntax
-Bundle 'othree/html5.vim'
+" a Git wrapper
+Bundle 'tpope/vim-fugitive'
+" light and configurable statusline/tabline plugin for Vim
+Bundle 'itchyny/lightline.vim'
 
 " Source viminit files
 runtime! config/**/*.vim
@@ -39,9 +27,7 @@ set incsearch
 set mouse=a
 set diffopt+=iwhite
 
-if !exists("DetectIndent")
-  set expandtab tabstop=2 shiftwidth=2
-endif
+set expandtab tabstop=2 shiftwidth=2
 
 syntax on
 filetype plugin indent on
