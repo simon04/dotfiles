@@ -1,10 +1,11 @@
+import itertools
 import re
 import sys
 import unicodedata
 
 i = 0
 pattern = re.compile(sys.argv[1], re.IGNORECASE) if len(sys.argv) > 1 else None
-for codeptx in range(0x2F00):
+for codeptx in itertools.chain(range(0x2F00), range(0xA500, 0xAC00)):
     if i > 20:
         break
     try:
