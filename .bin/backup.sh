@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 backupDev=/dev/sdf1
 backupMount=/media/Backup
 
