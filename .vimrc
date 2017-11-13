@@ -12,6 +12,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 " light and configurable statusline/tabline plugin for Vim
 Plug 'itchyny/lightline.vim'
+" A collection of language packs for Vim.
+Plug 'sheerun/vim-polyglot'
 " Initialize plugin system
 call plug#end()
 
