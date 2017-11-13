@@ -21,6 +21,7 @@ floating_modifier $mod
 mouse_warping none
 
 # execute commands
+bindsym XF86HomePage exec $term
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term -e tmux
 bindsym $mod+g exec gvim
