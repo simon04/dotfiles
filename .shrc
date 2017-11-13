@@ -3,12 +3,8 @@
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-export NPM_PACKAGES=$HOME/.npm-packages
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 export PATH="$HOME/bin:$NPM_PACKAGES/bin:$PATH"
 export EDITOR='vim'
-
-export QT_LOGGING_RULES='*.debug=false'
 export XDG_CURRENT_DESKTOP=KDE # to show icons in kmail when running in i3wm
 export KDE_SESSION_VERSION=5 # to make xdg-open work
 
