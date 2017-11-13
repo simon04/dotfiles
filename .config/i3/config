@@ -190,6 +190,7 @@ mode "resize" {
 
 bar {
   status_command py3status
+  tray_output primary
 }
 
 # changes volume w/ { and } ... for OSS
