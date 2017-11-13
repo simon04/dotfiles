@@ -6,7 +6,7 @@ set cursorline
 source ~/.vimrc
 
 if has('unix')
-  colorscheme slate
+  colorscheme molokai
   set guifont=Noto\ Mono\ 12
   set linespace=1
 endif
