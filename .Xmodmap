@@ -1,5 +1,5 @@
 ! xmodmap -pke
-keycode  20 = minus underscore minus underscore endash
+keycode  20 = minus underscore minus underscore endash emdash
 keycode  49 = grave asciitilde grave asciitilde U2248 U2249
 keycode  59 = comma less comma less ccedilla U2A7D
 keycode  60 = period greater period greater ellipsis U2A7E
