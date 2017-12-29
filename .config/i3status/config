@@ -8,6 +8,7 @@ order += "disk /home"
 order += "sysdata cpu"
 order += "sysdata mem"
 order += "sysdata load"
+order += "cpu_temperature 0"
 order += "netdata"
 order += "battery_level"
 order += "time"
@@ -30,6 +31,11 @@ sysdata "mem" {
 
 sysdata "load" {
   format = "[\?color=load L {load1} {load5}]"
+}
+
+cpu_temperature 0 {
+  format = "T %degrees°C"
+  path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
 netdata {
