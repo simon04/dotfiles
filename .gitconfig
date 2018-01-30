@@ -19,9 +19,8 @@
 	m = merge
 	s = status --branch --short
 	st = status
-	dry-svn-ci = !git svn dcommit --dry-run | grep -Eo '[0-9a-f]+$' | xargs -n1 git show --stat
 	rebase-first-commit = rebase -i --root
-	svn-ci = svn dcommit
+	svn-ci = svn dcommit --interactive
 	svn-log = svn log --oneline --show-commit
 	svn-r = svn rebase
 	svn-l = svn log --show-commit --oneline
