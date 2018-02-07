@@ -2,33 +2,46 @@ Xcursor.theme: default
 Xcursor.size: 16
 
 URxvt.cursorBlink: true
-URxvt.font:     xft:Noto Mono:size=12:antialias=true
-URxvt.boldFont: xft:Noto Mono:bold:size=12:antialias=true
+URxvt.font:     xft:Fira Code:size=11:antialias=true
+URxvt.boldFont: xft:Fira Code:bold:size=11:antialias=true
 
 URxvt.saveLines: 10000
 URxvt.scrollBar: false
 URxvt.secondaryScroll: true
 URxvt.secondaryScreen: true
-!URxvt*keysym.Home: \033[1~
-!URxvt*keysym.End: \033[4~
 
-! Tango from http://bastian.rieck.ru/blog/posts/2013/making_urxvt_beautiful/
-urxvt*foreground: black
-urxvt*background: white
+*background: #121212
+*foreground: #a0a0a0
+*cursorColor: #a0a0a0
 
-*color0:  #2e3436
-*color1:  #a40000
-*color2:  #4e9a06
-*color3:  #c4a000
-*color4:  #3465a4
-*color5:  #75507b
-*color6:  #ce5c00
-*color7:  #babdb9
-*color8:  #555753
-*color9:  #ef2929
-*color10: #8ae234
-*color11: #fce94f
-*color12: #729fcf
-*color13: #ad7fa8
-*color14: #fcaf3e
-*color15: #eeeeec
+!! black dark/light
+*color0: #1B1D1E
+*color8: #505354
+
+!! red dark/light
+*color1: #F92672
+*color9: #FF5995
+
+!! green dark/light
+*color2: #82B414
+*color10: #B6E354
+
+!! yellow dark/light
+*color3: #FD971F
+*color11: #FEED6C
+
+!! blue dark/light
+*color4: #4E82AA
+*color12: #0C73C2
+
+!! magenta dark/light
+*color5: #8C54FE
+*color13: #9E6FFE
+
+!! cyan dark/light
+*color6: #465457
+*color14: #899CA1
+
+!! white dark/light
+*color7: #CCCCC6
+*color15: #F8F8F2
