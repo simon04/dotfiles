@@ -6,7 +6,7 @@ source ~/.vimrc
 if has('unix')
   set cursorline
   colorscheme molokai
-  set guifont=Noto\ Mono\ 12
+  set guifont=Fira\ Code\ 11
   set linespace=1
 endif
 
