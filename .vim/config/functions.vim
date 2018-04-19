@@ -29,8 +29,7 @@ endif
 " Using xmllint from package libxml2
 command! FormatXML :% !xmllint "%" --format
 
-" Using nodejs module js-beautify
-command! FormatJS :% !js-beautify "%"
+command! Prettier :% !prettier "%"
 command! FormatHTML :% !html-beautify "%"
 command! FormatCSS :% !css-beautify "%"
 
