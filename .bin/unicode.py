@@ -1,18 +1,17 @@
-import itertools
 import re
 import sys
 import unicodedata
 
 i = 0
 pattern = re.compile(sys.argv[1], re.IGNORECASE) if len(sys.argv) > 1 else None
-for codeptx in itertools.chain(range(0x2F00), range(0xA500, 0xAC00)):
+for codeptx in range(0x20000):
     if i > 20:
         break
     try:
         c = chr(codeptx)
         n = unicodedata.name(c)
         cat = unicodedata.category(c)
-        s = 'U+{0:04} 0x{0:04x} {1:>4}  {2:<60}'.format(codeptx, c, n)
+        s = 'U+{0:04X}\t\\u{0:04X}\t&#{0:04};  \t{1:>4}\t{2:<60}'.format(codeptx, c, n)
         if not pattern or pattern.search(s):
             print(s)
             i = i + 1
