@@ -11,6 +11,7 @@ if has('unix')
 endif
 
 if has('win32')
+  set encoding=utf-8
   colorscheme slate
   set guifont=Consolas:h11
   set linespace=1
