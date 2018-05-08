@@ -1,3 +1,5 @@
+! xrdb -merge ~/.Xresources
+
 Xcursor.theme: default
 Xcursor.size: 16
 
