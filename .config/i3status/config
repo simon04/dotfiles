@@ -11,6 +11,7 @@ order += "sysdata load"
 order += "cpu_temperature 0"
 order += "netdata"
 order += "battery_level"
+order += "arch_updates"
 order += "time"
 
 disk "/" {
