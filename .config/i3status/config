@@ -1,3 +1,4 @@
+# vim: ft=python
 general {
   colors = true
   interval = 1
