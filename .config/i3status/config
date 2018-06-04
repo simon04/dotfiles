@@ -49,6 +49,11 @@ battery_level {
   format = "{icon} {percent}%"
 }
 
+arch_updates {
+  hide_if_zero = True
+  include_aur = True
+}
+
 time {
   format = "%Y-%m-%d %H:%M:%S"
 }
