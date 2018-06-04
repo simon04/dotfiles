@@ -24,11 +24,11 @@ disk "/home" {
 }
 
 sysdata "cpu" {
-  format = "[\?color=cpu CPU {cpu_usage}%]"
+  format = "[\?color=cpu CPU {cpu_usage:.0f}%]"
 }
 
 sysdata "mem" {
-  format = "[\?color=mem Mem {mem_used}/{mem_total} GB ({mem_used_percent}%)]"
+  format = "[\?color=mem Mem {mem_used:.1f}/{mem_total:.0f} GB]"
 }
 
 sysdata "load" {
