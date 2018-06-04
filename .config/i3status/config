@@ -10,7 +10,7 @@ order += "sysdata cpu"
 order += "sysdata mem"
 order += "sysdata load"
 order += "cpu_temperature 0"
-order += "netdata"
+order += "net_rate"
 order += "battery_level"
 order += "arch_updates"
 order += "time"
@@ -40,8 +40,9 @@ cpu_temperature 0 {
   path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
-netdata {
-  format = "{nic} {down}kB/s↓ {up}kB/s↑"
+net_rate {
+  format = "{interface} ↓{down} ↑{up}"
+  format_value = "{value:.1f}{unit}"
 }
 
 battery_level {
