@@ -36,7 +36,7 @@ bindsym $mod+Print exec scrot -s
 bindsym $mod+c exec gnome-calculator
 bindsym $mod+x exec slock
 bindsym $mod+d exec darktable
-bindsym $mod+Shift+d exec XDG_SESSION_ID=KDE KDE_SESSION_VERSION=5 digikam
+bindsym $mod+Shift+d exec digikam
 
 # kill focused window
 bindsym $mod+Shift+q kill

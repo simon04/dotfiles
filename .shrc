@@ -5,8 +5,6 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 export PATH="$HOME/bin:$NPM_PACKAGES/bin:$PATH"
 export EDITOR='vim'
-export XDG_CURRENT_DESKTOP=KDE # to show icons in kmail when running in i3wm
-export KDE_SESSION_VERSION=5 # to make xdg-open work
 
 alias ll='ls -lh --color=auto --time-style=long-iso'
 alias lt='ll -tr'
