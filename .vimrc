@@ -53,3 +53,10 @@ set laststatus=2
 
 " Display tabs and trailing spaces
 "set list listchars=tab:  ,trail:⋅,nbsp:⋅
+
+" neovim
+set mouse=a
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p

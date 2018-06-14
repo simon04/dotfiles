@@ -24,7 +24,7 @@ mouse_warping none
 bindsym XF86HomePage exec $term
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term -e tmux
-bindsym $mod+g exec gvim
+bindsym $mod+g exec $term -e nvim
 bindsym $mod+Shift+g exec gnumeric
 bindsym $mod+n exec $term -e ncmpcpp
 bindsym $mod+Shift+n exec mpc toggle

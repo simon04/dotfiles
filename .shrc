@@ -4,7 +4,11 @@
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 export PATH="$HOME/bin:$NPM_PACKAGES/bin:$PATH"
-export EDITOR='vim'
+if [[ -x /usr/bin/nvim ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim'
+fi
 
 alias ll='ls -lh --color=auto --time-style=long-iso'
 alias lt='ll -tr'
