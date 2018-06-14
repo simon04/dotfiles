@@ -1,12 +1,8 @@
 #!/bin/bash
 
-setxkbmap -layout us -variant altgr-intl
-xmodmap ~/.Xmodmap
-
-xsetroot -cursor_name left_ptr
-xrdb ~/.Xresources
-
-xset b off
+for f in ~/.xinitrc.d/*.sh ; do
+	[ -x "$f" ] && . "$f"
+done
 
 # load local settings
 ~/.xinitrc.local
