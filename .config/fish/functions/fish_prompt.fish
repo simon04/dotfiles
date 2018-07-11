@@ -39,10 +39,13 @@ function fish_prompt --description 'Write out the prompt'
     printf '%s%s@%s ' (set_color blue) $USER (hostname)
     printf '%s%s ' (set_color $fish_color_cwd) "$PWD"
     printf '%s%s ' (set_color normal) "$git_info"
-    if test $laststatus -eq 0
+    if [ $laststatus -eq 0 ]
         printf "%s✔%s " (set_color -o green) (set_color normal)
     else
         printf "%s✘%s " (set_color -o red) (set_color normal)
+    end
+    if [ $CMD_DURATION -gt 1000 ]
+        printf "(%ds) " (math "$CMD_DURATION / 1000")
     end
     printf '\n > '
 end
