@@ -30,7 +30,7 @@ endif
 command! FormatXML :% !xmllint "%" --format
 
 command! Prettier :% !prettier "%"
-command! FormatHTML :% !html-beautify "%"
+command! FormatHTML :% !tidy "%"
 command! FormatCSS :% !css-beautify "%"
 
 " http://vim.wikia.com/wiki/Copy_search_matches
