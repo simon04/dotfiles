@@ -4,8 +4,6 @@ call plug#begin('~/.vim/bundle/')
 Plug 'mileszs/ack.vim'
 " Molokai color scheme for Vim
 Plug 'tomasr/molokai'
-" full path fuzzy file, buffer, mru, tag finder, :CtrlP, <c-p>
-Plug 'ctrlpvim/ctrlp.vim'
 " Git diff in the gutter (sign column)
 Plug 'airblade/vim-gitgutter'
 " a Git wrapper
@@ -60,3 +58,5 @@ noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
+
+noremap <c-p> :FZF<CR>
