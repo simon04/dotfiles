@@ -32,6 +32,7 @@ bindsym $mod+t exec $term -e htop
 bindsym $mod+i exec gimp
 bindsym $mod+Shift+i exec inkscape
 bindsym $mod+o exec pcmanfm
+bindsym Print exec flameshot gui
 bindsym $mod+Print exec scrot -s
 bindsym $mod+c exec gnome-calculator
 bindsym $mod+x exec slock
