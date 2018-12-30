@@ -45,7 +45,7 @@ function fish_prompt --description 'Write out the prompt'
         printf "%s✘%s " (set_color -o red) (set_color normal)
     end
     if [ $CMD_DURATION -gt 1000 ]
-        printf "(%ds) " (math "$CMD_DURATION / 1000")
+        printf "(%ds) " (math --scale=0 "$CMD_DURATION / 1000")
     end
     printf '\n > '
 end
