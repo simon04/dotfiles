@@ -1,7 +1,5 @@
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/bundle/')
-" a frontend for ack/ag (grep alternatives)
-Plug 'mileszs/ack.vim'
 " Molokai color scheme for Vim
 Plug 'tomasr/molokai'
 " Git diff in the gutter (sign column)
@@ -12,6 +10,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 " A collection of language packs for Vim.
 Plug 'sheerun/vim-polyglot'
+" A command-line fuzzy finder
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 " Initialize plugin system
 call plug#end()
 
@@ -59,4 +60,4 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
-noremap <c-p> :FZF<CR>
+noremap <c-p> :GFiles<CR>
