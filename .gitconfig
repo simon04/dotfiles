@@ -39,3 +39,5 @@
 	autoSquash = true
 [diff "po"]
 	textconv=msgcat --no-location --no-wrap --sort-output
+[tig]
+	ignore-case = smart-case
