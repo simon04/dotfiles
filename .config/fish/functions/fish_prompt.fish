@@ -33,16 +33,14 @@ function fish_prompt --description 'Write out the prompt'
         else
             set git_status (set_color green):
         end
-        set git_info (set_color normal)"(git$git_status$git_branch"(set_color normal)")"
+        set git_info (set_color normal)"(git$git_status$git_branch"(set_color normal)") "
     end
     printf '\n[%s] ' (date "+%H:%M:%S")
     printf '%s%s@%s ' (set_color blue) $USER (hostname)
     printf '%s%s ' (set_color $fish_color_cwd) "$PWD"
-    printf '%s%s ' (set_color normal) "$git_info"
-    if [ $laststatus -eq 0 ]
-        printf "%s✔%s " (set_color -o green) (set_color normal)
-    else
-        printf "%s✘%s " (set_color -o red) (set_color normal)
+    printf '%s%s' (set_color normal) "$git_info"
+    if [ $laststatus -ne 0 ]
+        printf "%s$laststatus☇%s " (set_color -o red) (set_color normal)
     end
     if [ $CMD_DURATION -gt 1000 ]
         printf "(%ds) " (math --scale=0 "$CMD_DURATION / 1000")
