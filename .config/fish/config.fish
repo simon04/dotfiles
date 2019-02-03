@@ -8,3 +8,6 @@ set --export FZF_DEFAULT_OPTS "--bind='ctrl-o:execute(code {})+abort'"
 set --export FZF_CTRL_T_OPTS "--preview 'bat {}'"
 set --export FZF_DEFAULT_COMMAND "fd --max-depth 3"
 set --export FZF_ALT_C_COMMAND "fd --max-depth 3"
+
+set --erase SSH_AGENT_PID
+set --export SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
