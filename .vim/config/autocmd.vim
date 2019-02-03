@@ -19,3 +19,4 @@ autocmd BufNewFile,BufRead /tmp/bash-* setl syntax=sh
 "autocmd BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | if !executable(expand("<afile>")) | silent !chmod a+x <afile> | endif | endif | endif
 
 autocmd BufReadCmd *.odt,*.ott,*.ods,*.ots,*.odp,*.otp,*.odg,*.otg call zip#Browse(expand("<amatch>"))
+autocmd BufReadCmd *.joz call zip#Browse(expand("<amatch>"))
