@@ -12,38 +12,37 @@ URxvt.scrollBar: false
 URxvt.secondaryScroll: true
 URxvt.secondaryScreen: true
 
-*background: #121212
-*foreground: #a0a0a0
-*cursorColor: #a0a0a0
+*foreground: #fcfcfc
+*background: #232627
 
 !! black dark/light
-*color0: #1B1D1E
-*color8: #505354
+*color0: #232627
+*color8: #000000
 
 !! red dark/light
-*color1: #F92672
-*color9: #FF5995
+*color1: #ed1515
+*color9: #c0392b
 
 !! green dark/light
-*color2: #82B414
-*color10: #B6E354
+*color2: #11d116
+*color10: #1cdc9a
 
 !! yellow dark/light
-*color3: #FD971F
-*color11: #FEED6C
+*color3: #f67400
+*color11: #fdbc4b
 
 !! blue dark/light
-*color4: #4E82AA
-*color12: #0C73C2
+*color4: #1d99f3
+*color12: #3daee9
 
 !! magenta dark/light
-*color5: #8C54FE
-*color13: #9E6FFE
+*color5: #9b59b6
+*color13: #8e44ad
 
 !! cyan dark/light
-*color6: #465457
-*color14: #899CA1
+*color6: #1abc9c
+*color14: #16a085
 
 !! white dark/light
-*color7: #CCCCC6
-*color15: #F8F8F2
+*color7: #fcfcfc
+*color15: #ffffff
