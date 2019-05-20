@@ -10,6 +10,7 @@
 	cl = clone
 	co = checkout
 	d = diff --patience
+	diff-merge-point = !git diff $(git merge-base --fork-point master)
 	ds = diff --staged --patience
 	log = log --date=iso
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -20,6 +21,7 @@
 	s = status --branch --short
 	st = status
 	rebase-first-commit = rebase -i --root
+	rebase-merge-point = !git rebase $(git merge-base --fork-point master)
 	svn-ci = svn dcommit --interactive
 	svn-log = svn log --oneline --show-commit
 	svn-r = svn rebase
