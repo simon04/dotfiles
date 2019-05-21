@@ -49,3 +49,6 @@
 	prompt = true
 [difftool "vimdiff"]
 	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[gitreview]
+	remote = origin
+	username = simon04
