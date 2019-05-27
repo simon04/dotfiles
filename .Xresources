@@ -6,6 +6,9 @@ Xcursor.size: 16
 URxvt.cursorBlink: true
 URxvt.font:     xft:Fira Code:size=11:antialias=true
 URxvt.boldFont: xft:Fira Code:bold:size=11:antialias=true
+URxvt.perl-ext-common: tabbed
+URxvt.keysym.C-Down: resize-font:smaller
+URxvt.keysym.C-Up: resize-font:bigger
 
 URxvt.saveLines: 10000
 URxvt.scrollBar: false
