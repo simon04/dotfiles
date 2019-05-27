@@ -17,6 +17,7 @@ URxvt.secondaryScreen: true
 
 *foreground: #fcfcfc
 *background: #232627
+*cursorColor: #fcfcfc
 
 !! black dark/light
 *color0: #232627
