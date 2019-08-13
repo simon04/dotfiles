@@ -35,7 +35,7 @@ bindsym $mod+o exec pcmanfm
 bindsym Print exec flameshot gui
 bindsym $mod+Print exec scrot -s
 bindsym $mod+c exec gnome-calculator
-bindsym $mod+x exec slock
+bindsym $mod+l exec i3lock
 bindsym $mod+d exec darktable
 bindsym $mod+Shift+d exec digikam
 
