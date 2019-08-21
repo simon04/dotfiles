@@ -8,7 +8,7 @@ export HISTSIZE=10000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=erasedups
 
-PS1='\n[\t][\u@\h \W]\n\$ '
+PS1='\n[\t][\u@\h \w]\n\$ '
 
 _shopt () {
   shopt -s $1 2> /dev/null
