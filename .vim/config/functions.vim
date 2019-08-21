@@ -29,9 +29,6 @@ endif
 " Using xmllint from package libxml2
 command! FormatXML :% !xmllint "%" --format
 
-command! FormatHTML :% !tidy "%"
-command! FormatCSS :% !css-beautify "%"
-
 " http://vim.wikia.com/wiki/Copy_search_matches
 function! CopyMatches(reg)
   let hits = []
