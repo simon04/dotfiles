@@ -29,7 +29,6 @@ endif
 " Using xmllint from package libxml2
 command! FormatXML :% !xmllint "%" --format
 
-command! Prettier :% !prettier "%"
 command! FormatHTML :% !tidy "%"
 command! FormatCSS :% !css-beautify "%"
 

@@ -13,6 +13,8 @@ Plug 'sheerun/vim-polyglot'
 " A command-line fuzzy finder
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+" Prettier
+Plug 'prettier/vim-prettier'
 " Initialize plugin system
 call plug#end()
 
