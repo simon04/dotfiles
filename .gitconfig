@@ -7,7 +7,7 @@
 	a = add
 	b = branch
 	ci = commit
-	cl = clone
+	cleanup = "!git branch --merged | grep --invert-match '\\*\\|master\\|develop' | xargs --max-args=1 --no-run-if-empty git branch --delete --verbose"
 	co = checkout
 	d = diff --patience
 	diff-merge-point = !git diff $(git merge-base --fork-point master)
