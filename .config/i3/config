@@ -34,7 +34,6 @@ bindsym $mod+Shift+i exec inkscape
 bindsym $mod+o exec pcmanfm
 bindsym Print exec flameshot gui
 bindsym $mod+Print exec scrot -s
-bindsym $mod+c exec gnome-calculator
 bindsym $mod+l exec i3lock
 bindsym $mod+d exec darktable
 bindsym $mod+Shift+d exec digikam
@@ -48,6 +47,9 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+r exec rofi -show run
+bindsym $mod+w exec rofi -show window
+bindsym $mod+s exec rofi -show ssh
+bindsym $mod+c exec rofi -show calc -modi "calc:qalc +u8 -nocurrencies"
 
 # border style for new windows: new_window <normal|1pixel|none|pixel>
 new_window 1pixel
