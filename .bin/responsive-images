@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+widths=(640 1280 1920 2560 3200 3860)
+quality=75
+
+for src in "$@"; do
+  src_width=$(gm identify -format %w "$src")
+  for width in "${widths[*]}"; do
+    if [[ $width -gt $src_width ]]; then
+      continue
+    fi
+    # convert to jpeg
+    jpeg="${src%.jpg}-$width.jpg"
+    gm convert -resize "${width}x999999" "$src" "$jpeg.ppm"
+    cjpeg -optimize -quality "$quality" "$jpeg.ppm" > "$jpeg"
+    rm "$jpeg.ppm"
+    gm identify "$jpeg"
+    # convert to webp
+    webp="${src%.jpg}-$width.webp"
+    cwebp -quiet -q "$quality" -resize "$width" 0 "$src" -o "$webp"
+    gm identify "$webp"
+  done
+done
