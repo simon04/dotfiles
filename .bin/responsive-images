@@ -6,7 +6,7 @@ quality=75
 
 for src in "$@"; do
   src_width=$(gm identify -format %w "$src")
-  for width in "${widths[*]}"; do
+  for width in ${widths[*]}; do
     if [[ $width -gt $src_width ]]; then
       continue
     fi
