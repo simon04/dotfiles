@@ -17,14 +17,15 @@ case $1 in
     ;;
   *)
     dir=$1
+    dir_base=$(basename "$dir")
     [[ -d ../$dir ]] || echo "../$dir does not exist!"
     [[ -d ../$dir ]] || exit
-    new=$dir-$(date -I)
-    existing=$(basename $(ls -d $backupMount/$dir-* | tail -n1))
+    new=$dir_base-$(date -I)
+    existing=$(basename $(ls -d $backupMount/$dir_base-* | tail -n1))
     echo "Backing up $dir as $new using delta wrt. $existing"
     [[ -d $new ]] || btrfs subvolume snapshot -r ../$dir $new
     [[ -d $backupMount/$new ]] || (sudo btrfs send -v -p $existing $new | sudo btrfs receive $backupMount/)
-    ls -ld $backupMount/$dir-*
+    ls -ld $backupMount/$dir_base-*
     ;;
 esac
 
