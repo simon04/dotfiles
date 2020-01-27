@@ -14,20 +14,14 @@
 	d = diff --patience
 	diff-merge-point = !git diff $(git merge-base --fork-point master)
 	ds = diff --staged --patience
-	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	li = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
-	ll = log --pretty=format:"%C(yellow)%h\\ %C(green)%ai%C(red)%d\\ %C(reset)%s%C(blue)\\ [%cn]" --decorate --numstat
 	ls-ci-files = diff-tree --no-commit-id --name-only -r
-	m = merge
 	s = status --branch --short
-	st = status
 	rebase-first-commit = rebase -i --root
 	rebase-merge-point = !git rebase $(git merge-base --fork-point master)
 	svn-ci = svn dcommit --interactive
 	svn-log = svn log --oneline --show-commit
 	svn-r = svn rebase
 	svn-l = svn log --show-commit --oneline
-	pr = pull-request
 	wd = diff --color-words
 	uncommit =  reset --soft HEAD~1
 	unstage = reset HEAD
