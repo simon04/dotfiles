@@ -32,6 +32,9 @@
 	unstage = reset HEAD
 [github]
 	user = simon04
+[gitlab]
+	host = https://gitlab.com
+	user = simon04
 [push]
 	default = simple
 [core]
