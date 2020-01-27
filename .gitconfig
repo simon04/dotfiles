@@ -3,6 +3,8 @@
 	email = Simon.Legner@gmail.com
 [color]
 	ui = true
+[log]
+	date = iso
 [alias]
 	a = add
 	b = branch
@@ -12,7 +14,6 @@
 	d = diff --patience
 	diff-merge-point = !git diff $(git merge-base --fork-point master)
 	ds = diff --staged --patience
-	log = log --date=iso
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	li = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
 	ll = log --pretty=format:"%C(yellow)%h\\ %C(green)%ai%C(red)%d\\ %C(reset)%s%C(blue)\\ [%cn]" --decorate --numstat
