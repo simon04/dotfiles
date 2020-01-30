@@ -3,7 +3,6 @@
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-export PATH="$HOME/bin:$NPM_PACKAGES/bin:$PATH"
 if [[ -x /usr/bin/nvim ]]; then
   export EDITOR='nvim'
 else
