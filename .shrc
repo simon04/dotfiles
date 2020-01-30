@@ -9,6 +9,7 @@ if [[ -x /usr/bin/nvim ]]; then
 else
   export EDITOR='vim'
 fi
+alias edit=$EDITOR
 
 alias ll='ls -lh --color=auto --time-style=long-iso'
 alias lt='ll -tr'
