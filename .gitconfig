@@ -9,7 +9,7 @@
 	a = add
 	b = branch
 	ci = commit
-	cleanup = "!git branch --merged | grep --invert-match '\\*\\|master\\|develop' | xargs --max-args=1 --no-run-if-empty git branch --delete --verbose"
+	cleanup = !git branch --merged | grep --invert-match '\\*\\|master\\|develop' | xargs --max-args=1 --no-run-if-empty git branch --delete --verbose
 	co = checkout
 	d = diff --patience
 	diff-merge-point = !git diff $(git merge-base --fork-point master)
@@ -23,7 +23,7 @@
 	svn-r = svn rebase
 	svn-l = svn log --show-commit --oneline
 	wd = diff --color-words
-	uncommit =  reset --soft HEAD~1
+	uncommit = reset --soft HEAD~1
 	unstage = reset HEAD
 [github]
 	user = simon04
@@ -38,7 +38,7 @@
 [rebase]
 	autoSquash = true
 [diff "po"]
-	textconv=msgcat --no-location --no-wrap --sort-output
+	textconv = msgcat --no-location --no-wrap --sort-output
 [tig]
 	ignore-case = smart-case
 [diff]
