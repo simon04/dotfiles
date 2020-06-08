@@ -7,6 +7,7 @@
 	date = iso
 [alias]
 	a = add
+	amend = commit --amend --patch
 	b = branch
 	ci = commit
 	cleanup = !git branch --merged | grep --invert-match '\\*\\|master\\|develop' | xargs --max-args=1 --no-run-if-empty git branch --delete --verbose
