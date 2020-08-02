@@ -1,0 +1,14 @@
+[git_status]
+deleted_count.enabled = true
+modified_count.enabled = true
+renamed_count.enabled = true
+stashed_count.enabled = true
+untracked_count.enabled = true
+
+[time]
+disabled = false
+
+[custom.git_describe]
+command = "git describe --tags"
+directories = [".git"]
+prefix = "git "
