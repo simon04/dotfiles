@@ -27,7 +27,7 @@ if has("iconv")
 endif
 
 " Using xmllint from package libxml2
-command! FormatXML :% !xmllint "%" --format
+command! FormatXML :% !xmllint --format
 
 " http://vim.wikia.com/wiki/Copy_search_matches
 function! CopyMatches(reg)
