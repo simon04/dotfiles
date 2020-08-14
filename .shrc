@@ -34,5 +34,7 @@ helpme () {
   svn propedit -r N --revprop svn:log
   adb shell ls '.../Camera/IMG_201603*' | tr '\r' ' ' | xargs -n1 adb pull -a
   DISPLAY=:0 firefox
+  https://temp-mail.org/en/
+  docker image prune -a
 EOF
 }
