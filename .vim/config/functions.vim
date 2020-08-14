@@ -29,6 +29,9 @@ endif
 " Using xmllint from package libxml2
 command! FormatXML :% !xmllint --format
 
+" Using jq to format JSON
+command! FormatJSON :% !jq
+
 " http://vim.wikia.com/wiki/Copy_search_matches
 function! CopyMatches(reg)
   let hits = []
