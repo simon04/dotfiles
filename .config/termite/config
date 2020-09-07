@@ -9,7 +9,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Monospace 9
+font = JetBrains Mono 10
 scrollback_lines = 1000
 search_wrap = true
 #icon_name = terminal
@@ -64,7 +64,7 @@ color7 = #CCCCC6
 color15 = #F8F8F2
 
 [hints]
-#font = Monospace 12
+#font = JetBrains Mono 12
 #foreground = #dcdccc
 #background = #3f3f3f
 #padding = 2
