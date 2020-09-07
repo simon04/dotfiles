@@ -19,6 +19,7 @@
 	s = status --branch --short
 	rebase-first-commit = rebase -i --root
 	rebase-merge-point = !git rebase $(git merge-base --fork-point master)
+	statistics = "!git log --format='%aN <%aE>' . | sort | uniq --count | sort --numeric-sort"
 	svn-ci = svn dcommit --interactive
 	svn-log = svn log --oneline --show-commit
 	svn-r = svn rebase
