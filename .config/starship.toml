@@ -11,4 +11,4 @@ disabled = false
 [custom.git_describe]
 command = "git describe --tags"
 directories = [".git"]
-prefix = "git "
+symbol = "git "
