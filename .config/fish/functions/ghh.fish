@@ -4,7 +4,7 @@ function ghh --description 'Clones a git repository to src/' --argument repo
   if test -d $destination
     cd $destination
   else
-    hub clone $repo $destination
+    gh repo clone $repo $destination
     cd $destination
   end
 end
