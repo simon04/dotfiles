@@ -32,6 +32,8 @@
 [gitlab]
 	host = https://gitlab.com
 	user = simon04
+[pull]
+	ff = only
 [push]
 	default = simple
 [core]
