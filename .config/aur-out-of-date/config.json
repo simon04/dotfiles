@@ -1,0 +1,13 @@
+{
+  "ignore": {
+    "ddns-updater-git": ["1"],
+    "npm-fzf": ["1.1.6", "1.1.7"],
+    "osmtogeojson": ["3.0.0-beta.4"]
+  },
+  "scripts": {
+    "odadrawingsexplorer": "curl https://www.opendesign.com/guestfiles/oda_drawings_explorer | grep -oE '[0-9.]+.deb' | sed s/deb/0.0/",
+    "picapport": "curl https://www.picapport.de/en/photo-server-download.php | grep -oE 'v[0-9][.0-9]+[0-9]' | head -n1",
+    "tiny-media-manager": "curl -s https://release.tinymediamanager.org/download_v4.html | grep 'dist.*linux' | grep -oE '[0-9][.0-9]+'",
+    "tiny-media-manager-3": "curl -s https://release.tinymediamanager.org/download_v3.html | grep 'dist.*linux' | grep -oE '[0-9][.0-9]+'"
+  }
+}
