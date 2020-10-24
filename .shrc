@@ -10,7 +10,8 @@ else
 fi
 alias edit=$EDITOR
 
-alias ll='ls -lh --color=auto --time-style=long-iso'
+export TIME_STYLE='long-iso'
+alias ll='ls -lh --color=auto'
 alias lt='ll -tr'
 which rg >/dev/null 2>/dev/null || alias rg='git grep --no-index --color'
 
