@@ -1,1 +1,1 @@
-alias lt='ls -lhtr --full-time'
+alias lt='ls -lhtr'
