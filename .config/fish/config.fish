@@ -4,6 +4,9 @@ else
   set --export EDITOR vim
 end
 
+set --export BROWSER firefox
+pgrep chromium >/dev/null && set --export BROWSER chromium
+
 set --export TIME_STYLE long-iso
 
 set --erase SSH_AGENT_PID
