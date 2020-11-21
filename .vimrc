@@ -1,20 +1,21 @@
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/bundle/')
-" Molokai color scheme for Vim
-Plug 'tomasr/molokai'
+" Install by running .vim/install-plug.sh
+" https://vimawesome.com/
+
 " Git diff in the gutter (sign column)
 Plug 'airblade/vim-gitgutter'
-" a Git wrapper
-Plug 'tpope/vim-fugitive'
-" light and configurable statusline/tabline plugin for Vim
-Plug 'itchyny/lightline.vim'
+
 " A collection of language packs for Vim.
 Plug 'sheerun/vim-polyglot'
+
 " A command-line fuzzy finder
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
 " Prettier
 Plug 'prettier/vim-prettier'
+
 " Initialize plugin system
 call plug#end()
 
