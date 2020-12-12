@@ -45,6 +45,7 @@
 	ignore-case = smart-case
 [diff]
 	tool = vimdiff
+	colormovedws = allow-indentation-change
 [difftool]
 	prompt = true
 [difftool "vimdiff"]
