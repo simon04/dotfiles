@@ -6,6 +6,7 @@
 [log]
 	date = iso
 [alias]
+	all-brances = !git branch --sort=-committerdate --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' --color=always | column -ts'|'
 	amend = commit --amend --patch
 	c = commit --patch
 	cleanup = !git branch --merged | grep --invert-match '\\*\\|master\\|develop' | xargs --max-args=1 --no-run-if-empty git branch --delete --verbose
