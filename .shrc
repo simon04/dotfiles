@@ -3,17 +3,13 @@
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-if [[ -x /usr/bin/nvim ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='vim'
-fi
+command -v nvim >/dev/null && export EDITOR='nvim' || export EDITOR='vim'
 alias edit=$EDITOR
 
 export TIME_STYLE='long-iso'
 alias ll='ls -lh --color=auto'
 alias lt='ll -tr'
-which rg >/dev/null 2>/dev/null || alias rg='git grep --no-index --color'
+command -v rg >/dev/null || alias rg='git grep --no-index --color'
 
 # Prints commands that I always forget
 helpme () {
