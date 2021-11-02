@@ -1,11 +1,7 @@
-if test -x /usr/bin/nvim
-  set --export EDITOR nvim
-else
-  set --export EDITOR vim
-end
+command --query nvim && set --export EDITOR nvim || set --export EDITOR vim
 
-set --export BROWSER firefox
-pgrep chromium >/dev/null && set --export BROWSER chromium
+command --query firefox && set --export BROWSER firefox
+command --query pgrep && pgrep chromium >/dev/null && set --export BROWSER chromium
 
 set --export TIME_STYLE long-iso
 
