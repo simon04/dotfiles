@@ -6,18 +6,21 @@ quality=75
 
 for src in "$@"; do
   src_width=$(gm identify -format %w "$src")
-  for width in ${widths[*]}; do
+  src_base="$src"
+  src_base="${src_base%.jpg}"
+  src_base="${src_base%.png}"
+  for width in ${widths[*]} $src_width; do
     if [[ $width -gt $src_width ]]; then
       continue
     fi
     # convert to jpeg
-    jpeg="${src%.jpg}-$width.jpg"
+    jpeg="$src_base-$width.jpg"
     gm convert -resize "${width}x999999" "$src" "$jpeg.ppm"
     cjpeg -optimize -quality "$quality" "$jpeg.ppm" > "$jpeg"
     rm "$jpeg.ppm"
     gm identify "$jpeg"
     # convert to webp
-    webp="${src%.jpg}-$width.webp"
+    webp="$src_base-$width.webp"
     cwebp -quiet -q "$quality" -resize "$width" 0 "$src" -o "$webp"
     gm identify "$webp"
   done
