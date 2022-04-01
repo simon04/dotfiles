@@ -5,58 +5,32 @@ general {
 }
 
 order += "disk /"
-order += "disk /home"
-order += "sysdata cpu"
-order += "sysdata mem"
-order += "sysdata load"
-order += "cpu_temperature 0"
-order += "net_rate"
-order += "i3block train-speed"
-order += "battery_level"
-order += "arch_updates"
+order += "cpu_usage"
+order += "memory"
+order += "load"
+order += "ethernet enp2s0"
 order += "time"
 
 disk "/" {
-  format = "/ %free"
+  format = "/ %avail"
 }
 
-disk "/home" {
-  format = "/home/ %free"
+cpu_usage {
+  format = "CPU: %usage"
 }
 
-sysdata "cpu" {
-  format = "[\?color=cpu CPU {cpu_usage:.0f}%]"
+memory {
+  format = "MEM: %used of %total"
 }
 
-sysdata "mem" {
-  format = "[\?color=mem Mem {mem_used:.1f}/{mem_total:.0f} GB]"
+load {
+  format = "L: %1min %5min"
 }
 
-sysdata "load" {
-  format = "[\?color=load L {load1} {load5}]"
-}
-
-cpu_temperature 0 {
-  format = "T %degrees°C"
-  path = "/sys/class/thermal/thermal_zone0/temp"
-}
-
-net_rate {
-  format = "{interface} ↓{down} ↑{up}"
-  format_value = "{value:.1f}{unit}"
-}
-
-i3block train-speed {
-  command = ".config/i3status/train-speed.sh"
-  interval = 5
-}
-
-arch_updates {
-  hide_if_zero = True
-  include_aur = True
+ethernet enp2s0 {
+  format_up = "enp2s0: %ip"
 }
 
 time {
   format = "%Y-%m-%d %H:%M:%S"
 }
-

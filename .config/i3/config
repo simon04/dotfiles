@@ -183,7 +183,7 @@ mode "resize" {
 #bindsym $mod+r mode "resize"
 
 bar {
-  status_command py3status
+  status_command i3status
   tray_output primary
 }
 
