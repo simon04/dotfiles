@@ -7,7 +7,7 @@ call plug#begin('~/.vim/bundle/')
 Plug 'airblade/vim-gitgutter'
 
 " A collection of language packs for Vim.
-Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " A command-line fuzzy finder
 Plug 'junegunn/fzf'
