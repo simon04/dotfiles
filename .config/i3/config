@@ -52,8 +52,10 @@ bindsym $mod+s exec rofi -show ssh
 bindsym $mod+c exec rofi -show calc -modi "calc:qalc +u8 -nocurrencies"
 
 # border style for new windows: new_window <normal|1pixel|none|pixel>
-new_window 1pixel
-new_float 1pixel
+default_border pixel
+default_floating_border pixel
+# https://github.com/i3/i3/issues/5149
+for_window [all] border pixel
 
 # change focus
 bindsym $mod+Left focus left
