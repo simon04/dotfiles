@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import re
 import sys
 import unicodedata
@@ -11,7 +12,7 @@ for codeptx in range(0x20000):
         c = chr(codeptx)
         n = unicodedata.name(c)
         cat = unicodedata.category(c)
-        s = 'U+{0:04X}\t\\u{0:04X}\t&#{0:04};  \t{1:>4}\t{2:<60}'.format(codeptx, c, n)
+        s = "U+{0:04X}\t\\u{0:04X}\t&#{0:04};  \t{1:>4}\t{2:<60}".format(codeptx, c, n)
         if not pattern or pattern.search(s):
             print(s)
             i = i + 1
