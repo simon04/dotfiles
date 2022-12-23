@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export $(dbus-launch)
+
 for f in ~/.xinitrc.d/*.sh ; do
 	[ -x "$f" ] && . "$f"
 done
