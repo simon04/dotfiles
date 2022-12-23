@@ -16,6 +16,7 @@
 	diff-merge-point = !git diff $(git merge-base --fork-point master)
 	ds = diff --staged --patience
 	ls-ci-files = diff-tree --no-commit-id --name-only -r
+	main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
 	s = status --branch --short
 	rebase-first-commit = rebase -i --root
 	rebase-merge-point = !git rebase $(git merge-base --fork-point master)
