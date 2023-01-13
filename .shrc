@@ -1,6 +1,13 @@
 #!/bin/sh
 # settings, aliases and functions for all shells
 
+# XDG Base Directory specification
+XDG_DATA_HOME=$HOME/.local/share
+XDG_CONFIG_HOME=$HOME/.config
+XDG_STATE_HOME=$HOME/.local/state
+XDG_CACHE_HOME=$HOME/.cache
+XDG_RUNTIME_DIR=/run/user/$UID
+
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 command -v nvim >/dev/null && export EDITOR='nvim' || export EDITOR='vim'
