@@ -1,5 +1,5 @@
 function setenv; set -gx $argv; end
-source .env
+source $HOME/.env
 
 command --query nvim && set --export EDITOR nvim || set --export EDITOR vim
 

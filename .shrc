@@ -2,7 +2,7 @@
 # settings, aliases and functions for all shells
 
 function setenv() { export "$1=$2"; }
-. ~/.env
+. $HOME/.env
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
