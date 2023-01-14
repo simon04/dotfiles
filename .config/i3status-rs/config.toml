@@ -1,0 +1,37 @@
+# https://github.com/greshake/i3status-rust/blob/v0.13.1/blocks.md
+theme = "solarized-dark"
+icons = "awesome"
+
+[[block]]
+block = "net"
+device = "enp2s0"
+ip = true
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mug} GB of {MTg} GB ({Mup}%)"
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "load"
+format = "{1m} {5m} {15m}"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "time"
+interval = 1
+format = "%Y-%m-%d %H:%M:%S"
