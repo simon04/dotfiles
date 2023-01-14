@@ -1,7 +1,8 @@
 #!/bin/sh
 # settings, aliases and functions for all shells
 
-export $(envsubst < .env)
+function setenv() { export "$1=$2"; }
+. ~/.env
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
