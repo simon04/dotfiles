@@ -15,6 +15,7 @@
 	diff = diff --patience
 	diff-merge-point = !git diff $(git merge-base --fork-point master)
 	ds = diff --staged --patience
+	l = log --graph --pretty=format:'%Cred%h %Cgreen(%aI)%Creset -%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --abbrev-commit
 	ls-ci-files = diff-tree --no-commit-id --name-only -r
 	main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
 	s = status --branch --short
