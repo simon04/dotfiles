@@ -1,3 +1,5 @@
+# https://alacritty.org/config-alacritty.html
+
 [colors.bright]
 black = "0x383a42"
 blue = "0x0184bc"
