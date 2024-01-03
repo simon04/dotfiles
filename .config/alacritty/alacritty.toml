@@ -37,6 +37,9 @@ chars = "\u001B."
 key = "Period"
 mods = "Alt"
 
+[window]
+option_as_alt = "Both"
+
 [window.dimensions]
 columns = 160
 lines = 80
