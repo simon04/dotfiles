@@ -5,6 +5,8 @@
 	ui = true
 [log]
 	date = iso
+[format]
+	pretty = format:%C(yellow)%h %C(blue)%ad %C(green)%aN %C(reset)%s %C(red)%d %C(reset)
 [alias]
 	all-brances = !git branch --sort=-committerdate --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' --color=always | column -ts'|'
 	amend = commit --amend --patch
