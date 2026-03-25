@@ -1,3 +1,3 @@
 function u
-    $HOME/.bin/unicode.py $argv
+    $HOME/.local/bin/unicode.py $argv
 end
