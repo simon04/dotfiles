@@ -1,0 +1,36 @@
+#!/usr/bin/env -S uv run --script
+#
+# /// script
+# requires-python = ">=3.14"
+# dependencies = []
+# ///
+
+import pathlib
+import sys
+import subprocess
+import itertools
+
+
+dirs = itertools.chain(
+    pathlib.Path.cwd().glob("*/.git", recurse_symlinks=True),
+    pathlib.Path.cwd().glob("*/*/.git", recurse_symlinks=True),
+)
+
+for dir in dirs:
+    subprocess.run(
+        [
+            "git",
+            "--no-pager",
+            "-C",
+            dir,
+            "log",
+            "--date=format-local:%F %T",
+            "--pretty=tformat:"
+            "%C(green)%ad%C(reset) "
+            f"%C(red){dir.parent.name}%C(reset) "
+            "%C(yellow)%h%C(reset) "
+            "%s "
+            "%C(blue)<%an>%C(reset) ",
+            *sys.argv[1:],
+        ]
+    )
