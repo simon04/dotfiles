@@ -5,8 +5,6 @@
 	ui = true
 [log]
 	date = iso
-[format]
-	pretty = format:%C(yellow)%h %C(blue)%ad %C(green)%aN %C(reset)%s %C(red)%d %C(reset)
 [alias]
 	all-brances = !git branch --sort=-committerdate --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' --color=always | column -ts'|'
 	amend = commit --amend --patch
@@ -17,7 +15,7 @@
 	diff = diff --patience
 	diff-merge-point = !git diff $(git merge-base --fork-point master)
 	ds = diff --staged --patience
-	l = log --graph --pretty=format:'%Cred%h %Cgreen(%aI)%Creset -%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --abbrev-commit
+	l = log '--date=format-local:%F %T' '--pretty=tformat:%C(green)%ad%C(reset) %C(yellow)%h%C(reset) %s %C(blue)<%an>%C(reset)'
 	ls-ci-files = diff-tree --no-commit-id --name-only -r
 	main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
 	s = status --branch --short
