@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# claude-sync — two-way sync of Claude Code session history with another host
+# over ssh+tar. Each session is an append-only <uuid>.jsonl file, so a
+# newest-wins union merge is safe: new sessions are added, updated sessions
+# take the newer copy, and nothing is ever deleted.
+#
+# Usage: claude-sync <other-host>   (host as accepted by ssh, e.g. an alias)
+set -o errexit -o nounset -o pipefail
+
+HOST=${1:-}
+
+if [[ -z $HOST ]]; then
+  echo "usage: claude-sync <other-host>" >&2
+  exit 2
+fi
+
+# Pull: bring over sessions from the remote, keeping any locally-newer file.
+ssh $HOST 'tar --create --zstd --directory $HOME/.claude projects' \
+  | tar --extract --zstd --keep-newer-files --directory $HOME/.claude
+
+# Push: send our sessions to the remote, keeping any remotely-newer file.
+tar --create --zstd --directory $HOME/.claude projects \
+  | ssh $HOST 'tar --extract --zstd --keep-newer-files --directory $HOME/.claude'
+
+echo "claude-sync: synced $HOME/.claude/projects with $HOST"
