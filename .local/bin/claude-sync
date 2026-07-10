@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-# claude-sync <other-host> — two-way sync of Claude Code sessions over ssh+tar.
-# Each session is an append-only <uuid>.jsonl file, so --keep-newer-files gives
-# a safe newest-wins union merge: nothing is deleted, newer copies win.
+# claude-sync <other-host> — two-way sync of Claude Code sessions over rsync+ssh.
+# --update = skip files newer on the receiver; no --delete = nothing removed.
+# So it's a safe additive newest-wins merge of the append-only session files.
 import subprocess, sys
 
 host = sys.argv[1]
 
 # Pull: remote sessions in, keeping any locally-newer file.
-subprocess.run(f"ssh {host} 'tar --create --zstd --directory $HOME/.claude projects' | tar --extract --zstd --keep-newer-files --directory $HOME/.claude", shell=True)
+subprocess.run(f"rsync --archive --compress --update --verbose {host}:.claude/projects/ ~/.claude/projects/", shell=True, check=True)
 
 # Push: our sessions out, keeping any remotely-newer file.
-subprocess.run(f"tar --create --zstd --directory $HOME/.claude projects | ssh {host} 'tar --extract --zstd --keep-newer-files --directory $HOME/.claude'", shell=True)
+subprocess.run(f"rsync --archive --compress --update --verbose ~/.claude/projects/ {host}:.claude/projects/", shell=True, check=True)
 
 print(f"claude-sync: synced ~/.claude/projects with {host}")
