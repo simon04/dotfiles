@@ -1,25 +1,15 @@
-#!/usr/bin/env bash
-# claude-sync — two-way sync of Claude Code session history with another host
-# over ssh+tar. Each session is an append-only <uuid>.jsonl file, so a
-# newest-wins union merge is safe: new sessions are added, updated sessions
-# take the newer copy, and nothing is ever deleted.
-#
-# Usage: claude-sync <other-host>   (host as accepted by ssh, e.g. an alias)
-set -o errexit -o nounset -o pipefail
+#!/usr/bin/env python3
+# claude-sync <other-host> — two-way sync of Claude Code sessions over ssh+tar.
+# Each session is an append-only <uuid>.jsonl file, so --keep-newer-files gives
+# a safe newest-wins union merge: nothing is deleted, newer copies win.
+import subprocess, sys
 
-HOST=${1:-}
+host = sys.argv[1]
 
-if [[ -z $HOST ]]; then
-  echo "usage: claude-sync <other-host>" >&2
-  exit 2
-fi
+# Pull: remote sessions in, keeping any locally-newer file.
+subprocess.run(f"ssh {host} 'tar --create --zstd --directory $HOME/.claude projects' | tar --extract --zstd --keep-newer-files --directory $HOME/.claude", shell=True)
 
-# Pull: bring over sessions from the remote, keeping any locally-newer file.
-ssh $HOST 'tar --create --zstd --directory $HOME/.claude projects' \
-  | tar --extract --zstd --keep-newer-files --directory $HOME/.claude
+# Push: our sessions out, keeping any remotely-newer file.
+subprocess.run(f"tar --create --zstd --directory $HOME/.claude projects | ssh {host} 'tar --extract --zstd --keep-newer-files --directory $HOME/.claude'", shell=True)
 
-# Push: send our sessions to the remote, keeping any remotely-newer file.
-tar --create --zstd --directory $HOME/.claude projects \
-  | ssh $HOST 'tar --extract --zstd --keep-newer-files --directory $HOME/.claude'
-
-echo "claude-sync: synced $HOME/.claude/projects with $HOST"
+print(f"claude-sync: synced ~/.claude/projects with {host}")
