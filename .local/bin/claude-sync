@@ -1,15 +1,26 @@
 #!/usr/bin/env python3
 # claude-sync <other-host> — two-way sync of Claude Code sessions over rsync+ssh.
-# --update = skip files newer on the receiver; no --delete = nothing removed.
-# So it's a safe additive newest-wins merge of the append-only session files.
-import subprocess, sys
+#
+# Project dirs are named after the repo's absolute path with / -> -, so the home
+# prefix differs across OSes (Linux -home-simon-... vs macOS -Users-simon-...).
+# We translate that prefix per dir so a session made on one lands where the other
+# looks it up on --resume. --update keeps the newer copy; no --delete stays additive.
+import subprocess, sys, os
 
 host = sys.argv[1]
 
-# Pull: remote sessions in, keeping any locally-newer file.
-subprocess.run(f"rsync --archive --compress --update --verbose {host}:.claude/projects/ ~/.claude/projects/", shell=True, check=True)
+# Encoded home prefixes, computed from each machine's real $HOME.
+local = os.environ["HOME"].replace("/", "-")
+remote = subprocess.run(f"ssh {host} 'echo $HOME'", shell=True, capture_output=True, text=True, check=True).stdout.strip().replace("/", "-")
 
-# Push: our sessions out, keeping any remotely-newer file.
-subprocess.run(f"rsync --archive --compress --update --verbose ~/.claude/projects/ {host}:.claude/projects/", shell=True, check=True)
+# Pull: each remote project dir in, prefix retranslated to local, keeping locally-newer files.
+for d in subprocess.run(f"ssh {host} 'ls ~/.claude/projects'", shell=True, capture_output=True, text=True, check=True).stdout.split():
+    t = d.replace(remote, local, 1) if d.startswith(remote) else d
+    subprocess.run(f"rsync --archive --compress --update --verbose {host}:.claude/projects/{d}/ ~/.claude/projects/{t}/", shell=True, check=True)
+
+# Push: each local project dir out, prefix retranslated to remote, keeping remotely-newer files.
+for d in os.listdir(os.path.expanduser("~/.claude/projects")):
+    t = d.replace(local, remote, 1) if d.startswith(local) else d
+    subprocess.run(f"rsync --archive --compress --update --verbose ~/.claude/projects/{d}/ {host}:.claude/projects/{t}/", shell=True, check=True)
 
 print(f"claude-sync: synced ~/.claude/projects with {host}")
