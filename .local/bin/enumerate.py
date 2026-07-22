@@ -14,7 +14,7 @@ class Args(argparse.Namespace):
 
     pattern: Optional[str]  # -f glob pattern
     lines_file: Optional[str]  # -l file (or '-' for stdin)
-    num_range: Optional[list[int]]  # -r [start, end]
+    num_range: Optional[list[str]]  # -r [start, end] (raw, to preserve zero-padding)
     items: Optional[list[str]]  # -L items
     command: Optional[str]  # trailing shell command
 
@@ -32,6 +32,7 @@ def build_parser() -> argparse.ArgumentParser:
             "  enumerate --files '*.sh' 'wc -l {}'\n"
             "  enumerate --lines /etc/hosts 'echo {}'\n"
             "  enumerate --range 1 10 'printf \"n=%d\\n\" {}'\n"
+            "  enumerate --range 001 010 'echo {}'\n"
             "  enumerate --list a b c 'echo item: {}'\n"
             "  enumerate --files '*.log' | xargs rm\n"
             '  cat urls.txt | enumerate --lines - | while read url; do curl -s "$url"; done'
@@ -53,9 +54,8 @@ def build_parser() -> argparse.ArgumentParser:
         "--range",
         dest="num_range",
         nargs=2,
-        type=int,
         metavar=("START", "END"),
-        help="an inclusive integer range",
+        help="an inclusive integer range (leading zeros pad the output width)",
     )
     source.add_argument(
         "-L",
@@ -89,9 +89,12 @@ def collect_items(ns: Args) -> list[str]:
                 stream.close()
 
     if ns.num_range is not None:
-        start, end = ns.num_range
+        start_s, end_s = ns.num_range
+        start, end = int(start_s), int(end_s)
         step = 1 if start <= end else -1
-        return [str(n) for n in range(start, end + step, step)]
+        padded = any(len(d) > 1 and d.startswith("0") for d in (start_s.lstrip("+-"), end_s.lstrip("+-")))
+        width = max(len(start_s), len(end_s)) if padded else 0
+        return [str(n).zfill(width) for n in range(start, end + step, step)]
 
     assert ns.items is not None  # guaranteed by the required mutually-exclusive group
     return list(ns.items)
