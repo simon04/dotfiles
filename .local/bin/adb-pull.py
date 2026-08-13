@@ -2,8 +2,8 @@
 import argparse
 import datetime
 import pathlib
-import subprocess
 import re
+import subprocess
 
 
 class Arguments:
