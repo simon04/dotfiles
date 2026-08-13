@@ -6,17 +6,16 @@ import glob
 import shlex
 import subprocess
 import sys
-from typing import Optional
 
 
 class Args(argparse.Namespace):
     """Typed view of the parsed arguments (exactly one source is non-None)."""
 
-    pattern: Optional[str]  # -f glob pattern
-    lines_file: Optional[str]  # -l file (or '-' for stdin)
-    num_range: Optional[list[str]]  # -r [start, end] (raw, to preserve zero-padding)
-    items: Optional[list[str]]  # -L items
-    command: Optional[str]  # trailing shell command
+    pattern: str | None  # -f glob pattern
+    lines_file: str | None  # -l file (or '-' for stdin)
+    num_range: list[str] | None  # -r [start, end] (raw, to preserve zero-padding)
+    items: list[str] | None  # -L items
+    command: str | None  # trailing shell command
 
 
 def build_parser() -> argparse.ArgumentParser:
