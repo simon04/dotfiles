@@ -6,7 +6,7 @@ def file_as_set(file: str) -> set[str]:
     with open(
         file,
     ) as f:
-        lines = [line.strip() for line in f.readlines()]
+        lines = [line.strip() for line in f]
         return set(lines)
 
 
