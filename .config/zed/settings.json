@@ -1,0 +1,80 @@
+{
+  "auto_install_extensions": {
+    "html": true,
+    "java": true,
+    "oxc": true,
+    "php": true,
+    "ruby": true,
+    "sql": true,
+    "toml": true,
+    "vue": true,
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "model": "default",
+        "mode": "auto",
+      },
+      "type": "registry",
+    },
+  },
+  "edit_predictions": {
+    "provider": "none",
+  },
+  "cli_default_open_behavior": "new_window",
+  "project_panel": {
+    "indent_size": 8.0,
+    "dock": "left",
+  },
+  "outline_panel": {
+    "indent_size": 16.0,
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5",
+      "enable_thinking": true,
+    },
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "disable_ai": false,
+  "format_on_save": "off",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "terminal": {
+    "font_family": "Lilex",
+    "detect_venv": "off",
+  },
+  "languages": {
+    "JSON": {
+      "formatter": {
+        "external": {
+          "command": "jq",
+          "arguments": ["-S", "."],
+        },
+      },
+    },
+    "Python": {
+      "language_servers": ["ty", "ruff", "!basedpyright"],
+      "formatter": {
+        "language_server": {
+          "name": "ruff",
+        },
+      },
+      "format_on_save": "on",
+    },
+  },
+}
