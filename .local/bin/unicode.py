@@ -1,12 +1,30 @@
 #!/usr/bin/env python3
+import argparse
 import re
-import sys
 import unicodedata
 
+parser = argparse.ArgumentParser(
+    description="Search Unicode characters by name and print them "
+    "as code point, escape sequence, HTML entity, character and name."
+)
+parser.add_argument(
+    "pattern",
+    nargs="?",
+    help="regular expression to filter the output lines (case-insensitive)",
+)
+parser.add_argument(
+    "-n",
+    "--count",
+    type=int,
+    default=20,
+    help="maximum number of characters to print (default: %(default)s)",
+)
+args = parser.parse_args()
+
 i = 0
-pattern = re.compile(sys.argv[1], re.IGNORECASE) if len(sys.argv) > 1 else None
+pattern = re.compile(args.pattern, re.IGNORECASE) if args.pattern else None
 for codeptx in range(0x20000):
-    if i > 20:
+    if i >= args.count:
         break
     try:
         c = chr(codeptx)
