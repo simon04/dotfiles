@@ -19,11 +19,6 @@ for dir in dirs:
     print()
     print(f"== {dir.parent} ==")
     subprocess.run(
-        [
-            "git",
-            "--no-pager",
-            "-C",
-            dir.parent,
-            *sys.argv[1:],
-        ]
+        args=["git", "--no-pager", *sys.argv[1:]],
+        cwd=dir.parent,
     )
