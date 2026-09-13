@@ -10,8 +10,8 @@ import subprocess
 class Arguments:
     start: datetime.date
     end: datetime.date
-    remote_path: str
-    local_path: pathlib.Path | None
+    remote_source: str
+    local_source: pathlib.Path | None
     target: pathlib.Path
 
 
@@ -20,8 +20,8 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument("start", type=datetime.date.fromisoformat)
 parser.add_argument("end", type=datetime.date.fromisoformat)
-parser.add_argument("--remote-path", default="/sdcard/DCIM/Camera/")
-parser.add_argument("--local-path", type=pathlib.Path)
+parser.add_argument("--remote-source", default="/sdcard/DCIM/Camera/")
+parser.add_argument("--local-source", type=pathlib.Path)
 parser.add_argument("--target", default="~/Fotos/", type=pathlib.Path)
 args = parser.parse_args(namespace=Arguments)
 args.target = args.target.expanduser()
@@ -40,10 +40,10 @@ def make_target(date: datetime.date) -> pathlib.Path:
     return target
 
 
-if args.local_path:
+if args.local_source:
     images = [
         (img, d)
-        for img in args.local_path.expanduser().iterdir()
+        for img in args.local_source.expanduser().iterdir()
         if img.is_file()
         if (d := date_in_range(img.name))
     ]
@@ -52,7 +52,7 @@ if args.local_path:
     raise SystemExit
 
 p = subprocess.run(
-    ["adb", "shell", "ls", args.remote_path],
+    ["adb", "shell", "ls", args.remote_source],
     capture_output=True,
     check=True,
     text=True,
@@ -62,5 +62,5 @@ images = [(img, d) for img in p.stdout.splitlines() if (d := date_in_range(img))
 
 for img, date in sorted(images):
     subprocess.run(
-        ["adb", "pull", args.remote_path + img, str(make_target(date))], check=True
+        ["adb", "pull", args.remote_source + img, str(make_target(date))], check=True
     )
