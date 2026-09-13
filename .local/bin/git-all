@@ -18,7 +18,7 @@ dirs = sorted(
 for dir in dirs:
     print()
     print(f"== {dir.parent} ==")
-    subprocess.run(
-        args=["git", "--no-pager", *sys.argv[1:]],
-        cwd=dir.parent,
-    )
+    args = ["git", "--no-pager", *sys.argv[1:]]
+    if len(sys.argv) > 1 and sys.argv[1].startswith("!"):
+        args = [sys.argv[1].removeprefix("!"), *sys.argv[2:]]
+    subprocess.run(args=args, cwd=dir.parent, check=False)
