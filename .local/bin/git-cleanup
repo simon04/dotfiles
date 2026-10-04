@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 """
-Delete local branches whose commits were merged via Gerrit.
+Delete local branches that were merged upstream or whose remote branch is gone.
 
-Gerrit often merges a rebased version of a change, so the merged commit has a
-different hash and `git branch --merged` doesn't recognize it. This script
-compares the Change-Id trailers instead: a branch counts as merged if every
-commit it has beyond the upstream branch has a Change-Id that is found in the
-upstream branch.
+A branch is deleted if one of the following holds:
+
+- it has no commits beyond the upstream branch (like `git branch --merged`),
+- every commit beyond upstream has a Change-Id found in upstream (Gerrit merges
+  a rebased version of a change, so the hashes differ),
+- every commit beyond upstream has a patch-equivalent commit in upstream
+  (`git cherry`, for rebase merges without Change-Ids),
+- its remote-tracking branch is gone (e.g. deleted after a squash-merged PR).
+
+Branches checked out in a worktree are kept.
 
 Usage:
-    git cleanup-gerrit              # delete the merged branches
-    git cleanup-gerrit --dry-run    # only list them
+    git cleanup              # delete the merged branches
+    git cleanup --dry-run    # only list them
 """
 
 import argparse
@@ -43,6 +48,28 @@ def change_ids(rev_range: str) -> list[str]:
     return [cid.strip() for line in output.splitlines() for cid in line.split(',') if cid.strip()]
 
 
+def branch_status(upstream: str, branch: str, track: str, merged_ids: set[str]) -> tuple[str, bool]:
+    """A description of the branch's state and whether it can be deleted."""
+    commits = int(git('rev-list', '--count', f'{upstream}..{branch}'))
+    if commits == 0:
+        return f'nothing beyond {upstream}', True
+    if track == '[gone]':
+        return 'remote branch gone', True
+
+    ids = change_ids(f'{upstream}..{branch}')
+    missing = [cid for cid in ids if cid not in merged_ids]
+    if len(ids) == commits and not missing:
+        return 'merged (Change-Id)', True
+
+    cherry = git('cherry', upstream, branch).splitlines()
+    if all(line.startswith('-') for line in cherry):
+        return 'merged (patch-id)', True
+
+    if ids and len(missing) < len(ids):
+        return f'partially merged ({len(ids) - len(missing)}/{len(ids)})', False
+    return 'unmerged', False
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--remote', default='origin', help='remote to compare with (default: origin)')
@@ -58,31 +85,17 @@ def main() -> None:
 
     # All Change-Ids in the upstream branch, looked up once
     merged_ids = set(change_ids(upstream))
-    current = git('branch', '--show-current')
     upstream_name = upstream.split('/', 1)[-1]
 
     merged = []
-    for branch in git('for-each-ref', '--format=%(refname:short)', 'refs/heads/').splitlines():
+    refs = git('for-each-ref', '--format=%(refname:short)%00%(upstream:track)%00%(worktreepath)', 'refs/heads/')
+    for line in refs.splitlines():
+        branch, track, worktree = line.split('\0')
         if branch == upstream_name:
             continue
-        ids = change_ids(f'{upstream}..{branch}')
-        commits = int(git('rev-list', '--count', f'{upstream}..{branch}'))
-        if commits == 0:
-            status = 'nothing beyond ' + upstream
-        elif len(ids) < commits:
-            status = 'unmerged (commits without Change-Id)'
-        else:
-            missing = [cid for cid in ids if cid not in merged_ids]
-            if not missing:
-                status = 'merged'
-            elif len(missing) < len(ids):
-                status = f'partially merged ({len(ids) - len(missing)}/{len(ids)})'
-            else:
-                status = 'unmerged'
-
-        deletable = status == 'merged' or status.startswith('nothing beyond')
-        if deletable and branch == current:
-            status += ', current branch, kept'
+        status, deletable = branch_status(upstream, branch, track, merged_ids)
+        if deletable and worktree:
+            status += f', checked out in {worktree}, kept'
             deletable = False
         if deletable:
             merged.append(branch)
