@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""Download the latest patchset of all your open Gerrit changes via `git review -d`.
+
+Reads host/port/project from .gitreview and queries Gerrit over SSH for
+`owner:self status:open project:<project>`. Returns to the original branch
+afterwards.
+"""
+
+import argparse
+import configparser
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+
+def git(*args: str) -> str:
+    return subprocess.run(
+        ["git", *args], check=True, capture_output=True, text=True
+    ).stdout.strip()
+
+
+def read_gitreview(toplevel: Path) -> configparser.SectionProxy:
+    path = toplevel / ".gitreview"
+    if not path.is_file():
+        sys.exit(f"error: {path} not found")
+    config = configparser.ConfigParser()
+    config.read(path)
+    if "gerrit" not in config:
+        sys.exit(f"error: no [gerrit] section in {path}")
+    return config["gerrit"]
+
+
+def query_open_changes(host: str, port: str, user: str, project: str) -> list[dict]:
+    target = f"{user}@{host}"
+    query = f"owner:self status:open project:{project}"
+    output = subprocess.run(
+        ["ssh", "-p", port, target, "gerrit", "query", "--format=JSON", query],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout
+    changes = [json.loads(line) for line in output.splitlines() if line.strip()]
+    # The last line is a stats record, not a change
+    return [c for c in changes if "number" in c]
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "-u", "--user", default="simon04", help="Gerrit SSH username (default: %(default)s)"
+    )
+    parser.add_argument(
+        "-n", "--dry-run", action="store_true", help="only list the changes"
+    )
+    args = parser.parse_args()
+
+    toplevel = Path(git("rev-parse", "--show-toplevel"))
+    gerrit = read_gitreview(toplevel)
+    host = gerrit.get("host")
+    if not host:
+        sys.exit("error: no host in .gitreview")
+    port = gerrit.get("port", "29418")
+    project = gerrit.get("project", "").removesuffix(".git")
+    if not project:
+        sys.exit("error: no project in .gitreview")
+
+    changes = query_open_changes(host, port, args.user, project)
+    if not changes:
+        print(f"No open changes for {project}")
+        return
+
+    for change in changes:
+        print(f"{change['number']}  {change.get('branch', '')}  {change['subject']}")
+    if args.dry_run:
+        return
+
+    if git("status", "--porcelain", "--untracked-files=no"):
+        sys.exit("error: working tree has uncommitted changes")
+
+    original = git("rev-parse", "--abbrev-ref", "HEAD")
+    if original == "HEAD":
+        original = git("rev-parse", "HEAD")
+
+    failed = []
+    for change in changes:
+        number = str(change["number"])
+        print(f"\n==> git review -d {number}")
+        if subprocess.run(["git", "review", "-d", number]).returncode != 0:
+            failed.append(number)
+
+    subprocess.run(["git", "checkout", "--quiet", original], check=True)
+
+    if failed:
+        sys.exit(f"\nFailed: {', '.join(failed)}")
+
+
+if __name__ == "__main__":
+    main()
