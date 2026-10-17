@@ -151,3 +151,33 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+# Original prompt (edited for clarity):
+#
+# Write a new, self-contained, single-file Python script targeting Python 3.15,
+# with no external dependencies: a "zip grep". It searches file names inside
+# zip or jar archives using a glob pattern, and/or searches the contents of
+# those files using a regex. Use argparse.
+#
+# The script works in three steps:
+#
+# 1. Take all archive paths from argv. If an argument contains a "*", expand
+#    it with pathlib glob (e.g. '**/*.zip' or '**/*.jar'). After this step we
+#    have a list of zip/jar files.
+# 2. Enumerate all members of the archives from step 1 and filter them by a
+#    glob pattern given as an option (suggest good names, e.g.
+#    `--files 'foo/bar/*txt'`).
+# 3. Search the text lines of the members from step 2 with a regex, unless no
+#    pattern is given (suggested syntax: `--grep '^example.*line'`).
+#
+# The options for steps 2 and 3 default to matching everything. By default,
+# report the matches of steps 2 and 3.
+#
+# If an `--extract-to` option is given, extract the matching members with
+# their full paths into the given directory, creating it if required. Guard
+# against path traversal.
+#
+# Use idiomatic Python 3.15 standard library code. No error handling is
+# needed; simply fail hard on any exception. The argparse help shall have good
+# documentation and examples. The script shall work on Windows and Linux.
