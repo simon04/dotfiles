@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""Split a file into several new files while preserving git history (blame/log --follow).
+
+For each new name, a side commit renames the original file to that name.
+All side commits are then merged in an octopus merge, so every new file
+traces its history back to the original.
+"""
+
+import argparse
+import os
+import subprocess
+import sys
+
+
+def git(*args, env=None, input=None):
+    return subprocess.run(
+        ["git", *args], check=True, text=True, capture_output=True, env=env, input=input
+    ).stdout.strip()
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("source", help="existing tracked file")
+    parser.add_argument("targets", nargs="+", help="new file names")
+    parser.add_argument("-k", "--keep", action="store_true", help="keep the original file")
+    args = parser.parse_args()
+
+    if len(args.targets) < 2 and not args.keep:
+        parser.error("need at least 2 targets (or 1 target with --keep)")
+
+    top = git("rev-parse", "--show-toplevel")
+    prefix = git("rev-parse", "--show-prefix")
+    src = os.path.normpath(prefix + args.source)
+    targets = [os.path.normpath(prefix + t) for t in args.targets]
+
+    if git("status", "--porcelain", "--", src):
+        sys.exit(f"error: {src} has uncommitted changes")
+    for t in targets:
+        if os.path.exists(os.path.join(top, t)):
+            sys.exit(f"error: {t} already exists")
+
+    head = git("rev-parse", "HEAD")
+    mode, _, blob = git("ls-tree", "HEAD", "--", src).split(None, 3)[:3]
+
+    # One side commit per target: rename src -> target, built in a temporary index.
+    index = os.path.join(git("rev-parse", "--absolute-git-dir"), "split-index")
+    env = {**os.environ, "GIT_INDEX_FILE": index}
+    sides = []
+    try:
+        for t in targets:
+            git("read-tree", head, env=env)
+            git("update-index", "--force-remove", "--", src, env=env)
+            git("update-index", "--add", "--cacheinfo", f"{mode},{blob},{t}", env=env)
+            tree = git("write-tree", env=env)
+            sides.append(git("commit-tree", tree, "-p", head, "-m", f"Split {src} into {t}", env=env))
+    finally:
+        if os.path.exists(index):
+            os.remove(index)
+
+    # Merge all side commits; resulting tree contains all targets (and src if --keep).
+    git("merge", "--no-commit", "--no-ff", "-s", "ours", *sides)
+    for t in targets:
+        git("update-index", "--add", "--cacheinfo", f"{mode},{blob},{t}")
+        git("checkout", "--", t)
+    if not args.keep:
+        git("rm", "-q", "--", src)
+    git("commit", "-q", "-m", f"Split {src} into {', '.join(targets)}")
+    print(git("log", "--oneline", "-1"))
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except subprocess.CalledProcessError as e:
+        sys.exit(f"error: {' '.join(e.cmd)}\n{e.stderr}")
