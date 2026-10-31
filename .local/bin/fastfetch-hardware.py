@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Save the hardware summary of this host (fastfetch without volatile values) to a text file."""
+"""Save the hardware summary of this host or of SSH hosts (fastfetch without volatile values) to text files."""
 
 import argparse
 import json
 import os
 import pathlib
-import socket
 import subprocess
+import sys
 
 CONFIG = {
     "logo": None,
@@ -38,23 +38,41 @@ data_home = pathlib.Path(os.environ.get("XDG_DATA_HOME") or "~/.local/share")
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument(
+    "hosts",
+    nargs="*",
+    metavar="HOST",
+    help="SSH destination to run fastfetch on (default: run locally)",
+)
+parser.add_argument(
     "--target",
     default=data_home / "fastfetch" / "hosts",
     type=pathlib.Path,
     help="directory to write HOSTNAME.txt to (default: %(default)s)",
 )
 args = parser.parse_args()
-
-p = subprocess.run(
-    ["fastfetch", "--config", "-"],
-    input=json.dumps(CONFIG),
-    capture_output=True,
-    check=True,
-    text=True,
-)
-
 target = args.target.expanduser()
 target.mkdir(parents=True, exist_ok=True)
-file = target / f"{socket.gethostname().split('.')[0]}.txt"
-file.write_text(p.stdout)
-print(file)
+
+# non-interactive SSH sessions lack the Homebrew bin dirs (macOS) in PATH
+REMOTE = "sh -c 'PATH=$PATH:/opt/homebrew/bin:/usr/local/bin exec fastfetch --config -'"
+
+failed = False
+for host in args.hosts or [None]:
+    command = ["ssh", host, REMOTE] if host else ["fastfetch", "--config", "-"]
+    p = subprocess.run(
+        command,
+        input=json.dumps(CONFIG),
+        capture_output=True,
+        text=True,
+    )
+    if p.returncode or not p.stdout:
+        print(f"{host or 'localhost'}: failed: {p.stderr.strip()}", file=sys.stderr)
+        failed = True
+        continue
+    # first line is the title module, i.e. the host name
+    name = p.stdout.splitlines()[0].split(".")[0]
+    file = target / f"{name}.txt"
+    file.write_text(p.stdout)
+    print(file)
+
+raise SystemExit(failed)
