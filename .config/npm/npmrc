@@ -1,3 +1,5 @@
 cache=${XDG_CACHE_HOME}/npm
 init-module=${XDG_CONFIG_HOME}/npm/config/npm-init.js
 prefix=${XDG_DATA_HOME}/npm
+@albina-euregio:registry=https://gitlab.com/api/v4/packages/npm/
+@eaws:registry=https://gitlab.com/api/v4/packages/npm/
