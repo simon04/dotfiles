@@ -65,3 +65,5 @@
 	enabled = true
 [column]
 	ui = auto
+[fetch]
+	prune = true
