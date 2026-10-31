@@ -44,6 +44,4 @@ nmap <silent> <leader>d :set spell! spelllang=de<CR>
 "nnoremap ? ?\v
 
 " Create File if not exist
-nnoremap gc :e <cfile><cr>
-
 map gf :e <cfile><CR>
