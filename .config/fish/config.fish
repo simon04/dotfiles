@@ -1,5 +1,6 @@
 function setenv; set -gx $argv; end
 source $HOME/.env
+test -x /opt/homebrew/bin/brew && /opt/homebrew/bin/brew shellenv fish | source
 
 command --query nvim && set --export EDITOR nvim || set --export EDITOR vim
 
