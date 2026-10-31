@@ -20,3 +20,4 @@ autocmd BufNewFile,BufRead /tmp/bash-* setl syntax=sh
 
 autocmd BufReadCmd *.odt,*.ott,*.ods,*.ots,*.odp,*.otp,*.odg,*.otg call zip#Browse(expand("<amatch>"))
 autocmd BufReadCmd *.joz call zip#Browse(expand("<amatch>"))
+autocmd BufReadCmd *.vsix call zip#Browse(expand("<amatch>"))
