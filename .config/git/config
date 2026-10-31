@@ -50,6 +50,7 @@
 [diff]
 	tool = vimdiff
 	colormovedws = allow-indentation-change
+	algorithm = histogram
 [difftool]
 	prompt = true
 [difftool "vimdiff"]
