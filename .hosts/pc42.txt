@@ -1,0 +1,26 @@
+pc42
+OS: Fedora Linux 45 (KDE Plasma Desktop Edition) x86_64
+Host: X600M-STX
+Board: X600M-STX
+BIOS (UEFI): 4.14 (5.35)
+Kernel: Linux 7.2.8-300.fc45.x86_64
+CPU: AMD Ryzen 7 8700G (16) @ 4.20 GHz
+GPU: AMD Phoenix1 [Integrated]
+Memory: 91.40 GiB
+Swap: 8.00 GiB
+Disk (/): 231.28 GiB - btrfs
+Disk (/mnt/Backup): 3.64 TiB - btrfs
+Physical Disk (ATA Samsung SSD 870): 3.64 TiB [SSD, Fixed]
+Physical Disk (Samsung SSD 970 EVO Plus 250GB): 232.89 GiB [SSD, Fixed]
+Physical Disk (dm-0): 231.28 GiB [Virtual, Fixed]
+Physical Disk (dm-1): 3.64 TiB [Virtual, Fixed]
+Physical Disk (zram0): 8.00 GiB [Virtual, Fixed]
+Display (DELL P3222QE): 3840x2160 @ 1.2x in 31", 60 Hz [External] *
+Display (DELL U2717D): 1440x2560 in 27", 60 Hz [External]
+Display (DELL U2412M): 1200x1920 in 24", 60 Hz [External]
+Monitor (DELL P3222QE): 3840x2160 px @ 59.997 Hz - 697x392 mm (31.48 inches, 139.94 ppi)
+Monitor (DELL U2717D): 1440x2560 px @ 59.951 Hz - 336x597 mm (26.97 inches, 108.90 ppi)
+Monitor (DELL U2412M): 1200x1920 px @ 59.95 Hz - 324x518 mm (24.05 inches, 94.13 ppi)
+Sound: Dummy Output
+Camera: HD Webcam C525 - sRGB (640x480 px)
+TPM: 2.0

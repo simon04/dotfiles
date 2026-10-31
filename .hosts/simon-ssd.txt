@@ -1,0 +1,25 @@
+simon-ssd
+OS: Fedora Linux 45 (KDE Plasma Desktop Edition) x86_64
+Host: MS-7E02 (1.0)
+Board: PRO B760M-P DDR4 (MS-7E02) (1.0)
+BIOS (UEFI): 1.H0 (5.32)
+Kernel: Linux 7.2.11-300.fc45.x86_64
+CPU: Intel(R) Core(TM) i5-14600K (12+8) @ 5.30 GHz
+GPU: Intel UHD Graphics 770 @ 1.55 GHz [Integrated]
+Memory: 31.01 GiB
+Swap: 8.00 GiB
+Disk (/): 464.16 GiB - btrfs
+Disk (/media/SDSSDA): 1.82 TiB - btrfs
+Disk (/media/WD): 1.82 TiB - btrfs
+Physical Disk (ATA ST2000LM015-2E81): 1.82 TiB [HDD, Fixed]
+Physical Disk (ATA SanDisk SDSSDA-2): 1.82 TiB [SSD, Fixed]
+Physical Disk (ATA WDC WD30EZRZ-00G): 2.73 TiB [HDD, Fixed]
+Physical Disk (Samsung SSD 970 EVO 500GB): 465.76 GiB [SSD, Fixed]
+Physical Disk (dm-0): 464.16 GiB [Virtual, Fixed]
+Physical Disk (dm-1): 1.82 TiB [Virtual, Fixed]
+Physical Disk (dm-2): 1.82 TiB [Virtual, Fixed]
+Physical Disk (zram0): 8.00 GiB [Virtual, Fixed]
+Display (L32p-30): 3840x2160 @ 1.09x in 31", 60 Hz [External]
+Monitor (L32p-30): 3840x2160 px @ 60 Hz - 697x392 mm (31.48 inches, 139.94 ppi) [HDR Compatible]
+Sound: Sound Blaster Play! 3 Analog Stereo
+TPM: 2.0

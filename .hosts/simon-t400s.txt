@@ -1,0 +1,17 @@
+simon-t400s
+OS: Fedora Linux 45 (KDE Plasma Desktop Edition) x86_64
+Host: 2808D9G (ThinkPad T400s)
+Board: 2808D9G
+BIOS (Legacy): 6HET35WW (1.20 ) (1.32)
+Kernel: Linux 7.2.11-300.fc45.x86_64
+CPU: Intel(R) Core(TM)2 Duo P9400 (2) @ 2.40 GHz
+GPU: Intel Mobile 4 Series Chipset Integrated Graphics Controller [Integrated]
+Memory: 7.64 GiB
+Swap: 0 B
+Disk (/): 118.24 GiB - btrfs
+Physical Disk (ATA SAMSUNG MMCRE28G): 119.24 GiB [SSD, Fixed]
+Display (LEN4036): 1440x900 in 14", 60 Hz [Built-in]
+Monitor (LEN4036): 1440x900 px @ 60.048 Hz - 304x190 mm (14.11 inches, 120.32 ppi)
+Sound: Built-in Audio Analog Stereo
+Camera: Integrated Camera: Integrated C - sRGB (640x480 px)
+TPM: 1

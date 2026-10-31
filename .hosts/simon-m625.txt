@@ -1,0 +1,17 @@
+simon-m625
+OS: AlmaLinux 10.2 (Lavender Lion) x86_64
+Host: 10UYS0CP00 (ThinkCentre M625q)
+Board: 312F (NOK)
+BIOS (UEFI): M1WKT28A (0.28)
+Kernel: Linux 6.12.0-211.68.1.el10_2.x86_64
+CPU: AMD E2-9000e RADEON R2, 4 COMPUTE CORES 2C+2G (2) @ 1.50 GHz
+GPU: AMD Radeon R2 Graphics [Integrated]
+Memory: 3.02 GiB
+Swap: 3.39 GiB
+Disk (/): 69.94 GiB - xfs
+Disk (/home): 401.76 GiB - xfs
+Physical Disk (LENSE20512GMSP34MEAT2TA): 476.94 GiB [SSD, Fixed]
+Physical Disk (dm-0): 70.00 GiB [Virtual, Fixed]
+Physical Disk (dm-1): 3.39 GiB [Virtual, Fixed]
+Physical Disk (dm-2): 401.96 GiB [Virtual, Fixed]
+TPM: 2.0

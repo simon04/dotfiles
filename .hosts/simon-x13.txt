@@ -1,0 +1,20 @@
+simon-x13
+OS: Fedora Linux 45 (KDE Plasma Desktop Edition) x86_64
+Host: 20UGS0SB00 (ThinkPad X13 Gen 1)
+Board: 20UGS0SB00
+BIOS (UEFI): R1CET85W(1.54 ) (1.54)
+Kernel: Linux 7.2.11-300.fc45.x86_64
+CPU: AMD Ryzen 5 PRO 4650U (12) @ 4.00 GHz
+GPU: AMD Radeon Vega Series / Radeon Vega Mobile Series [Integrated]
+Memory: 14.84 GiB
+Swap: 8.00 GiB
+Disk (/): 463.16 GiB - btrfs
+Physical Disk (Samsung SSD 970 EVO Plus 500GB): 465.76 GiB [SSD, Fixed]
+Physical Disk (dm-0): 463.16 GiB [Virtual, Fixed]
+Physical Disk (zram0): 8.00 GiB [Virtual, Fixed]
+Display (LEN4094): 1920x1080 @ 1.09x in 13", 60 Hz [Built-in]
+Monitor (LEN4094): 1920x1080 px @ 60.033 Hz - 293x165 mm (13.24 inches, 166.40 ppi)
+Battery (5B10W139): SMP 5B10W139 (Li-poly)
+Sound: Ryzen HD Audio Controller Speaker
+Camera: Integrated Camera: Integrated C - sRGB (1280x720 px)
+TPM: 2.0

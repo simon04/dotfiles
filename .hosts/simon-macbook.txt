@@ -1,0 +1,19 @@
+simon-macbook
+OS: macOS Golden Gate 27.2 (26B123) arm64
+Host: MacBook Pro (14-inch, 2024, Three Thunderbolt 4 ports)
+Board: J604AP
+BIOS (mBoot): 20457.41.3
+Kernel: Darwin 27.2.0
+CPU: Apple M4 (4+6) @ 4.46 GHz
+GPU: Apple M4 (10) @ 1.58 GHz [Integrated]
+Memory: 16.00 GiB
+Physical Memory: 16.00 GiB - LPDDR5 (Hynix)
+Swap: 0 B
+Disk (/): 460.43 GiB - apfs
+Physical Disk (APPLE SSD AP0512Z Media): 465.92 GiB [SSD, Fixed]
+Display (Color LCD): 3600x2338 @ 2x in 14", 120 Hz [Built-in]
+Monitor (Color LCD): 3600x2338 px @ 120 Hz - 302x196 mm (14.17 inches, 302.84 ppi) [HDR Compatible]
+Battery (bq40z651): Apple Inc. bq40z651 (Lithium)
+Sound: MacBook Pro Speakers
+Camera: MacBook Pro Camera - sRGB (1920x1080 px)
+TPM: Apple Silicon Security
