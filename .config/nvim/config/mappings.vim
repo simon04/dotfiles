@@ -33,7 +33,7 @@ map <down> <c-w>w
 map <up> <c-w>W
 
 " Will allow you to use :W!! to write to a file using sudo if you forgot to sudo vim file (it will prompt for sudo password when writing)
-cmap W!! %!sudo tee > /dev/null %
+cnoremap <expr> W!! getcmdtype() == ':' ? 'SudoWrite' : 'W!!'
 
 " Toggle spell checking on and off with `,s`
 nmap <silent> <leader>s :set spell! spelllang=en<CR>
