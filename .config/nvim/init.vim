@@ -9,9 +9,6 @@ Plug 'lewis6991/gitsigns.nvim'
 " A collection of language packs for Vim.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-" Prettier
-Plug 'prettier/vim-prettier'
-
 " Initialize plugin system
 call plug#end()
 
