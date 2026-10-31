@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Save the hardware summary of this host or of SSH hosts (fastfetch without volatile values) to text files."""
+"""Save the hardware summary of this host or of SSH hosts (hyfetch/fastfetch without volatile values) to text files."""
 
 import argparse
 import json
+import re
 import pathlib
 import subprocess
 import sys
 
-CONFIG = {
+FASTFETCH_CONFIG = {
     "logo": None,
     "display": {"pipe": True},
     "modules": [
@@ -33,12 +34,35 @@ CONFIG = {
     ],
 }
 
+# passed with -C /dev/stdin, so hyfetch skips its interactive first-run setup
+HYFETCH_CONFIG = {
+    "preset": "rainbow",
+    "mode": "8bit",
+    "light_dark": "dark",
+    "lightness": 0.65,
+    "color_align": {"mode": "horizontal"},
+    "backend": "neofetch",
+    "args": None,
+    "distro": None,
+    "pride_month_disable": True,
+    "custom_ascii_path": None,
+}
+NEOFETCH_ARGS = (
+    "--config none --stdout --memory_percent off"
+    " --disable uptime packages shell editor de wm theme icons cursor term"
+)
+
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument(
     "hosts",
     nargs="*",
     metavar="HOST",
-    help="SSH destination to run fastfetch on (default: run locally)",
+    help="SSH destination to run hyfetch/fastfetch on (default: run locally)",
+)
+parser.add_argument(
+    "--fastfetch",
+    action="store_true",
+    help="use fastfetch (more details) instead of hyfetch (neofetch backend)",
 )
 parser.add_argument(
     "--target",
@@ -50,26 +74,41 @@ args = parser.parse_args()
 target = args.target.expanduser()
 target.mkdir(parents=True, exist_ok=True)
 
-# non-interactive SSH sessions lack the Homebrew bin dirs (macOS) in PATH
-REMOTE = "sh -c 'PATH=$PATH:/opt/homebrew/bin:/usr/local/bin exec fastfetch --config -'"
+if args.fastfetch:
+    command, config = "fastfetch --config -", FASTFETCH_CONFIG
+else:
+    command, config = f'hyfetch -C /dev/stdin --args="{NEOFETCH_ARGS}"', HYFETCH_CONFIG
+
+
+def clean(output: str) -> str:
+    """Normalize neofetch output: no user@, no underline, no used memory."""
+    lines = [line.rstrip() for line in output.splitlines()]
+    lines[0] = lines[0].split("@")[-1]
+    lines = [line for line in lines if line and not re.fullmatch(r"-+", line)]
+    lines = [re.sub(r"^Memory: .* / ", "Memory: ", line) for line in lines]
+    return "\n".join(lines) + "\n"
+
 
 failed = False
 for host in args.hosts or [None]:
-    command = ["ssh", host, REMOTE] if host else ["fastfetch", "--config", "-"]
     p = subprocess.run(
-        command,
-        input=json.dumps(CONFIG),
+        # non-interactive SSH sessions lack the Homebrew bin dirs (macOS) in PATH
+        ["ssh", host, f"sh -c 'PATH=$PATH:/opt/homebrew/bin:/usr/local/bin exec {command}'"]
+        if host
+        else ["sh", "-c", f"exec {command}"],
+        input=json.dumps(config),
         capture_output=True,
         text=True,
     )
-    if p.returncode or not p.stdout:
+    if p.returncode or not p.stdout.strip():
         print(f"{host or 'localhost'}: failed: {p.stderr.strip()}", file=sys.stderr)
         failed = True
         continue
-    # first line is the title module, i.e. the host name
-    name = p.stdout.splitlines()[0].split(".")[0]
+    output = clean(p.stdout)
+    # first line is the title, i.e. the host name
+    name = output.splitlines()[0].split(".")[0]
     file = target / f"{name}.txt"
-    file.write_text(p.stdout)
+    file.write_text(output)
     print(file)
 
 raise SystemExit(failed)
