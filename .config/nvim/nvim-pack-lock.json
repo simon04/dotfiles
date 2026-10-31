@@ -1,0 +1,12 @@
+{
+  "plugins": {
+    "gitsigns.nvim": {
+      "rev": "1e9d0fbfe7ff848bc402d2c2e2854fb4eff2dce7",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "nvim-treesitter": {
+      "rev": "a2f694478be07f89c2d03cc17858a8745a400c4b",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    }
+  }
+}

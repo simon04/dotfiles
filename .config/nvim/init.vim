@@ -1,18 +1,27 @@
-" https://github.com/junegunn/vim-plug
-call plug#begin(stdpath('data') . '/plugged')
-" Install by running .config/nvim/install-plug.sh
-" https://vimawesome.com/
+" Plugins managed by vim.pack (Neovim 0.12+), see :help vim.pack
+" Update with :lua vim.pack.update()
+lua << EOF
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'nvim-treesitter' and (kind == 'install' or kind == 'update') then
+      if not ev.data.active then
+        vim.cmd.packadd('nvim-treesitter')
+      end
+      vim.cmd('TSUpdate')
+    end
+  end,
+})
 
-" Git integration for buffers
-Plug 'lewis6991/gitsigns.nvim'
+vim.pack.add({
+  -- Git integration for buffers
+  'https://github.com/lewis6991/gitsigns.nvim',
+  -- A collection of language packs for Vim.
+  'https://github.com/nvim-treesitter/nvim-treesitter',
+})
 
-" A collection of language packs for Vim.
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" Initialize plugin system
-call plug#end()
-
-lua require('gitsigns').setup()
+require('gitsigns').setup()
+EOF
 
 " The default vimrc file.
 " https://github.com/vim/vim/blob/master/runtime/defaults.vim
