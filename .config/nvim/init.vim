@@ -26,7 +26,6 @@ if filereadable(".vimrc.local")
 endif
 
 set hlsearch
-set diffopt+=iwhite
 
 set expandtab tabstop=2 shiftwidth=2
 set autoindent
