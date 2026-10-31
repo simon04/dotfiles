@@ -63,3 +63,5 @@
 	sort = -committerdate
 [rerere]
 	enabled = true
+[column]
+	ui = auto
