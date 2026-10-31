@@ -1,0 +1,14 @@
+simon-t470s
+OS: Debian GNU/Linux 13 (trixie) x86_64
+Host: 20HGS4TG00 (ThinkPad T470s)
+Kernel: Linux 6.6.147-09648-g97ef00d8a343
+CPU: Intel(R) Core(TM) i5-7300U (4) @ 2.71 GHz
+GPU: Intel HD Graphics 620 [Integrated]
+Memory: 14.14 GiB
+Physical Memory: 16.00 GiB - DDR4-2133
+Swap: 0 B
+Disk (/): 50.00 GiB - btrfs
+Physical Disk: 476.94 GiB [SSD, Fixed]
+Display: 1920x1080 in 14", 60 Hz [Built-in]
+Camera: Integrated Camera (1280x720 px)
+TPM: 2.0
