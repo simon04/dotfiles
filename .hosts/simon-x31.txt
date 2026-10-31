@@ -1,0 +1,8 @@
+simon-x31
+OS: Debian GNU/Linux 12 (bookworm) i686
+Host: 2672C8G (ThinkPad X31)
+Kernel: Linux 6.1.0-28-686
+CPU: Intel Pentium M 1400MHz (1) @ 1.40 GHz
+GPU: AMD ATI Rage/Radeon Mobility Series
+Memory: 743.00 MiB
+Display: 1024x768
