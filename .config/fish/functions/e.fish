@@ -1,3 +1,3 @@
-function ed --description 'alias e $EDITOR'
+function e --description 'alias e $EDITOR'
 	$EDITOR $argv;
 end
