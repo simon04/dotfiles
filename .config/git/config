@@ -66,3 +66,6 @@
 	ui = auto
 [fetch]
 	prune = true
+[credential "https://github.com"]
+	helper = 
+	helper = !gh auth git-credential
