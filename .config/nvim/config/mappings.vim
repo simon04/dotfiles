@@ -1,10 +1,6 @@
 map 0 ^
 nore ; :
 nore , ;
-"inoremap jj <Esc>
-
-" make Y consistent with C and D
-nnoremap Y y$
 
 nnoremap j gj
 nnoremap k gk
@@ -15,33 +11,21 @@ inoremap <Up> <NOP>
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
 
 " Buffer navigation
-":nmap <C-left> :bprev<CR>
-":nmap <C-right> :bnext<CR>
 map <right> :bn<cr>
 map <left> :bp<cr>
 
 " Split window navigation
-"nmap <c-down> <c-w>w
-"nmap <c-up> <c-w>W
 map <down> <c-w>w
 map <up> <c-w>W
 
 " Will allow you to use :W!! to write to a file using sudo if you forgot to sudo vim file (it will prompt for sudo password when writing)
 cnoremap <expr> W!! getcmdtype() == ':' ? 'SudoWrite' : 'W!!'
 
-" Toggle spell checking on and off with `,s`
+" Toggle spell checking on and off with `<leader>s` (English) and `<leader>d` (German)
 nmap <silent> <leader>s :set spell! spelllang=en<CR>
 nmap <silent> <leader>d :set spell! spelllang=de<CR>
-
-" "Very magic" regexes in searches
-"nnoremap / /\v
-"nnoremap ? ?\v
 
 " Create File if not exist
 map gf :e <cfile><CR>
