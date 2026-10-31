@@ -1,5 +1,4 @@
 command! BuffDiff :w !diff -u % -
-command! Reverse :g/^/m0
 
 " Using xmllint from package libxml2
 command! FormatXML :% !xmllint --format --recover -
