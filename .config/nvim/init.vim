@@ -9,10 +9,6 @@ Plug 'lewis6991/gitsigns.nvim'
 " A collection of language packs for Vim.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-" A command-line fuzzy finder
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-
 " Prettier
 Plug 'prettier/vim-prettier'
 
@@ -64,5 +60,3 @@ noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
-
-noremap <c-p> :GFiles<CR>
