@@ -61,3 +61,5 @@
 	username = simon04
 [branch]
 	sort = -committerdate
+[rerere]
+	enabled = true
