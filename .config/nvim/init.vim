@@ -3,8 +3,8 @@ call plug#begin(stdpath('data') . '/plugged')
 " Install by running .config/nvim/install-plug.sh
 " https://vimawesome.com/
 
-" Git diff in the gutter (sign column)
-Plug 'airblade/vim-gitgutter'
+" Git integration for buffers
+Plug 'lewis6991/gitsigns.nvim'
 
 " A collection of language packs for Vim.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -18,6 +18,8 @@ Plug 'prettier/vim-prettier'
 
 " Initialize plugin system
 call plug#end()
+
+lua require('gitsigns').setup()
 
 " The default vimrc file.
 " https://github.com/vim/vim/blob/master/runtime/defaults.vim
