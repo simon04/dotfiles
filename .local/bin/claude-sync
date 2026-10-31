@@ -1,26 +1,42 @@
 #!/usr/bin/env python3
 # claude-sync <other-host> — two-way sync of Claude Code sessions over rsync+ssh.
 #
-# Project dirs are named after the repo's absolute path with / -> -, so the home
-# prefix differs across OSes (Linux -home-simon-... vs macOS -Users-simon-...).
+# Project dirs are named after the repo's absolute path with every non-alphanumeric
+# char -> -, so the home prefix differs across OSes (Linux -home-simon-... vs macOS
+# -Users-simon-...).
 # We translate that prefix per dir so a session made on one lands where the other
 # looks it up on --resume. --update keeps the newer copy; no --delete stays additive.
-import subprocess, sys, os
+#
+# Pull runs one rsync per dir in parallel over the ssh ControlMaster (rsync >= 3.5
+# refuses --keep-dirlinks on the receiver). Push is a single rsync from a temp dir of
+# symlinks named in the remote scheme, followed via --copy-dirlinks on the sender.
+import subprocess, sys, os, re, tempfile
+from concurrent.futures import ThreadPoolExecutor
 
 host = sys.argv[1]
+projects = os.path.expanduser("~/.claude/projects")
 
-# Encoded home prefixes, computed from each machine's real $HOME.
-local = os.environ["HOME"].replace("/", "-")
-remote = subprocess.run(f"ssh {host} 'echo $HOME'", shell=True, capture_output=True, text=True, check=True).stdout.strip().replace("/", "-")
+# Encoded home prefixes from each machine's real $HOME, plus the remote dir list, in one ssh call.
+out = subprocess.run(["ssh", host, "echo $HOME; ls ~/.claude/projects"], capture_output=True, text=True, check=True).stdout.split("\n")
+encode = lambda p: re.sub(r"[^A-Za-z0-9]", "-", p)
+remote, remote_dirs = encode(out[0].strip()), [d for d in out[1:] if d]
+local = encode(os.environ["HOME"])
+
+def to_local(d): return d.replace(remote, local, 1) if d.startswith(remote) else d
+def to_remote(d): return d.replace(local, remote, 1) if d.startswith(local) else d
+
+rsync = ["rsync", "--archive", "--compress", "--update", "--verbose"]
 
 # Pull: each remote project dir in, prefix retranslated to local, keeping locally-newer files.
-for d in subprocess.run(f"ssh {host} 'ls ~/.claude/projects'", shell=True, capture_output=True, text=True, check=True).stdout.split():
-    t = d.replace(remote, local, 1) if d.startswith(remote) else d
-    subprocess.run(f"rsync --archive --compress --update --verbose {host}:.claude/projects/{d}/ ~/.claude/projects/{t}/", shell=True, check=True)
+# 8 workers stays under sshd's default MaxSessions of 10 per multiplexed connection.
+def pull(d): subprocess.run(rsync + [f"{host}:.claude/projects/{d}/", f"{projects}/{to_local(d)}/"], check=True)
+with ThreadPoolExecutor(8) as pool:
+    list(pool.map(pull, remote_dirs))
 
-# Push: each local project dir out, prefix retranslated to remote, keeping remotely-newer files.
-for d in os.listdir(os.path.expanduser("~/.claude/projects")):
-    t = d.replace(local, remote, 1) if d.startswith(local) else d
-    subprocess.run(f"rsync --archive --compress --update --verbose ~/.claude/projects/{d}/ {host}:.claude/projects/{t}/", shell=True, check=True)
+with tempfile.TemporaryDirectory() as stage:
+    # Push: every local dir (now including pulled ones) goes out under its remote name, keeping remotely-newer files.
+    for d in os.listdir(projects):
+        os.symlink(os.path.join(projects, d), os.path.join(stage, to_remote(d)))
+    subprocess.run(rsync + ["--copy-dirlinks", f"{stage}/", f"{host}:.claude/projects/"], check=True)
 
 print(f"claude-sync: synced ~/.claude/projects with {host}")
