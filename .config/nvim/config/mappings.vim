@@ -2,8 +2,9 @@ map 0 ^
 nore ; :
 nore , ;
 
-nnoremap j gj
-nnoremap k gk
+" Move by display line, but by real line with a count (e.g. 5j)
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Force to learn hjkl
 " http://stackoverflow.com/questions/5367760/vim-disabling-the-cursor-arrow-keys-but-only-for-navigation
