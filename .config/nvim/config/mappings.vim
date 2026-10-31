@@ -28,4 +28,4 @@ nmap <silent> <leader>s :set spell! spelllang=en<CR>
 nmap <silent> <leader>d :set spell! spelllang=de<CR>
 
 " Create File if not exist
-map gf :e <cfile><CR>
+nnoremap gf :e <cfile><CR>
