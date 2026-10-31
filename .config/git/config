@@ -57,3 +57,5 @@
 [gitreview]
 	remote = origin
 	username = simon04
+[branch]
+	sort = -committerdate
