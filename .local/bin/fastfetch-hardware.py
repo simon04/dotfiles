@@ -3,7 +3,6 @@
 
 import argparse
 import json
-import os
 import pathlib
 import subprocess
 import sys
@@ -34,8 +33,6 @@ CONFIG = {
     ],
 }
 
-data_home = pathlib.Path(os.environ.get("XDG_DATA_HOME") or "~/.local/share")
-
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument(
     "hosts",
@@ -45,7 +42,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "--target",
-    default=data_home / "fastfetch" / "hosts",
+    default=".hosts",
     type=pathlib.Path,
     help="directory to write HOSTNAME.txt to (default: %(default)s)",
 )
