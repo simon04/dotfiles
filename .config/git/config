@@ -34,7 +34,6 @@
 	user = simon04
 [pull]
 	ff = only
-	rebase = true
 [push]
 	default = simple
 	autoSetupRemote = true
