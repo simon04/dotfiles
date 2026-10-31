@@ -1,6 +1,6 @@
 " https://github.com/junegunn/vim-plug
-call plug#begin('~/.vim/bundle/')
-" Install by running .vim/install-plug.sh
+call plug#begin(stdpath('data') . '/plugged')
+" Install by running .config/nvim/install-plug.sh
 " https://vimawesome.com/
 
 " Git diff in the gutter (sign column)

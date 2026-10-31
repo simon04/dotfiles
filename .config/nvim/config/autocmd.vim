@@ -1,6 +1,6 @@
 " Load template associated with file extension on file creation if template is available
 " http://vim.runpaint.org/typing/using-templates
-autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e | silent! 0r ~/.vim/skel/%:t
+autocmd! BufNewFile * silent! 0r ~/.config/nvim/skel/tmpl.%:e | silent! 0r ~/.config/nvim/skel/%:t
 
 " Spell check for commit messages
 autocmd BufNewFile,BufRead COMMIT_EDITMSG setl spell
