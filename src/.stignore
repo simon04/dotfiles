@@ -1,0 +1,87 @@
+// Syncthing ignore patterns for ~/src (all repositories).
+// Syncthing does not sync this file itself: copy it to every device.
+// Only this root .stignore is read; nested .stignore files have no effect.
+// First matching pattern wins. Patterns without a leading slash match at
+// any depth. (?d) lets Syncthing delete these files when they block
+// removal of a directory deleted on another device.
+//
+// Do not add dist, build, vendor or venv globally: bootstrap, vite,
+// maplibre-gl-js, MediaWiki core, cpython (Lib/venv), ruff and others
+// commit directories with these names.
+
+// Operating system and editor junk
+(?d).DS_Store
+(?d)._*
+(?d).Spotlight-V100
+(?d).Trashes
+(?d).fseventsd
+(?d)Thumbs.db
+(?d).directory
+(?d).Trash-*
+(?d).nfs*
+(?d)*~
+(?d).*.swp
+(?d).*.swo
+(?d)*.kate-swp
+**/.idea/workspace.xml
+**/.idea/shelf
+
+// Git: transient lock files (a stale lock on another device breaks git)
+**/.git/*.lock
+**/.git/refs/**/*.lock
+**/.git/gc.pid
+
+// Git worktree of ~/.dotfiles: its .git points to an absolute macOS path
+/dotfiles
+
+// Dependencies: platform-specific binaries, pnpm links into a local store,
+// virtualenvs tied to the local Python. Reinstall per device.
+node_modules
+.venv
+**/.vite-hooks/_
+/wiki/analytics-quarry-web/venv
+/wiki/tool-wd-image-positions/venv
+/devdocs/vendor
+
+// Build output and tool caches (regenerated)
+target
+.gradle
+.next
+.angular
+.parcel-cache
+.turbo
+(?d)__pycache__
+(?d).pytest_cache
+(?d).ruff_cache
+(?d).mypy_cache
+(?d).eslintcache
+(?d).stylelintcache
+(?d).phpunit.result.cache
+(?d)phpunit*result.cache
+playwright-report
+test-results
+
+// albina-euregio: dist is build output in every repo there
+/albina-euregio/**/dist
+
+// devdocs: downloaded/generated documentation (thor docs:download)
+!/devdocs/docs/*.md
+/devdocs/docs/*
+/devdocs/public/docs
+
+// maplair: scratch files
+/geo/maplair/tmp
+
+// MediaWiki: runtime caches (regenerated on demand)
+/mediawiki/cache/*
+/mediawiki/images/thumb
+/mediawiki/images/temp
+/mediawiki/images/lockdir
+/mediawiki/images/cache
+/mediawiki/images/tmp
+/mediawiki/logs
+/mediawiki/database/locks
+/mediawiki/docs/coverage
+/mediawiki/docs/js
+/mediawiki/tests/selenium/log
+/mediawiki/tests/phpunit/gen
